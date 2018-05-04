@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>JW Player DNA Plugin</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="${window.location.origin}/../../assets/demo-pages.css">
+
+    <!-- Makes the header -->
+    <script src="${window.location.origin}/../../assets/header.js"></script>
+
+    <!-- JW Player Builds -->
+    <script src="//ssl.p.jwpcdn.com/player/v/8.3.0/jwplayer.js"></script>
+
+    <!-- Streamroot Plugin -->
+    <script src="//cdn.streamroot.io/jwplayer-hls-dna-plugin/1/stable/jwplayer-hls-dna-plugin.js#streamrootKey=demoswebsiteandpartners"></script>
+
+    <!-- Graphs -->
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+</head>
+
+<body>
+    <header></header>
+    <center>
+        <div id="demoplayer"></div>
+        <div id="streamroot-graphs"></div>
+    </center>
+    <script>
+        jwplayer.key = "uoW6qHjBL3KNudxKVnwa3rt5LlTakbko9e6aQ6VUyKQ=";
+
+        jwplayer('demoplayer').setup({
+            file: 'http://vod-l3.delivery.streamroot.io/vodOrigin/tos1500.mp4/playlist.m3u8',
+            dnaConfig: {},
+            width: 630,
+            height: 360,
+            autostart: true,
+            hlsjsConfig: {
+                "maxBufferSize": 0,
+                "maxBufferLength": 30,
+                "liveSyncDuration": 30
+            },
+        });
+    </script>
+</body>
+
+</html>
+​

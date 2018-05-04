@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hls.js DNA Wrapper</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="${window.location.origin}/../../assets/demo-pages.css">
+
+    <!-- Makes the header -->
+    <script src="${window.location.origin}/../../assets/header.js"></script>
+
+    <!--Azure Media Player build -->
+    <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
+    <script src="//amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script>
+
+    <!-- Streamroot wrapper -->
+    <script src="//cdn.streamroot.io/azuremp-dna-wrapper/1/stable/azuremp-dna-wrapper.js"></script>
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+
+    <!-- Graphs -->
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+</head>
+
+<body>
+    <header></header>
+    <center>
+        <div>
+            <video id="demoplayer" class="azuremediaplayer amp-default-skin" />
+        </div>
+        <div id="streamroot-graphs"></div>
+        <script>
+            var player = amp('demoplayer', {
+                width: '640',
+                height: '360',
+                controls: true,
+                autoplay: true,
+            });
+            var dnaConfig = {};
+            var wrapper = new AzureMPDnaWrapper(player, "emilepommier", dnaConfig);
+
+            player.muted(true);
+
+            window.player = player;
+
+            player.src([{
+                src: 'https://amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest(format=m3u8-aapl)',
+                type: 'application/vnd.ms-sstr+xml',
+            }]);
+        </script>
+    </center>
+</body>
+
+</html>

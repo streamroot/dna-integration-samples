@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>castLabs DNA Plugin</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="${window.location.origin}/../../assets/demo-pages.css">
+
+    <!-- Makes the header -->
+    <script src="${window.location.origin}/../../assets/header.js"></script>
+
+    <!-- Builds -->
+    <script src="${window.location.origin}/../../assets/castlabs/clpp.withstyles.min.js"></script>
+    <script src="${window.location.origin}/../../assets/castlabs/clpp_streamroot_hls.plugin.min.js"></script>
+
+    <!-- Graphs -->
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+</head>
+
+<body>
+    <header></header>
+    <center>
+        <div>
+            <video id="demoplayer" width="640" height="360" crossOrigin="anonymous" controls class="video-js vjs-default-skin vjs-big-play-centered">
+            </video>
+        </div>
+        <div id="streamroot-graphs"></div>
+    </center>
+    <script>
+        var player = clpp.init('#demoplayer', {
+            autoplay: true,
+            license: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiV2ViIiwidXJscyI6WyJjYXN0bGFicy5jb20iLCJjYXN0bGFicy1jaHJvbWVjYXN0LnMzLWV1LXdlc3QtMS5hbWF6b25hd3MuY29tIiwiY2xwcC5zMy1ldS13ZXN0LTEuYW1hem9uYXdzLmNvbSIsImxvY2FsaG9zdCIsIjEyNy4wLjAuMSJdLCJraWQiOjQ0MX0.Awa33txsCNArKMZ6cL4ESs90BNmHJ4l3rbTXNJnjgwtmqgVaoDF_C7W7nBiheuH7zBEePHoinr7f3jpld50mQ10yhLWoCFgvOu-qNCcI5jReXAsnspaHwMPONTp3STDTgPEulNOnsNBMyJnmPN0ftbSQhbvTK52yshp0NI11e15TSNAhm1bHB5kjzNAcBj98xR0nzSIAmuxvYLs9HJhlb-cNMb1wB82faD2jR6iPjQK1Jjw5MjxqnxEr5wJ9LFv0Jax0VNqwsu46-3PkMft2rrFMlLYLrl9QZNa-tQCDdFMm-9I6IUhO6jYtzkcuCnnB6NtMtfMrMpaEcaZgOpUm_g",
+            clpp_streamroot_hls: {
+                streamrootKey: 'demoswebsiteandpartners',
+                dnaConfig: {}
+            }
+        });
+
+        player.load([{
+            type: clpp.statics.types.HLS,
+            src: 'http://vod-l3.delivery.streamroot.io/vodOrigin/tos1500.mp4/playlist.m3u8',
+            drmProtected: false
+        }]);
+    </script>
+</body>
+
+</html>
+​

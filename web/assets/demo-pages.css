@@ -1,0 +1,60 @@
+#playerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#player, #code {
+  padding: 20px;
+}
+
+#codeSnippet {
+	padding: 0px;
+	margin: 0px;
+}
+
+#codeSnippet>code {
+  border-radius: 8px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+}
+
+header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+header li {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    padding-left: 0px;
+    font-size: 24px
+}
+
+header a {
+	text-decoration: none;
+	border: solid 2px #12a5ed;
+	color: white;
+	padding: 9px;
+	margin-left: 10px;
+	background-color: #12a5ed;
+	border-radius: 8px;
+	transition-duration: 0.4s;
+}
+
+header a:hover {
+	color: #12a5ed;
+	background-color: white;
+}
+
+header img {
+	padding-right: 14px;
+	margin-left: 20px;
+	border-right: solid 1px black;
+}
