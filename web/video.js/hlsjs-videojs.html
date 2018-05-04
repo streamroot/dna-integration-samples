@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Video.js DNA Wrapper</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="${window.location.origin}/../../assets/demo-pages.css">
+
+    <!-- Makes the header -->
+    <script src="${window.location.origin}/../../assets/header.js"></script>
+
+    <!-- Video.js Builds -->
+    <link href="//vjs.zencdn.net/6.8.0/video-js.min.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/6.8.0/video.min.js"></script>
+
+    <!-- Streamroot Builds -->
+    <script src="//preprod.streamroot.io.s3.amazonaws.com/videojs-hls-dna-plugin/latest/videojs-hls-dna-plugin.js#streamrootKey=demoswebsiteandpartners"></script>
+    <script src="//cdn.streamroot.io/videojs-hlsjs-plugin/1/stable/videojs-hlsjs-plugin.js"></script>
+
+    <!-- Graphs -->
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+</head>
+
+<body>
+    <header></header>
+    <center>
+        <div>
+            <video id=demoplayer width=640 height=320 class="video-js vjs-default-skin" controls autoplay muted>
+                <source src='http://vod-l3.delivery.streamroot.io/vodOrigin/tos1500.mp4/playlist.m3u8' type="application/x-mpegURL">
+            </video>
+        </div>
+        <div id="streamroot-graphs"></div>
+    </center>
+    <script>
+        var options = {
+            html5: {
+                dnaConfig: {},
+                hlsjsConfig: {}
+            }
+        };
+        var player = videojs('demoplayer', options);
+    </script>
+
+</body>
+​
+
+</html>
+​

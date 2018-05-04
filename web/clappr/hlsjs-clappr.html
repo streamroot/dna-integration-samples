@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clappr DNA Wrapper</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="${window.location.origin}/../../assets/demo-pages.css">
+
+    <!-- Makes the header -->
+    <script src="${window.location.origin}/../../assets/header.js"></script>
+
+    <!-- Builds -->
+    <script src="//cdn.jsdelivr.net/npm/clappr@0.2.85/dist/clappr.min.js"></script>
+    <script src="//cdn.streamroot.io/clappr-hls-dna-plugin/1/stable/clappr-hls-dna-plugin.js#streamrootKey=demoswebsiteandpartners"></script>
+
+    <!-- Graphs -->
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+</head>
+
+<body>
+    <header></header>
+    <center>
+        <div>
+            <div id="demoplayer"></div>
+        </div>
+        <div id="streamroot-graphs"></div>
+    </center>
+    <script>
+        var player = new Clappr.Player({
+            source: 'http://vod-l3.delivery.streamroot.io/vodOrigin/tos1500.mp4/playlist.m3u8',
+            parentId: "#demoplayer",
+            plugins: {
+                playback: [HlsDnaPlugin]
+            },
+            dnaConfig: {},
+            hlsjsConfig: {
+                "maxBufferSize": 0,
+                "maxBufferLength": 30,
+                "liveSyncDuration": 30
+            },
+            width: 640,
+            height: 360,
+            autoPlay: true,
+        });
+    </script>
+</body>
+
+</html>
+​

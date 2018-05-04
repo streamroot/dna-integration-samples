@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Shaka Player DNA Wrapper</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="${window.location.origin}/../../assets/demo-pages.css">
+
+    <!-- Makes the header -->
+    <script src="${window.location.origin}/../../assets/header.js"></script>
+
+    <!-- Builds -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.3.7/shaka-player.compiled.js"></script>
+    <script src="//cdn.streamroot.io/shakaplayer-dna-wrapper/1/stable/shakaplayer-dna-wrapper.js"></script>
+
+    <!-- Graphs -->
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+
+    <body>
+        <header></header>
+        <center>
+            <video controls autoplay muted id="demoplayer" width="640" height="360"></video>
+        </center>
+        <script>
+            var videoElement = document.getElementById('demoplayer');
+            var shakaplayer = new shaka.Player(videoElement);
+            var playerConfig = {};
+            var dnaConfig = {};
+
+            var wrapper = new ShakaPlayerDnaWrapper(shakaplayer, 'demoswebsiteandpartners', dnaConfig);
+            shakaplayer.configure(playerConfig);
+            shakaplayer.load('http://vod-l3.delivery.streamroot.io/vodOrigin/tos1500.mp4/manifest.mpd');
+        </script>
+        <div id="streamroot-graphs"></div>
+    </body>
+
+</html>

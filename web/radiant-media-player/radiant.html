@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Radiant Media Player DNA Plugin</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="${window.location.origin}/../../assets/demo-pages.css">
+
+    <!-- Makes the header -->
+    <script src="${window.location.origin}/../../assets/header.js"></script>
+
+    <!-- Builds -->
+    <script src="//cdn.radiantmediatechs.com/rmp/4.8.1/js/rmp.min.js"></script>
+
+    <!-- Graphs -->
+	<script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+</head>
+​
+
+<body>
+    <header></header>
+    <center>
+        <div>
+            <div id="demoplayer"></div>
+        </div>
+        <div id="streamroot-graphs"></div>
+    </center>
+    <script>
+        (function () {
+            var bitrates = {
+                hls: 'http://vod-l3.delivery.streamroot.io/vodOrigin/tos1500.mp4/playlist.m3u8'
+            };
+            var streamrootConfig = {
+                type: 'hlsjs',
+                streamrootKey: 'demoswebsiteandpartners',
+                dnaConfig: {},
+            };
+
+            var settings = {
+                licenseKey: 'Kl8lMDdvdj1pb2VlNzJzZT9yb201ZGFzaXMzMGRiMEElXyo=',
+                streamrootConfig: streamrootConfig,
+                bitrates: bitrates,
+                // Recommended settings for HLS streaming
+                hlsJSMaxBufferSize: 0,
+                hlsJSMaxBufferLength: 30,
+                delayToFade: 3000,
+                width: 640,
+                height: 360,
+                muted: true,
+                autoplay: true,
+            };
+            var elementID = 'demoplayer';
+            var rmp = new RadiantMP(elementID);
+            rmp.init(settings);
+        })();
+    </script>
+</body>
+
+</html>
+​
