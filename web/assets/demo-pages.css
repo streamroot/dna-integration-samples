@@ -1,0 +1,56 @@
+#playerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#player, #code {
+  padding: 20px;
+}
+
+#codeSnippet {
+	padding: 0px;
+	margin: 0px;
+}
+
+#codeSnippet>code {
+  border-radius: 8px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+}
+
+header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+header li {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    padding-left: 0px;
+    font-size: 24px
+}
+
+header a {
+  font-size: 15px;
+  text-decoration: none;
+	color: white;
+  padding: 10px 30px;
+  margin: 0px 10px 10px;
+	background-color: rgb(48, 142, 201);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+header img {
+	padding-right: 14px;
+	margin-left: 20px;
+	border-right: solid 1px black;
+}
