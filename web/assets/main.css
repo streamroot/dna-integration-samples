@@ -1,43 +1,31 @@
 .card-container {
-
 	width: 150px;
-	background:white;
-	float:left;
-	margin:0px 10px;
+	background: white;
+	margin: 0px 20px;
 }
 
-.card {	
-
-	width:100%;
+.card {
+	width: 100%;
 	height: 150px;
-	border-radius:5px;
-	box-shadow:1px 2px 3px 1px rgba(0,0,0,.24);
+	border-radius: 5px;
+	box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, .24);
+}
+
+.card:hover {
+    box-shadow: 2px 4px 6px 2px rgba(0, 0, 0, .24);
 }
 
 .inner-card {
-	padding:15%;
+	padding: 15%;
 }
 
 p {
-	text-align:center;
-	margin-top:10px;
+	text-align: center;
+	margin-top: 10px;
 }
 
 .card img {
-	width:100%;
-}
-
-table a {
-	text-decoration: none;
-	color: black;
-	font-size: 18px;
-}
-
-table .title{
-	font-size: 24px;
-	padding: 12px;
-	margin-right: 30px;
-	margin-left: 50px;
+	width: 100%;
 }
 
 header {
@@ -45,21 +33,21 @@ header {
 }
 
 header ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #ffffff;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #ffffff;
 }
 
 header li {
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 0;
-    padding-left: 20px;
-    font-size: 34px;
+	float: left;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 0;
+	padding-left: 20px;
+	font-size: 34px;
 }
 
 header img {
@@ -67,4 +55,26 @@ header img {
 	padding-right: 20px;
 }
 
+.flex-container {
+	padding: 0;
+	margin: 40px 0px;
+	list-style: none;
+	-ms-box-orient: horizontal;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+}
 
+.wrap {
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+ul a {
+	text-decoration: none;
+	color: black;
+	font-size: 18px;
+}

@@ -11,7 +11,7 @@
         }
     </style>
 
-    <link rel="stylesheet" href="${window.location.origin}/../assets/main.css">
+    <link rel="stylesheet" href="assets/main.css">
 
 </head>
 
@@ -23,190 +23,177 @@
     <header>
         <ul>
             <li>
-                <img src='${window.location.origin}/../assets/img/logo_typo_long.svg' height='43'>
+                <img src='assets/img/logo_typo_long.svg' height='43'>
             </li>
             <li>Player integration</li>
         </ul>
     </header>
 
-    <table>
-        <tr>
-            <th>
-                <div class='title'>Players</div>
-            </th>
-            <th>
-                <!-- Hls.js + JW (ok) -->
-                <a href="${window.location.origin}/../jwplayer/hlsjs-jwplayer.html">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/jw8.png">
-                            </div>
+    <ul class="flex-container wrap">
+        <li>
+            <!-- Hls.js wrapper (ok) -->
+            <a href="hls.js/hlsjs-wrapper.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/videodev.png">
                         </div>
-                        <p>JWPlayer</p>
                     </div>
-                </a>
-            </th>
-            <th>
-                <!-- Hls.js + VJS (ok) -->
-                <a href="${window.location.origin}/../video.js/hlsjs-videojs.html">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/vjs.png">
-                            </div>
-                        </div>
-                        <p>VideoJS</p>
-                    </div>
-                </a>
-            </th>
-            <th>
-                <!-- Hls.js + Clappr (ok) -->
-                <a href="${window.location.origin}/../clappr/hlsjs-clappr.html">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/clappr.png">
-                            </div>
-                        </div>
-                        <p>Clappr</p>
-                    </div>
-                </a>
-            </th>
-            <th>
-                <!-- Hls.js + Flowplayer (ok) -->
-                <a href="${window.location.origin}/../flowplayer/flowplayer.html">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/flowplayer.png">
-                            </div>
-                        </div>
-                        <p>FlowPlayer</p>
-                    </div>
-                </a>
-            </th>
-            <th>
-                <!-- Radiant -->
-                <a href="${window.location.origin}/../radiant-media-player/radiant.html">
 
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/radiant.png">
-                            </div>
+                    <p>Hls.js</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Dash.js wrapper (~ok, same thing as Dash.js+VJS -->
+            <a href="dash.js/dashjs-wrapper.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/dashif.png">
                         </div>
-                        <p>Radiant MP</p>
                     </div>
-                </a>
-            </th>
-            <th>
-                <!-- castLabs -->
-                <a href="${window.location.origin}/../castlabs/castlabs.html">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/castlabs.png">
-                            </div>
+
+                    <p>Dash.js</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Shaka Player wrapper (ok) -->
+            <a href="shaka-player/shakaplayer-wrapper.html">
+
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/shakaplayer.png">
                         </div>
-                        <p>castLabs</p>
                     </div>
-                </a>
-            </th>
-            <th>
-                <!-- Azure Media Player -->
-                <a href="${window.location.origin}/../azure-media-player/azuremp.html">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/azuremp.png">
-                            </div>
+
+                    <p>Shaka Player</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Hls.js + JW (ok) -->
+            <a href="jwplayer/hlsjs-jwplayer.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/jw8.png">
                         </div>
-                        <p>Azure MP</p>
                     </div>
-                </a>
-            </th>
-            <th>
-                <!-- Bitmovin -->
-                <a href="${window.location.origin}/../bitmovin/bitmovin.html">
-
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/bitmovin.png">
-                            </div>
+                    <p>JWPlayer</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Hls.js + VJS (ok) -->
+            <a href="video.js/hlsjs-videojs.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/vjs.png">
                         </div>
-                        <p>Bitmovin</p>
                     </div>
-                </a>
-            </th>
-            <th>
-                <!-- THEOplayer -->
-                <a href="${window.location.origin}/../theoplayer/theoplayer.html">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/theoplayer.png">
-                            </div>
+                    <p>VideoJS</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Hls.js + Clappr (ok) -->
+            <a href="clappr/hlsjs-clappr.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/clappr.png">
                         </div>
-                        <p>THEOplayer</p>
                     </div>
-                </a>
-            </th>
-        </tr>
-        </tr>
-        <tr>
-            <th>
-                <div class='title'>Media engines</div>
-            </th>
-            <th>
-                <!-- Hls.js wrapper (ok) -->
-                <a href="${window.location.origin}/../hls.js/hlsjs-wrapper.html">
-
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/videodev.png">
-                            </div>
+                    <p>Clappr</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Hls.js + Flowplayer (ok) -->
+            <a href="flowplayer/flowplayer.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/flowplayer.png">
                         </div>
-
-                        <p>Hls.js</p>
                     </div>
-                </a>
-            </th>
-            <th>
-                <!-- Dash.js wrapper (~ok, same thing as Dash.js+VJS -->
-                <a href="${window.location.origin}/../dash.js/dashjs-wrapper.html">
+                    <p>FlowPlayer</p>
+                </div>
+            </a>
+        </li>
 
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/dashif.png">
-                            </div>
+        <li>
+            <!-- castLabs -->
+            <a href="castlabs/castlabs.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/castlabs.png">
                         </div>
-
-                        <p>Dash.js</p>
                     </div>
-                </a>
-            </th>
-            <th>
-                <!-- Shaka Player wrapper (ok) -->
-                <a href="${window.location.origin}/../shaka-player/shakaplayer-wrapper.html">
-
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="inner-card">
-                                <img src="${window.location.origin}/../assets/img/shakaplayer.png">
-                            </div>
+                    <p>castLabs</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Azure Media Player -->
+            <a href="azure-media-player/azuremp.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/azuremp.png">
                         </div>
-
-                        <p>Shaka Player</p>
                     </div>
-                </a>
-            </th>
-        </tr>
-    </table>
+                    <p>Azure MP</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Radiant -->
+            <a href="radiant-media-player/radiant.html">
 
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/radiant.png">
+                        </div>
+                    </div>
+                    <p>Radiant MP</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Bitmovin -->
+            <a href="bitmovin/bitmovin.html">
+
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/bitmovin.png">
+                        </div>
+                    </div>
+                    <p>Bitmovin</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- THEOplayer -->
+            <a href="theoplayer/theoplayer.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/theoplayer.png">
+                        </div>
+                    </div>
+                    <p>THEOplayer</p>
+                </div>
+            </a>
+        </li>
+    </ul>
 </body>
 
 </html>
