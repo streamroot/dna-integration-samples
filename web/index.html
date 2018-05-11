@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Web integration demo</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+
+    <link rel="stylesheet" href="assets/main.css">
+
+</head>
+
+<body>
+    <script>
+        var x = location.origin;
+    </script>
+    ​
+    <header>
+        <ul>
+            <li>
+                <img src='assets/img/logo_typo_long.svg' height='43'>
+            </li>
+            <li>Player integration</li>
+        </ul>
+    </header>
+
+    <ul class="flex-container wrap">
+        <li>
+            <!-- Hls.js wrapper (ok) -->
+            <a href="hls.js/hlsjs-wrapper.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/videodev.png">
+                        </div>
+                    </div>
+
+                    <p>Hls.js</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Dash.js wrapper (~ok, same thing as Dash.js+VJS -->
+            <a href="dash.js/dashjs-wrapper.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/dashif.png">
+                        </div>
+                    </div>
+
+                    <p>Dash.js</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Shaka Player wrapper (ok) -->
+            <a href="shaka-player/shakaplayer-wrapper.html">
+
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/shakaplayer.png">
+                        </div>
+                    </div>
+
+                    <p>Shaka Player</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Hls.js + JW (ok) -->
+            <a href="jwplayer/hlsjs-jwplayer.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/jw8.png">
+                        </div>
+                    </div>
+                    <p>JWPlayer</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Hls.js + VJS (ok) -->
+            <a href="video.js/hlsjs-videojs.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/vjs.png">
+                        </div>
+                    </div>
+                    <p>VideoJS</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Hls.js + Clappr (ok) -->
+            <a href="clappr/hlsjs-clappr.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/clappr.png">
+                        </div>
+                    </div>
+                    <p>Clappr</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Hls.js + Flowplayer (ok) -->
+            <a href="flowplayer/flowplayer.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/flowplayer.png">
+                        </div>
+                    </div>
+                    <p>FlowPlayer</p>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <!-- castLabs -->
+            <a href="castlabs/castlabs.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/castlabs.png">
+                        </div>
+                    </div>
+                    <p>castLabs</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Azure Media Player -->
+            <a href="azure-media-player/azuremp.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/azuremp.png">
+                        </div>
+                    </div>
+                    <p>Azure MP</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Radiant -->
+            <a href="radiant-media-player/radiant.html">
+
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/radiant.png">
+                        </div>
+                    </div>
+                    <p>Radiant MP</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- Bitmovin -->
+            <a href="bitmovin/bitmovin.html">
+
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/bitmovin.png">
+                        </div>
+                    </div>
+                    <p>Bitmovin</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <!-- THEOplayer -->
+            <a href="theoplayer/theoplayer.html">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="inner-card">
+                            <img src="assets/img/theoplayer.png">
+                        </div>
+                    </div>
+                    <p>THEOplayer</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</body>
+
+</html>
