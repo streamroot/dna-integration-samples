@@ -35,29 +35,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <LinearLayout
-            android:id="@+id/streamrootKeyLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/streamrootKeyTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/streamroot_key_text" />
-
-            <AutoCompleteTextView
-                android:id="@+id/streamrootKeyEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/streamroot_key_hint"
-                android:inputType="text" />
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/streamLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

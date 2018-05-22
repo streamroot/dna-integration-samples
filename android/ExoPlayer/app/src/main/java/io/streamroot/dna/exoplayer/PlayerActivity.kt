@@ -54,12 +54,10 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onDestroy() {
+        super.onDestroy()
 
-        if (Util.SDK_INT <= 23) {
-            releasePlayer()
-        }
+        releasePlayer()
     }
 
     override fun onStop() {
