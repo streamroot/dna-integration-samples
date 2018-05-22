@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.MediaController
 import android.widget.Toast
 import android.widget.VideoView
-import io.streamroot.dna.core.StreamrootDNA
+import io.streamroot.dna.core.DnaClient
 import io.streamroot.dna.utils.stats.StatsView
 import io.streamroot.dna.utils.stats.StreamStatsManager
 
@@ -14,17 +14,15 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var videoView: VideoView
     private lateinit var streamrootDnaStatsView: StatsView
 
-    private var mStreamrootKey: String? = null
     private var mStreamUrl: String? = null
 
-    private var streamrootDNA: StreamrootDNA? = null
+    private var streamrootDNA: DnaClient? = null
     private var streamStatsManager: StreamStatsManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
 
-        mStreamrootKey = intent.extras?.getString("streamrootKey")
         mStreamUrl = intent.extras?.getString("streamUrl")
 
         videoView = findViewById(R.id.videoView)
@@ -56,13 +54,12 @@ class PlayerActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    private fun initStreamroot(): StreamrootDNA? {
-        var mSdk: StreamrootDNA? = null
+    private fun initStreamroot(): DnaClient? {
+        var mSdk: DnaClient? = null
         try {
-            mSdk = StreamrootDNA.newBuilder()
+            mSdk = DnaClient.newBuilder()
                     .context(applicationContext)
-                    .streamrootKey(mStreamrootKey)
-                    .interactor(VideoViewPlayerInteractor(videoView))
+                    .playerInteractor(VideoViewPlayerInteractor(videoView))
                     .start(Uri.parse(mStreamUrl))
 
             streamStatsManager = StreamStatsManager.newStatsManager(mSdk, streamrootDnaStatsView)
@@ -76,7 +73,7 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private fun stopStreamroot() {
-        streamrootDNA?.destroy()
+        streamrootDNA?.close()
         streamrootDNA = null
 
         streamStatsManager?.stop()
