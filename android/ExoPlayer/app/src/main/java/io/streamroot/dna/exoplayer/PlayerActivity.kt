@@ -46,6 +46,14 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         bandwidthMeter = StreamrootExoplayerBandwidthMeter()
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        if (Util.SDK_INT > 23) {
+            initPlayer()
+        }
+    }
+
     override fun onResume() {
         super.onResume()
 
@@ -54,15 +62,15 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-
-        releasePlayer()
+    override fun onPause() {
+        super.onPause()
+        if (Util.SDK_INT <= 23) {
+            releasePlayer()
+        }
     }
 
     override fun onStop() {
         super.onStop()
-
         if (Util.SDK_INT > 23) {
             releasePlayer()
         }
