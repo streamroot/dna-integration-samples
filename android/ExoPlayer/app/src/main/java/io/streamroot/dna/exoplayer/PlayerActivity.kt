@@ -90,7 +90,8 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
             player = newPlayer
 
-            val manifestUri = initStreamroot()?.manifestUrl ?: Uri.parse(mStreamUrl)
+            streamrootDNA = initStreamroot()
+            val manifestUri = streamrootDNA?.manifestUrl ?: Uri.parse(mStreamUrl)
             newPlayer.prepare(LoopingMediaSource(buildMediaSource(manifestUri)), true, false)
 
             exoplayerView.player = newPlayer
