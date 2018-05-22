@@ -23,7 +23,7 @@ This repository is demonstrating part of our existing integrations, we are const
 
 - Bitmovin
 - Castlabs
-- ExoPlayer
+- [ExoPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer)
 - JWPlayer
 - NexPlayer
 - [VideoView](https://github.com/streamroot/dna-integration-samples/tree/master/android/VideoView)
