@@ -14,14 +14,47 @@
 
 	<!-- Makes the header -->
 	<script src="../assets/header.js"></script>
+
+	<!-- THEOplayer build and UI -->
+	<script src="../assets/theoplayer/THEOplayer.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/theoplayer/ui.css">
+
+	<!-- Streamroot wrapper -->
+	<script src="//cdn.streamroot.io/theoplayer-dna-wrapper/1/stable/theoplayer-dna-wrapper.js"></script>
+
+	<!-- Graphs -->
+	<script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
 </head>
 
 <body>
 	<header></header>
 	<center>
-		<h1>COMING SOON!</h1>
+		<div class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"></div>
+		<div id="streamroot-graphs"></div>
 	</center>
 
+	<script>
+		var dnaConfig = {};
+		var element = document.querySelector('.theoplayer-container')
+		var player = new THEOplayer.Player(element, {
+			libraryLocation: '../assets/theoplayer/',
+			ui: {
+				width: '512px',
+				height: '288px'
+			}
+		});
+		var wrapper = new TheoPlayerDnaWrapper(player, 'demoswebsiteandpartners', dnaConfig);
+
+		player.muted = true;
+		player.autoplay = true;
+
+		player.source = {
+			sources: [{
+				src: 'https://wowza-test-cloudfront.streamroot.io/vodOrigin/tos1500.mp4/playlist.m3u8',
+				type: 'application/x-mpegURL'
+			}]
+		};
+	</script>
 </body>
 
 </html>
