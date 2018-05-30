@@ -14,14 +14,46 @@
 
 	<!-- Makes the header -->
 	<script src="../assets/header.js"></script>
+
+	<!-- Bitmovin Player build -->
+	<script src="//bitmovin-a.akamaihd.net/bitmovin-player/beta/7.7/bitmovinplayer.js"></script>
+
+	<!-- Streamroot plugin -->
+	<script src="//cdn.streamroot.io/bitmovin-dna-plugin/1/stable/bitmovin-dna-plugin.js#streamrootKey=demoswebsiteandpartners"></script>
+
+	<!-- Graphs -->
+	<script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
 </head>
 
 <body>
 	<header></header>
 	<center>
-		<h1>COMING SOON!</h1>
+		<div id="demoplayer"></div>
+		<div id="streamroot-graphs"></div>
 	</center>
-
+	<script>
+		var bitmovinConfig = {
+			key: 'a9438b8a-97ae-4502-955b-fe615878e8c7',
+			playback: {
+				autoplay: true,
+				muted: true
+			},
+			source: {
+				//Only one playlist URL must be set at a time.
+				hls: 'https://wowza-test-cloudfront.streamroot.io/vodOrigin/tos1500.mp4/playlist.m3u8',
+				//dash: 'YOUR_PLAYLIST_URL',
+				//smooth: 'YOUR_PLAYLIST_URL'
+			},
+			dnaConfig: {},
+			style: {
+				width: '512',
+				height: '288',
+				ux: true
+			},
+		};
+		var player = bitmovin.player('demoplayer');
+		player.setup(bitmovinConfig);
+	</script>
 </body>
 
 </html>
