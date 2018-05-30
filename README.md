@@ -13,7 +13,7 @@
 This repository is demonstrating part of our existing integrations, we are constantly adding support for new ones. Please send an email to [support@streamroot.io](mailto:support@streamroot.io) for any request or issue you might have.
 
 ## Web Demo
-[https://streamroot.github.io/dna-integration-samples/web](https://streamroot.github.io/dna-integration-samples/web)
+[http://samples.streamroot.io/web/](http://samples.streamroot.io/web/)
 
 ## Existing Integrations
 
