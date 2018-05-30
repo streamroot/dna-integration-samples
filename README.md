@@ -52,5 +52,5 @@ This repository is demonstrating part of our existing integrations, we are const
 - [RxPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/rx-player)
 - [ShakaPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/shaka-player)
 - [VideoJS](https://github.com/streamroot/dna-integration-samples/tree/master/web/video.js)
-- Bitmovin
-- THEOplayer
+- [Bitmovin](https://github.com/streamroot/dna-integration-samples/tree/master/web/bitmovin)
+- [THEOplayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/theoplayer)
