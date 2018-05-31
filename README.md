@@ -1,3 +1,6 @@
+<head>
+  <link rel="icon" type="image/x-icon" href="favicon.png" />
+</head>
 <h1 align="center">
   DNA™ Integration Samples
 </h1>
