@@ -31,7 +31,7 @@ This repository is demonstrating part of our existing integrations, we are const
 
 #### Players
 
-- [Azure Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web)
+- [Azure Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/azure-media-player)
 - [Castlabs](https://github.com/streamroot/dna-integration-samples/tree/master/web/castlabs)
 - [Clappr](https://github.com/streamroot/dna-integration-samples/tree/master/web/clappr)
 - [Dash.js](https://github.com/streamroot/dna-integration-samples/tree/master/web/dash.js)
