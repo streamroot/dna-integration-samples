@@ -13,7 +13,6 @@
 		50F1DEB61E687C0E00B59D4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB51E687C0E00B59D4B /* Assets.xcassets */; };
 		50F1DEB91E687C0E00B59D4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB71E687C0E00B59D4B /* LaunchScreen.storyboard */; };
 		D61171C2209B06F100CBE36B /* ObjCSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61171C0209B06F000CBE36B /* ObjCSampleViewController.m */; };
-		D61171C9209B160C00CBE36B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171C5209B160C00CBE36B /* Alamofire.framework */; };
 		D61171CA209B160C00CBE36B /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171C6209B160C00CBE36B /* Sentry.framework */; };
 		D61171CB209B160C00CBE36B /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171C7209B160C00CBE36B /* Starscream.framework */; };
 		D61171CC209B160C00CBE36B /* StreamrootSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171C8209B160C00CBE36B /* StreamrootSDK.framework */; };
@@ -23,7 +22,6 @@
 		D61171F9209B3FC900CBE36B /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEB01E687C0E00B59D4B /* SwiftSampleViewController.swift */; };
 		D61171FA209B3FD000CBE36B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61171CD209B200900CBE36B /* MainViewController.swift */; };
 		D61171FF209B413C00CBE36B /* StreamrootSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171FB209B413C00CBE36B /* StreamrootSDK.framework */; };
-		D6117200209B413C00CBE36B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171FC209B413C00CBE36B /* Alamofire.framework */; };
 		D6117201209B413C00CBE36B /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171FD209B413C00CBE36B /* Sentry.framework */; };
 		D6117202209B413C00CBE36B /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171FE209B413C00CBE36B /* Starscream.framework */; };
 		D6117204209B41A700CBE36B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */; };
@@ -62,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D61171C9209B160C00CBE36B /* Alamofire.framework in Frameworks */,
 				D61171CA209B160C00CBE36B /* Sentry.framework in Frameworks */,
 				D61171CB209B160C00CBE36B /* Starscream.framework in Frameworks */,
 				D61171CC209B160C00CBE36B /* StreamrootSDK.framework in Frameworks */,
@@ -74,7 +71,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D61171FF209B413C00CBE36B /* StreamrootSDK.framework in Frameworks */,
-				D6117200209B413C00CBE36B /* Alamofire.framework in Frameworks */,
 				D6117201209B413C00CBE36B /* Sentry.framework in Frameworks */,
 				D6117202209B413C00CBE36B /* Starscream.framework in Frameworks */,
 			);
@@ -212,13 +208,12 @@
 				TargetAttributes = {
 					50F1DEAA1E687C0E00B59D4B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = U8XV9XDER7;
 						LastSwiftMigration = 0930;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					D61171E7209B3FAB00CBE36B = {
 						CreatedOnToolsVersion = 9.3;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -271,7 +266,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/Starscream.framework",
-				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/StreamrootSDK.framework",
 				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/Sentry.framework",
 			);
@@ -473,8 +467,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U8XV9XDER7;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -501,8 +495,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U8XV9XDER7;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -530,7 +524,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DnaSample/Carthage/Build/tvOS",
@@ -540,6 +535,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.streamroot.DnaSample-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -556,7 +552,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DnaSample/Carthage/Build/tvOS",
@@ -566,6 +563,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.streamroot.DnaSample-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
