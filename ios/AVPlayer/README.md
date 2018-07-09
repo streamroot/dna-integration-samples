@@ -27,6 +27,7 @@ Add the following lines with the right parameters values
 do {
   self.dnaClient = try DNAClient.builder().dnaClientDelegate(self)
                                           .start(manifest)
+                                          .latency(30)
                                           } catch let error {
                                             print("\(error)")
 }
@@ -34,8 +35,13 @@ do {
 
 ### Play stream
 ```swift
-if let localPath = self.dnaClient?.manifestLocalURLPath {
- self.play(url: localPath)
+if let localPath = self.dnaClient?.manifestLocalURLPath { 
+    let playerItem = AVPlayerItem(asset: AVURLAsset(url: url))
+    if #available(iOS 10.0, *) {
+      playerItem.preferredForwardBufferDuration = dnaClient?.bufferTarget ?? 0
+    }
+    player = AVPlayer(playerItem: playerItem)
+    player?.play()
 }
 ```
 
