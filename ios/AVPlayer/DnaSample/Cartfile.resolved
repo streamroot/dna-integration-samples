@@ -1,3 +1,3 @@
-binary "https://sdk.streamroot.io/ios/StreamrootSDK.json" "3.0.1"
+binary "https://sdk.streamroot.io/ios/StreamrootSDK.json" "3.1.0"
 github "daltoniam/Starscream" "3.0.5"
-github "getsentry/sentry-cocoa" "3.13.0"
+github "swisspol/GCDWebServer" "3.4.2"
