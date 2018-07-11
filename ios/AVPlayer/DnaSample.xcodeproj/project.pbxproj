@@ -26,6 +26,8 @@
 		D6117202209B413C00CBE36B /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171FE209B413C00CBE36B /* Starscream.framework */; };
 		D6117204209B41A700CBE36B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */; };
 		D6117205209B41BD00CBE36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61171EE209B3FAB00CBE36B /* Main.storyboard */; };
+		D66C0AC320F3AB1A00FAA014 /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D66C0AC220F3AB1A00FAA014 /* GCDWebServers.framework */; };
+		D66C0AC520F3AB3100FAA014 /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D66C0AC420F3AB3100FAA014 /* GCDWebServers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		D61171FC209B413C00CBE36B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = DnaSample/Carthage/Build/tvOS/Alamofire.framework; sourceTree = "<group>"; };
 		D61171FD209B413C00CBE36B /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = DnaSample/Carthage/Build/tvOS/Sentry.framework; sourceTree = "<group>"; };
 		D61171FE209B413C00CBE36B /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = DnaSample/Carthage/Build/tvOS/Starscream.framework; sourceTree = "<group>"; };
+		D66C0AC220F3AB1A00FAA014 /* GCDWebServers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDWebServers.framework; path = DnaSample/Carthage/Build/iOS/GCDWebServers.framework; sourceTree = "<group>"; };
+		D66C0AC420F3AB3100FAA014 /* GCDWebServers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDWebServers.framework; path = DnaSample/Carthage/Build/tvOS/GCDWebServers.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D66C0AC320F3AB1A00FAA014 /* GCDWebServers.framework in Frameworks */,
 				D61171CA209B160C00CBE36B /* Sentry.framework in Frameworks */,
 				D61171CB209B160C00CBE36B /* Starscream.framework in Frameworks */,
 				D61171CC209B160C00CBE36B /* StreamrootSDK.framework in Frameworks */,
@@ -70,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D66C0AC520F3AB3100FAA014 /* GCDWebServers.framework in Frameworks */,
 				D61171FF209B413C00CBE36B /* StreamrootSDK.framework in Frameworks */,
 				D6117201209B413C00CBE36B /* Sentry.framework in Frameworks */,
 				D6117202209B413C00CBE36B /* Starscream.framework in Frameworks */,
@@ -145,6 +151,8 @@
 		D6C2D4601FD16B8D00C5FEC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D66C0AC220F3AB1A00FAA014 /* GCDWebServers.framework */,
+				D66C0AC420F3AB3100FAA014 /* GCDWebServers.framework */,
 				D61171FC209B413C00CBE36B /* Alamofire.framework */,
 				D61171FD209B413C00CBE36B /* Sentry.framework */,
 				D61171FE209B413C00CBE36B /* Starscream.framework */,
@@ -268,6 +276,7 @@
 				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/Starscream.framework",
 				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/StreamrootSDK.framework",
 				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/Sentry.framework",
+				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/GCDWebServers.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -283,9 +292,9 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/DnaSample/Carthage/Build/tvOS/Starscream.framework",
-				"$(SRCROOT)/DnaSample/Carthage/Build/tvOS/Alamofire.framework",
 				"$(SRCROOT)/DnaSample/Carthage/Build/tvOS/StreamrootSDK.framework",
 				"$(SRCROOT)/DnaSample/Carthage/Build/tvOS/Sentry.framework",
+				"$(SRCROOT)/DnaSample/Carthage/Build/tvOS/GCDWebServers.framework",
 			);
 			name = Carthage;
 			outputPaths = (
