@@ -7,30 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04C4CAB6221F5D52359A9B27 /* Pods_DnaSample_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9BA2D181624E91B0833B79 /* Pods_DnaSample_tvOS.framework */; };
 		50F1DEAF1E687C0E00B59D4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */; };
 		50F1DEB11E687C0E00B59D4B /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEB01E687C0E00B59D4B /* SwiftSampleViewController.swift */; };
 		50F1DEB41E687C0E00B59D4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB21E687C0E00B59D4B /* Main.storyboard */; };
 		50F1DEB61E687C0E00B59D4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB51E687C0E00B59D4B /* Assets.xcassets */; };
 		50F1DEB91E687C0E00B59D4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB71E687C0E00B59D4B /* LaunchScreen.storyboard */; };
+		CC29FF10043DD5389B3F31DE /* Pods_DnaSample_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E227F9FE3094845CEBE600C0 /* Pods_DnaSample_iOS.framework */; };
 		D61171C2209B06F100CBE36B /* ObjCSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61171C0209B06F000CBE36B /* ObjCSampleViewController.m */; };
-		D61171CA209B160C00CBE36B /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171C6209B160C00CBE36B /* Sentry.framework */; };
-		D61171CB209B160C00CBE36B /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171C7209B160C00CBE36B /* Starscream.framework */; };
-		D61171CC209B160C00CBE36B /* StreamrootSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171C8209B160C00CBE36B /* StreamrootSDK.framework */; };
 		D61171CE209B200900CBE36B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61171CD209B200900CBE36B /* MainViewController.swift */; };
 		D61171F2209B3FAD00CBE36B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D61171F1209B3FAD00CBE36B /* Assets.xcassets */; };
 		D61171F8209B3FC600CBE36B /* ObjCSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61171C0209B06F000CBE36B /* ObjCSampleViewController.m */; };
 		D61171F9209B3FC900CBE36B /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEB01E687C0E00B59D4B /* SwiftSampleViewController.swift */; };
 		D61171FA209B3FD000CBE36B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61171CD209B200900CBE36B /* MainViewController.swift */; };
-		D61171FF209B413C00CBE36B /* StreamrootSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171FB209B413C00CBE36B /* StreamrootSDK.framework */; };
-		D6117201209B413C00CBE36B /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171FD209B413C00CBE36B /* Sentry.framework */; };
-		D6117202209B413C00CBE36B /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61171FE209B413C00CBE36B /* Starscream.framework */; };
 		D6117204209B41A700CBE36B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */; };
 		D6117205209B41BD00CBE36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61171EE209B3FAB00CBE36B /* Main.storyboard */; };
-		D66C0AC320F3AB1A00FAA014 /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D66C0AC220F3AB1A00FAA014 /* GCDWebServers.framework */; };
-		D66C0AC520F3AB3100FAA014 /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D66C0AC420F3AB3100FAA014 /* GCDWebServers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E1AA75FC23B74E78FAF9032 /* Pods-DnaSample-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnaSample-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DnaSample-iOS/Pods-DnaSample-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		128C73772DDB3775DDE49128 /* Pods-DnaSample-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnaSample-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DnaSample-tvOS/Pods-DnaSample-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		3560E626DD350192F57CE805 /* Pods-DnaSample-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnaSample-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DnaSample-tvOS/Pods-DnaSample-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		50F1DEAB1E687C0E00B59D4B /* DnaSample-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DnaSample-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50F1DEB01E687C0E00B59D4B /* SwiftSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSampleViewController.swift; sourceTree = "<group>"; };
@@ -38,25 +35,18 @@
 		50F1DEB51E687C0E00B59D4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50F1DEB81E687C0E00B59D4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50F1DEBA1E687C0E00B59D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B9BA2D181624E91B0833B79 /* Pods_DnaSample_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DnaSample_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C9114A46FB00273510AB94A /* Pods-DnaSample-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnaSample-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DnaSample-iOS/Pods-DnaSample-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D61171BF209B06F000CBE36B /* DnaSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DnaSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		D61171C0209B06F000CBE36B /* ObjCSampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjCSampleViewController.m; sourceTree = "<group>"; };
 		D61171C1209B06F100CBE36B /* ObjCSampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCSampleViewController.h; sourceTree = "<group>"; };
-		D61171C5209B160C00CBE36B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = DnaSample/Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		D61171C6209B160C00CBE36B /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = DnaSample/Carthage/Build/iOS/Sentry.framework; sourceTree = "<group>"; };
-		D61171C7209B160C00CBE36B /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = DnaSample/Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
-		D61171C8209B160C00CBE36B /* StreamrootSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StreamrootSDK.framework; path = DnaSample/Carthage/Build/iOS/StreamrootSDK.framework; sourceTree = "<group>"; };
 		D61171CD209B200900CBE36B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D61171E8209B3FAB00CBE36B /* DnaSample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DnaSample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61171EA209B3FAB00CBE36B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D61171EF209B3FAB00CBE36B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D61171F1209B3FAD00CBE36B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D61171F3209B3FAD00CBE36B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D61171FB209B413C00CBE36B /* StreamrootSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StreamrootSDK.framework; path = DnaSample/Carthage/Build/tvOS/StreamrootSDK.framework; sourceTree = "<group>"; };
-		D61171FC209B413C00CBE36B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = DnaSample/Carthage/Build/tvOS/Alamofire.framework; sourceTree = "<group>"; };
-		D61171FD209B413C00CBE36B /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = DnaSample/Carthage/Build/tvOS/Sentry.framework; sourceTree = "<group>"; };
-		D61171FE209B413C00CBE36B /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = DnaSample/Carthage/Build/tvOS/Starscream.framework; sourceTree = "<group>"; };
-		D66C0AC220F3AB1A00FAA014 /* GCDWebServers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDWebServers.framework; path = DnaSample/Carthage/Build/iOS/GCDWebServers.framework; sourceTree = "<group>"; };
-		D66C0AC420F3AB3100FAA014 /* GCDWebServers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDWebServers.framework; path = DnaSample/Carthage/Build/tvOS/GCDWebServers.framework; sourceTree = "<group>"; };
+		E227F9FE3094845CEBE600C0 /* Pods_DnaSample_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DnaSample_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D66C0AC320F3AB1A00FAA014 /* GCDWebServers.framework in Frameworks */,
-				D61171CA209B160C00CBE36B /* Sentry.framework in Frameworks */,
-				D61171CB209B160C00CBE36B /* Starscream.framework in Frameworks */,
-				D61171CC209B160C00CBE36B /* StreamrootSDK.framework in Frameworks */,
+				CC29FF10043DD5389B3F31DE /* Pods_DnaSample_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,10 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D66C0AC520F3AB3100FAA014 /* GCDWebServers.framework in Frameworks */,
-				D61171FF209B413C00CBE36B /* StreamrootSDK.framework in Frameworks */,
-				D6117201209B413C00CBE36B /* Sentry.framework in Frameworks */,
-				D6117202209B413C00CBE36B /* Starscream.framework in Frameworks */,
+				04C4CAB6221F5D52359A9B27 /* Pods_DnaSample_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +76,7 @@
 				D61171E9209B3FAB00CBE36B /* DnaSample-tvOS */,
 				50F1DEAC1E687C0E00B59D4B /* Products */,
 				D6C2D4601FD16B8D00C5FEC1 /* Frameworks */,
+				B5D49477DB66755576AB5E90 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +103,17 @@
 				D61171CD209B200900CBE36B /* MainViewController.swift */,
 			);
 			path = DnaSample;
+			sourceTree = "<group>";
+		};
+		B5D49477DB66755576AB5E90 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C9114A46FB00273510AB94A /* Pods-DnaSample-iOS.debug.xcconfig */,
+				0E1AA75FC23B74E78FAF9032 /* Pods-DnaSample-iOS.release.xcconfig */,
+				128C73772DDB3775DDE49128 /* Pods-DnaSample-tvOS.debug.xcconfig */,
+				3560E626DD350192F57CE805 /* Pods-DnaSample-tvOS.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		D61171C3209B072300CBE36B /* ObjC */ = {
@@ -151,16 +147,8 @@
 		D6C2D4601FD16B8D00C5FEC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D66C0AC220F3AB1A00FAA014 /* GCDWebServers.framework */,
-				D66C0AC420F3AB3100FAA014 /* GCDWebServers.framework */,
-				D61171FC209B413C00CBE36B /* Alamofire.framework */,
-				D61171FD209B413C00CBE36B /* Sentry.framework */,
-				D61171FE209B413C00CBE36B /* Starscream.framework */,
-				D61171FB209B413C00CBE36B /* StreamrootSDK.framework */,
-				D61171C5209B160C00CBE36B /* Alamofire.framework */,
-				D61171C6209B160C00CBE36B /* Sentry.framework */,
-				D61171C7209B160C00CBE36B /* Starscream.framework */,
-				D61171C8209B160C00CBE36B /* StreamrootSDK.framework */,
+				E227F9FE3094845CEBE600C0 /* Pods_DnaSample_iOS.framework */,
+				9B9BA2D181624E91B0833B79 /* Pods_DnaSample_tvOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -172,10 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50F1DEBD1E687C0E00B59D4B /* Build configuration list for PBXNativeTarget "DnaSample-iOS" */;
 			buildPhases = (
+				221B274A3F8D9D8E145135D9 /* [CP] Check Pods Manifest.lock */,
 				50F1DEA71E687C0E00B59D4B /* Sources */,
 				50F1DEA81E687C0E00B59D4B /* Frameworks */,
 				50F1DEA91E687C0E00B59D4B /* Resources */,
-				50F1DECC1E6880FF00B59D4B /* Carthage */,
+				A9D959A0AD1EAC8B0C02960F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,10 +179,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D61171F6209B3FAD00CBE36B /* Build configuration list for PBXNativeTarget "DnaSample-tvOS" */;
 			buildPhases = (
+				5F0B0730E38B021FD0A3419E /* [CP] Check Pods Manifest.lock */,
 				D61171E4209B3FAB00CBE36B /* Sources */,
 				D61171E5209B3FAB00CBE36B /* Frameworks */,
 				D61171E6209B3FAB00CBE36B /* Resources */,
-				D6117207209B41F700CBE36B /* Carthage */,
+				237BDB2DCEFFCBD999882ECD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,41 +257,93 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		50F1DECC1E6880FF00B59D4B /* Carthage */ = {
+		221B274A3F8D9D8E145135D9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/Starscream.framework",
-				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/StreamrootSDK.framework",
-				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/Sentry.framework",
-				"$(SRCROOT)/DnaSample/Carthage/Build/iOS/GCDWebServers.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = Carthage;
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DnaSample-iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
-		D6117207209B41F700CBE36B /* Carthage */ = {
+		237BDB2DCEFFCBD999882ECD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/DnaSample/Carthage/Build/tvOS/Starscream.framework",
-				"$(SRCROOT)/DnaSample/Carthage/Build/tvOS/StreamrootSDK.framework",
-				"$(SRCROOT)/DnaSample/Carthage/Build/tvOS/Sentry.framework",
-				"$(SRCROOT)/DnaSample/Carthage/Build/tvOS/GCDWebServers.framework",
+				"${SRCROOT}/Pods/Target Support Files/Pods-DnaSample-tvOS/Pods-DnaSample-tvOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GCDWebServer-tvOS/GCDWebServer.framework",
+				"${BUILT_PRODUCTS_DIR}/Sentry-tvOS/Sentry.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream-tvOS/Starscream.framework",
+				"${PODS_ROOT}/StreamrootSDK/Carthage/Build/tvOS/StreamrootSDK.framework",
+				"${PODS_ROOT}/StreamrootSDK/Carthage/Build/tvOS/StreamrootSDK.framework.dSYM",
 			);
-			name = Carthage;
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StreamrootSDK.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/StreamrootSDK.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DnaSample-tvOS/Pods-DnaSample-tvOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F0B0730E38B021FD0A3419E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DnaSample-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9D959A0AD1EAC8B0C02960F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DnaSample-iOS/Pods-DnaSample-iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GCDWebServer-iOS/GCDWebServer.framework",
+				"${BUILT_PRODUCTS_DIR}/Sentry-iOS/Sentry.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream-iOS/Starscream.framework",
+				"${PODS_ROOT}/StreamrootSDK/Carthage/Build/iOS/StreamrootSDK.framework",
+				"${PODS_ROOT}/StreamrootSDK/Carthage/Build/iOS/StreamrootSDK.framework.dSYM",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StreamrootSDK.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/StreamrootSDK.framework.dSYM",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DnaSample-iOS/Pods-DnaSample-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -361,7 +403,6 @@
 		50F1DEBB1E687C0E00B59D4B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -420,7 +461,6 @@
 		50F1DEBC1E687C0E00B59D4B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -471,8 +511,8 @@
 		};
 		50F1DEBE1E687C0E00B59D4B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C9114A46FB00273510AB94A /* Pods-DnaSample-iOS.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -485,7 +525,7 @@
 					"$(PROJECT_DIR)/DnaSample/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/DnaSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.SwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -499,8 +539,8 @@
 		};
 		50F1DEBF1E687C0E00B59D4B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E1AA75FC23B74E78FAF9032 /* Pods-DnaSample-iOS.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -513,7 +553,7 @@
 					"$(PROJECT_DIR)/DnaSample/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/DnaSample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.SwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -526,6 +566,7 @@
 		};
 		D61171F4209B3FAD00CBE36B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 128C73772DDB3775DDE49128 /* Pods-DnaSample-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -554,6 +595,7 @@
 		};
 		D61171F5209B3FAD00CBE36B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3560E626DD350192F57CE805 /* Pods-DnaSample-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
