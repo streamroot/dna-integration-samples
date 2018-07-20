@@ -5,10 +5,9 @@
 - [getsentry/sentry-cocoa](https://github.com/getsentry/sentry-cocoa)
  
 ## Getting started
-###
-Get the SDK
-Via Carthage -> https://github.com/Carthage/Carthage
-Via Cocoapods-> https://cocoapods.org/
+
+### Installation
+Get the SDK via [cocoapods](https://cocoapods.org/) -> `pod install` in the current directory
 
 ### Set the streamrootKey
 In the Project Navigator, right click on "Info.plist", and "Open as" → "Source Code"
@@ -25,7 +24,7 @@ Add the following lines with the right parameters values
 ### Build and start the DNAClient
 ```swift
 do {
-  self.dnaClient = try DNAClient.builder().dnaClientDelegate(self)
+  dnaClient = try DNAClient.builder().dnaClientDelegate(self)
                                           .start(manifest)
                                           .latency(30)
                                           } catch let error {
@@ -35,14 +34,22 @@ do {
 
 ### Play stream
 ```swift
-if let localPath = self.dnaClient?.manifestLocalURLPath { 
-    let playerItem = AVPlayerItem(asset: AVURLAsset(url: url))
-    if #available(iOS 10.0, *) {
-      playerItem.preferredForwardBufferDuration = dnaClient?.bufferTarget ?? 0
-    }
-    player = AVPlayer(playerItem: playerItem)
-    player?.play()
+guard let localPath = self.dnaClient?.manifestLocalURLPath,
+  let url = URL(string: localPath) else  {
+  print("Could not generate localPath, please check your network")
+  return
+  }
+ 
+let playerItem = AVPlayerItem(asset: AVURLAsset(url: url))
+if let bufferTarget = dnaClient?.bufferTarget {
+  if #available(iOS 10.0, *) {
+    playerItem.preferredForwardBufferDuration = bufferTarget
+  }
 }
+
+player = AVPlayer(playerItem: playerItem)
+player?.play()
+player?.play()
 ```
 
 ### implement DNAClientDelegate
