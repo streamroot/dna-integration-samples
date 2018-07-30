@@ -22,7 +22,7 @@ class SwiftSampleViewController: AVPlayerViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     do {
-      self.dnaClient = try DNAClient.builder()
+      dnaClient = try DNAClient.builder()
         .dnaClientDelegate(self)
         .latency(30)
         .start(manifestUrl)
@@ -30,22 +30,25 @@ class SwiftSampleViewController: AVPlayerViewController {
       print("\(error)")
     }
     
-    if let localPath = self.dnaClient?.manifestLocalURLPath {
-      if let url = URL(string: localPath) {
-        let playerItem = AVPlayerItem(asset: AVURLAsset(url: url))
-        if #available(iOS 10.0, *) {
-          playerItem.preferredForwardBufferDuration = dnaClient?.bufferTarget ?? 0
-        }
-        player = AVPlayer(playerItem: playerItem)
-        self.player?.play()
-        player?.play()
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
-        dnaClient?.displayStats(onView: contentOverlayView!)
-      }
-    } else {
+    guard let localPath = self.dnaClient?.manifestLocalURLPath,
+      let url = URL(string: localPath) else  {
       print("Could not generate localPath, please check your network")
+      return
     }
+ 
+    let playerItem = AVPlayerItem(asset: AVURLAsset(url: url))
+    if let bufferTarget = dnaClient?.bufferTarget {
+      if #available(iOS 10.0, *) {
+        playerItem.preferredForwardBufferDuration = bufferTarget
+      }
+    }
+    
+    player = AVPlayer(playerItem: playerItem)
+    player?.play()
+    player?.play()
+    view.setNeedsLayout()
+    view.layoutIfNeeded()
+    dnaClient?.displayStats(onView: contentOverlayView!)
   }
 }
 
@@ -70,6 +73,6 @@ extension SwiftSampleViewController: DNAClientDelegate {
   }
   
   func updatePeakBitRate(_ bitRate: Double) {
-    self.player?.currentItem?.preferredPeakBitRate = bitRate
+    player?.currentItem?.preferredPeakBitRate = bitRate
   }
 }
