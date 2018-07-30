@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+	<defs>
+		<linearGradient id="normalGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+	    	<stop offset="0%" style="stop-color:#CCCCCC;stop-opacity:1" />
+	    	<stop offset="100%" style="stop-color:#888888;stop-opacity:1" />
+	    </linearGradient>
+	    <linearGradient id="activeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+	    	<stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+	    	<stop offset="100%" style="stop-color:#CCCCCC;stop-opacity:1" />
+	    </linearGradient>
+	</defs>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="url(#normalGradient)" d="M16.624,3.165c0-0.251,0-3.165,0-3.165L24,7.448l-7.376,7.146
+		c0,0,0.018-2.987,0-3.045C9.25,10.375,5.223,17.535,5.168,17.516C5.168,17.516,4.755,3.739,16.624,3.165z"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="url(#normalGradient)" d="M19.525,13.885v7.218c0,0.735-0.596,1.332-1.331,1.332H1.331
+		C0.596,22.435,0,21.838,0,21.103V4.241C0,3.505,0.596,2.91,1.331,2.91h9.068L7.208,5.845h-4.4v13.782H16.59v-2.87L19.525,13.885z"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="url(#activeGradient)" d="M41.624,3.165c0-0.251,0-3.165,0-3.165L49,7.448l-7.376,7.146
+		c0,0,0.018-2.987,0-3.045c-7.374-1.174-11.401,5.986-11.455,5.967C30.168,17.516,29.755,3.739,41.624,3.165z"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="url(#activeGradient)" d="M44.525,13.885v7.218c0,0.735-0.596,1.332-1.331,1.332H26.331
+		c-0.735,0-1.331-0.596-1.331-1.332V4.241c0-0.735,0.596-1.331,1.331-1.331h9.068l-3.191,2.935h-4.4v13.782H41.59v-2.87
+		L44.525,13.885z"/>
+</svg>
