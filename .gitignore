@@ -68,7 +68,7 @@ fastlane/readme.md
 .idea
 *.xcuserdatad
 build
-Carthage
+
 
 ### iOS
 ## Various settings
@@ -81,9 +81,13 @@ Carthage
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+Carthage
 
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
 *.dSYM.zip
 *.dSYM
+
+##  Pods
+ios/AVPlayer/Pods/
