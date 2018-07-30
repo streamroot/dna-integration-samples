@@ -1,0 +1,28 @@
+.acc_menu {
+	font-family: Arial;
+	font-size: 12px;
+	background-color: #FFFFFF;
+	border-width: 1px;
+	border-color: #888888;
+	border-style: solid;
+	width: 582px;
+	padding: 10px;
+	margin: auto;
+}
+
+.acc_menu_item {
+	padding: 5px;
+	color: #CCCCCC;
+	background-color: #000000;
+	text-decoration: none;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.acc_menu_item:hover {
+	color: #FFFFFF;
+}
+
+.acc_menu_item:disabled {
+	color: graytext;
+}

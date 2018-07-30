@@ -1,0 +1,5 @@
+cast-media-player {
+  --theme-hue: 210;
+  --splash-image: url("chromecast-bg.png");
+  --logo-image: url("chromecast-bg.png");
+}

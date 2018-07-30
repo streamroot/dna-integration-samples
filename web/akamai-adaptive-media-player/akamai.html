@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Akamai Adaptive Media Player DNA Plugin</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="//samples.streamroot.io/web/assets/demo-pages.css">
+
+    <!-- Makes the header -->
+    <script src="//samples.streamroot.io/web/assets/header.js"></script>
+
+    <!-- Builds -->
+    <script src="//samples.streamroot.io/web/assets/akamai/amp/amp.min.js"></script>
+
+    <!-- Graphs -->
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+
+    <script>
+        // Streamroot-injected informations
+        var streamrootDna = {
+            streamrootKey: 'demoswebsiteandpartners',
+            dnaConfig: {}
+        };
+
+        var hlsjsConfig = {
+            "maxBufferSize": 0,
+            "maxBufferLength": 30,
+            "liveSyncDuration": 30
+        }
+
+        window.addEventListener("load", function () {
+
+            var config = {
+                paths: {
+                    base: "//samples.streamroot.io/web/assets/akamai/",
+                    root: "//samples.streamroot.io/web/assets/akamai/",
+                    player: "//samples.streamroot.io/web/assets/akamai/amp/",
+                    plugins: "//samples.streamroot.io/web/assets/akamai/akamai/amp/",
+                    ressources: "//samples.streamroot.io/web/assets/akamai/ressources/"
+                },
+                media: {
+                    source: [{
+                        src: 'https://wowza-test-cloudfront.streamroot.io/vodOrigin/tos1500.mp4/playlist.m3u8',
+                        type: 'application/x-mpegURL'
+                    }]
+                },
+                hls: {
+                    resources: [{
+                            type: "text/javascript",
+                            src: "//cdnjs.cloudflare.com/ajax/libs/hls.js/0.8.2/hls.min.js",
+                        },
+                        {
+                            type: 'text/javascript',
+                            src: '//cdn.streamroot.io/akamaimp-hls-dna-plugin/1/stable/akamaimp-hls-dna-plugin.js'
+                        }
+                    ]
+                }
+            };
+
+            amp = akamai.amp.AMP.create("akamai-media-player", config);
+        })
+    </script>
+</head>
+​
+
+<body>
+    <header></header>
+    <center>
+        <div>
+            <div id="akamai-media-player" style="height:288px; width:512px"></div>
+        </div>
+        <div id="streamroot-graphs"></div>
+    </center>
+</body>
+
+</html>
+​

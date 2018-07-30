@@ -1,0 +1,175 @@
+{
+  "paths": {
+    "player": "../amp/",
+    "resources": "../resources/"
+  },
+  "resources": [
+    {"src": "#{paths.player}amp.css", "type": "text/css"}
+  ],
+  "fullscreen": {
+    "native": true,
+    "enabled": true
+  },
+  "captioning": {},
+  "plugins": {
+    "mediaanalytics": {
+      "resources": [
+        {"src": "../akamai/amp/mediaanalytics/Mediaanalytics.js", "type": "text/javascript"},
+        {"src": "//79423.analytics.edgekey.net/ma_library/javascript/javascript_malibrary.js", "type": "text/javascript"}
+      ],
+      "plugin": {
+        "swf": "//79423.analytics.edgesuite.net/csma/plugin/csma.swf"
+      },
+      "config": "//ma188-r.analytics.edgesuite.net/config/beacon-2114.xml",
+      "iplookup": false,
+      "dimensions": {
+        "title": "#{media.title}",
+        "playerId":"#{player.mode} Player"
+      }
+    }
+  },
+  "flash": {
+    "static": {
+      "enabled": false,
+      "swf": "#{paths.player}AkamaiStandardPlayer-static.swf",
+      "debug": "#{paths.player}AkamaiStandardPlayer-static-debug.swf"
+    },
+    "swf": "#{paths.player}AkamaiStandardPlayer.swf",
+    "debug": "#{paths.player}AkamaiStandardPlayer-debug.swf",
+    "expressInstallSWF": "#{paths.player}playerProductInstall.swf",
+    "vars": {
+      "next_video_timer": 0
+    },
+    "view": {
+      "attributes": {
+        "skin": "#{paths.player}standard.assets.swf"
+      },
+      "elements": {
+        "infoOverlay": {
+          "attributes": {
+            "style": "top: 0px; text-align: left;"
+          }
+        },
+        "captionDisplay": {
+          "attributes": {
+            "initState": "cookie|off",
+            "position": "relative",
+            "style": "bottom: 0px; windowColor:0x000000; windowOpacity:0; font:Monospaced Serif; fontColor:0xffffff; fontOpacity:1; fontBGColor:0x000000; fontBGOpacity:0; edgeType:none; edgeColor:0x000000; edgeOpacity:1; scroll:Pop-Out; fontSize:12;",
+            "settingsEnabled": "true"
+          }
+        },
+        "controls": {
+          "attributes": {
+            "visible": "true",
+            "autoHide": "5",
+            "height": "25",
+            "itemMargin": "5"
+          },
+          "elements": {
+            "replayBtn": {},
+            "playPauseBtn": {},
+            "rewindBtn": {},
+            "progressBar": {
+              "attributes": {
+                "color": "#FF0000"
+              }
+            },
+            "loadedBar": {
+              "attributes": {
+                "color": "#00FF00"
+              }
+            },
+            "scrubber": {},
+            "captionBtn": {},
+            "statsBtn": {},
+            "hdclientBtn": {},
+            "volumeBar": {
+              "attributes": {
+                "color": "#0000FF"
+              }
+            },
+            "volumeBtn": {},
+            "fullscreenBtn": {},
+            "logo": {
+              "attributes": {
+                "style": "width: 205px; height: 60px; right: 15px; top: 15px; opacity: 1.0;"
+              }
+            },
+            "liveIndicator": {},
+            "streamTimeIndicator": {
+              "elements": {
+                "streamTime": {},
+                "streamDuration": {}
+              }
+            },
+            "timeLocationIndicator": {
+              "attributes": {
+                "type": "arrow",
+                "color": "#FFFFFF"
+              }
+            },
+            "goLiveBtn": {}
+          }
+        },
+        "replayView": {}
+      }
+    }
+  },
+  "userAgentHints": {
+    "flashTablets": {
+      "label": "\n\t\t\t\tAndroid 2 & 3 or Kindle Fire 1\n\t\t\t",
+      "regexp": "Android [23]|Silk\\/1"
+    },
+    "html5Phones": {
+      "label": "iPhone",
+      "regexp": "iPhone"
+    },
+    "html5Tablets": {
+      "label": "HTML5 Tablets",
+      "regexp": "iPad|Android 4|Silk\\/2"
+    },
+    "desktop": {
+      "label": "Desktop",
+      "regexp": "^((?!iPad|iPhone|Android|BlackBerry|PlayBook|Silk).)*$"
+    }
+  },
+  "eventmanagement": {
+    "enabled": false,
+    "url": "#{paths.resources}eventmanagement/playerstate.txt",
+    "interval": 5,
+    "states": [
+      {
+        "id": "pre",
+        "url": null,
+        "poster": "#{paths.resources}eventmanagement/pre_slate.png"
+      },
+      {
+        "id": "post",
+        "url": null,
+        "poster": "#{paths.resources}eventmanagement/post_slate.png"
+      },
+      {
+        "id": "error",
+        "url": null,
+        "poster": "#{paths.resources}eventmanagement/error_slate.png"
+      },
+      {
+        "id": "off",
+        "url": null,
+        "poster": "#{paths.resources}eventmanagement/off_slate.png"
+      }
+    ]
+  },
+  "chromecast": {
+    "resources": [
+      {
+        "src": "//www.gstatic.com/cv/js/sender/v1/cast_sender.js",
+        "type": "text/javascript"
+      }
+    ],
+    "messageBus": "urn:x-cast:com.akamai.amp.cast",
+    "sender": {
+      "applicationID": "CC1AD845"
+    }
+  }
+}
