@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSURL *manifestUrl = [NSURL URLWithString: @"https://demo-live.streamroot.io/index.m3u8"];
+    NSURL *manifestUrl = [NSURL URLWithString: @"http://wowza-test.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8"];
     NSError *error;
     self.dnaClient = [[[DNAClient.builder dnaClientDelegate: self] latency: 30] start:manifestUrl error: &error];
     if (error || !self.dnaClient) {
