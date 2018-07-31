@@ -13,7 +13,7 @@ import AVKit
 class SwiftSampleViewController: AVPlayerViewController {
   
   var dnaClient: DNAClient?
-  private let manifestUrl = URL(string: "https://demo-live.streamroot.io/index.m3u8")!
+  private let manifestUrl = URL(string: "http://wowza-test.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8")!
   
   override func viewDidDisappear(_ animated: Bool) {
     dnaClient?.stop()
