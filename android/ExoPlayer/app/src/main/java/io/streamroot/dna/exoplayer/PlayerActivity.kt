@@ -246,4 +246,3 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     override fun onTimelineChanged(timeline: Timeline?, manifest: Any?, reason: Int) {}
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {}
 }
-
