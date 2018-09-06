@@ -16,7 +16,7 @@
 	<script src="//samples.streamroot.io/web/assets/header.js"></script>
 
 	<!-- Bitmovin Player build -->
-	<script src="//bitmovin-a.akamaihd.net/bitmovin-player/beta/7.7/bitmovinplayer.js"></script>
+	<script src="//bitmovin-a.akamaihd.net/bitmovin-player/stable/7.8/bitmovinplayer.js"></script>
 
 	<!-- Streamroot plugin -->
 	<script src="//cdn.streamroot.io/bitmovin-dna-plugin/1/stable/bitmovin-dna-plugin.js#streamrootKey=demoswebsiteandpartners"></script>
@@ -40,7 +40,7 @@
 			},
 			source: {
 				//Only one playlist URL must be set at a time.
-				hls: 'https://wowza-test-cloudfront.streamroot.io/vodOrigin/tos1500.mp4/playlist.m3u8',
+				hls: 'https://demo-vod.streamroot.io/index.m3u8',
 				//dash: 'YOUR_PLAYLIST_URL',
 				//smooth: 'YOUR_PLAYLIST_URL'
 			},
@@ -49,6 +49,11 @@
 				width: '512',
 				height: '288',
 				ux: true
+			},
+			adaptation: {
+				desktop: {
+					logic: "v3",
+				},
 			},
 		};
 		var player = bitmovin.player('demoplayer');

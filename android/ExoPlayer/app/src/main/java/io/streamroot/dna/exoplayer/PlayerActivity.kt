@@ -4,7 +4,16 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
-import com.google.android.exoplayer2.*
+import com.google.android.exoplayer2.C
+import com.google.android.exoplayer2.DefaultLoadControl
+import com.google.android.exoplayer2.DefaultRenderersFactory
+import com.google.android.exoplayer2.ExoPlaybackException
+import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.LoadControl
+import com.google.android.exoplayer2.PlaybackParameters
+import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.Timeline
 import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer
 import com.google.android.exoplayer2.mediacodec.MediaCodecUtil
 import com.google.android.exoplayer2.source.LoopingMediaSource
@@ -17,14 +26,17 @@ import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView
+import com.google.android.exoplayer2.upstream.DefaultAllocator
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import io.streamroot.dna.core.DnaClient
 import io.streamroot.dna.core.http.bandwidth.StreamrootExoplayerBandwidthMeter
 import io.streamroot.dna.utils.stats.StatsView
 import io.streamroot.dna.utils.stats.StreamStatsManager
+import java.util.concurrent.TimeUnit
 
 class PlayerActivity : AppCompatActivity(), Player.EventListener {
+
     private lateinit var exoplayerView: SimpleExoPlayerView
     private lateinit var streamrootDnaStatsView: StatsView
     private lateinit var bandwidthMeter: StreamrootExoplayerBandwidthMeter
@@ -35,6 +47,8 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     private var streamrootDNA: DnaClient? = null
     private var streamStatsManager: StreamStatsManager? = null
+
+    private val latency: Int = 30
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,8 +96,8 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
             trackSelector = DefaultTrackSelector(adaptiveTrackSelectionFactory)
 
             val extensionRendererMode = DefaultRenderersFactory.EXTENSION_RENDERER_MODE_OFF
-            val renderersFactory = DefaultRenderersFactory(applicationContext, null, extensionRendererMode)
-            val newPlayer = ExoPlayerFactory.newSimpleInstance(renderersFactory, trackSelector)
+            val renderersFactory = DefaultRenderersFactory(applicationContext, extensionRendererMode)
+            val newPlayer = ExoPlayerFactory.newSimpleInstance(renderersFactory, trackSelector, loadControl())
             newPlayer.playWhenReady = true
             newPlayer.playWhenReady = true
             newPlayer.addListener(this)
@@ -132,6 +146,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
             mSdk = DnaClient.newBuilder()
                     .context(applicationContext)
                     .playerInteractor(ExoPlayerInteractor(player!!))
+                    .latency(latency)
                     .start(Uri.parse(mStreamUrl))
 
             streamStatsManager = StreamStatsManager.newStatsManager(mSdk, streamrootDnaStatsView)
@@ -142,6 +157,31 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         }
 
         return mSdk
+    }
+
+    private fun loadControl(): LoadControl {
+//        Prior ExoPlayer V2.8
+//        DefaultLoadControl(
+//            DefaultAllocator(true, C.DEFAULT_BUFFER_SEGMENT_SIZE),
+//            DefaultLoadControl.DEFAULT_MIN_BUFFER_MS,
+//            DnaClient.generateBufferTarget(DefaultLoadControl.DEFAULT_MIN_BUFFER_MS, DefaultLoadControl.DEFAULT_MAX_BUFFER_MS, latency, TimeUnit.SECONDS),
+//            DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS,
+//            DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
+//            DefaultLoadControl.DEFAULT_TARGET_BUFFER_BYTES,
+//            DefaultLoadControl.DEFAULT_PRIORITIZE_TIME_OVER_SIZE_THRESHOLDS)
+
+//      ExoPlayer V2.8+
+        return DefaultLoadControl.Builder()
+            .setAllocator(DefaultAllocator(true, C.DEFAULT_BUFFER_SEGMENT_SIZE))
+            .setBufferDurationsMs(DefaultLoadControl.DEFAULT_MIN_BUFFER_MS,
+                DnaClient.generateBufferTarget(
+                    DefaultLoadControl.DEFAULT_MIN_BUFFER_MS,
+                    DefaultLoadControl.DEFAULT_MAX_BUFFER_MS,
+                    latency,
+                    TimeUnit.SECONDS),
+                DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS,
+                DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS)
+            .createDefaultLoadControl()
     }
 
     private fun stopStreamroot() {
@@ -203,7 +243,6 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     override fun onPositionDiscontinuity(reason: Int) {}
     override fun onRepeatModeChanged(repeatMode: Int) {}
     override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
-    override fun onTimelineChanged(timeline: Timeline?, manifest: Any?) {}
+    override fun onTimelineChanged(timeline: Timeline?, manifest: Any?, reason: Int) {}
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {}
 }
-
