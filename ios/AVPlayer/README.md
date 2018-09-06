@@ -49,7 +49,6 @@ if let bufferTarget = dnaClient?.bufferTarget {
 
 player = AVPlayer(playerItem: playerItem)
 player?.play()
-player?.play()
 ```
 
 ### implement DNAClientDelegate
