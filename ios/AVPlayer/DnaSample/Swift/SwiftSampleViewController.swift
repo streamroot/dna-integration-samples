@@ -45,7 +45,6 @@ class SwiftSampleViewController: AVPlayerViewController {
     
     player = AVPlayer(playerItem: playerItem)
     player?.play()
-    player?.play()
     view.setNeedsLayout()
     view.layoutIfNeeded()
     dnaClient?.displayStats(onView: contentOverlayView!)
