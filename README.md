@@ -27,6 +27,12 @@ This repository is demonstrating part of our existing integrations, we are const
 - [ExoPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer)
 - [VideoView](https://github.com/streamroot/dna-integration-samples/tree/master/android/VideoView)
 
+### iOS
+
+#### Players
+
+- [AVPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/ios)
+
 ### Web
 
 #### Players
