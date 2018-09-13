@@ -12,5 +12,4 @@ window.addEventListener('load', function () {
 			"<li>" + document.title + "</li>" +
 			"<li><a href='../index.html'>BACK</a></li>";
 	}
-
 });
