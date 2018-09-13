@@ -37,16 +37,22 @@ This repository is demonstrating part of our existing integrations, we are const
 
 #### Players
 
-- [Azure Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/azure-media-player)
-- [Castlabs](https://github.com/streamroot/dna-integration-samples/tree/master/web/castlabs)
-- [Clappr](https://github.com/streamroot/dna-integration-samples/tree/master/web/clappr)
-- [Dash.js](https://github.com/streamroot/dna-integration-samples/tree/master/web/dash.js)
-- [FlowPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/flowplayer)
-- [Hls.js](https://github.com/streamroot/dna-integration-samples/tree/master/web/hls.js)
-- [JWPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/jwplayer)
-- [Radiant Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/radiant-media-player)
-- [RxPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/rx-player)
-- [ShakaPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/shaka-player)
-- [VideoJS](https://github.com/streamroot/dna-integration-samples/tree/master/web/video.js)
-- [Bitmovin](https://github.com/streamroot/dna-integration-samples/tree/master/web/bitmovin)
-- [THEOplayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/theoplayer)
+- [Azure Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/azure-media-player/azuremp.html)
+- [Castlabs](https://github.com/streamroot/dna-integration-samples/tree/master/web/castlabs/castlabs.html)
+- [Clappr](https://github.com/streamroot/dna-integration-samples/tree/master/web/clappr/hlsjs-clappr.html)
+- [Dash.js](https://github.com/streamroot/dna-integration-samples/tree/master/web/dash.js/dashjs-wrapper.html)
+- [FlowPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/flowplayer/flowplayer.html)
+- [Hls.js](https://github.com/streamroot/dna-integration-samples/tree/master/web/hls.js/hlsjs-wrapper.html)
+- [JWPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/jwplayer/hlsjs-jwplayer.html)
+- [Radiant Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/radiant-media-player/radiant.html)
+- [ShakaPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/shaka-player/shakaplayer-wrapper.html)
+- [VideoJS](https://github.com/streamroot/dna-integration-samples/tree/master/web/video.js/hlsjs-videojs.html)
+- [Bitmovin](https://github.com/streamroot/dna-integration-samples/tree/master/web/bitmovin/bitmovin.html)
+- [THEOplayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/theoplayer/theoplayer.html)
+- [Brightcove](https://github.com/streamroot/dna-integration-samples/tree/master/web/brightcove/brightcove.html)
+- [Mpx](https://github.com/streamroot/dna-integration-samples/tree/master/web/mpx/mpx.html)
+- [Akamai Adaptive Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/akamai-adaptive-media-player/akamai.html)
+- [Kaltura](https://github.com/streamroot/dna-integration-samples/tree/master/web/kaltura/kaltura.html)
+
+
+
