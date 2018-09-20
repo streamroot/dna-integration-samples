@@ -32,7 +32,7 @@ do {
 }
 ```
 
-### Play stream
+### Play the stream
 ```swift
 guard let localPath = self.dnaClient?.manifestLocalURLPath,
   let url = URL(string: localPath) else  {
@@ -49,10 +49,9 @@ if let bufferTarget = dnaClient?.bufferTarget {
 
 player = AVPlayer(playerItem: playerItem)
 player?.play()
-player?.play()
 ```
 
-### implement DNAClientDelegate
+### Implement DNAClientDelegate
 ```swift
 extension PlayerViewController: DNAClientDelegate {
   func playbackTime() -> Double {
