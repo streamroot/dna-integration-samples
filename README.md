@@ -25,7 +25,7 @@ A dedicated [documentation website](https://support.streamroot.io/hc/en-us) is a
 
 ## Streamroot Dashboard
 
-If you already have an account you can visite your own dashboard to validate your integration or monitor your customers.
+If you already have an account you can visite your own [dashboard](https://dashboard.streamroot.io) to validate your integration or monitor your customers.
 
 If you don't have an account, [request a trial](https://streamroot.io/?request_trial=true)!
 
