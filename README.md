@@ -21,7 +21,7 @@ You can find simple integration web-pages [here](http://samples.streamroot.io/we
 
 ## Integration documentation
 
-Dedicated [documentation](https://support.streamroot.io/hc/en-us) are available to learn how to add Streamroot DNA™ into your website and how to properly configure it.
+A dedicated [documentation website](https://support.streamroot.io/hc/en-us) is available to learn how to add Streamroot DNA™ into your website and how to properly configure it.
 
 ## Streamroot Dashboard
 
