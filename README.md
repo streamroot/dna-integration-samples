@@ -16,7 +16,18 @@
 This repository is demonstrating part of our existing integrations, we are constantly adding support for new ones. Please send an email to [support@streamroot.io](mailto:support@streamroot.io) for any request or issue you might have.
 
 ## Web Demo
-[http://samples.streamroot.io/web/](http://samples.streamroot.io/web/)
+
+You can find simple integration web-pages [here](http://samples.streamroot.io/web/).
+
+## Integration documentation
+
+Dedicated [documentation](https://support.streamroot.io/hc/en-us) are available to learn how to add Streamroot DNA™ into your website and how to properly configure it.
+
+## Streamroot Dashboard
+
+If you already have an account you can visite your own dashboard to validate your integration or monitor your customers.
+
+If you don't have an account, [request a trial](https://streamroot.io/?request_trial=true)!
 
 ## Existing Integrations
 
@@ -53,6 +64,3 @@ This repository is demonstrating part of our existing integrations, we are const
 - [Mpx](https://github.com/streamroot/dna-integration-samples/tree/master/web/mpx/mpx.html)
 - [Akamai Adaptive Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/akamai-adaptive-media-player/akamai.html)
 - [Kaltura](https://github.com/streamroot/dna-integration-samples/tree/master/web/kaltura/kaltura.html)
-
-
-
