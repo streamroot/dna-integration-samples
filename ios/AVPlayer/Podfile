@@ -3,7 +3,7 @@
 inhibit_all_warnings!
 
 def streamrootPod
-  pod 'StreamrootSDK', '~> 3.3.0'
+  pod 'StreamrootSDK', '~> 3.3.2'
 end
 
 target 'DnaSample-iOS' do
