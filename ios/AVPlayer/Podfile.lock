@@ -2,13 +2,13 @@ PODS:
   - Sentry (4.1.0):
     - Sentry/Core (= 4.1.0)
   - Sentry/Core (4.1.0)
-  - Starscream (3.0.5)
-  - StreamrootSDK (3.4.0):
+  - Starscream (3.0.6)
+  - StreamrootSDK (3.5.0):
     - Sentry (= 4.1.0)
-    - Starscream (= 3.0.5)
+    - Starscream (= 3.0.6)
 
 DEPENDENCIES:
-  - StreamrootSDK (~> 3.4.0)
+  - StreamrootSDK (~> 3.5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -18,9 +18,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Sentry: 44b85e768f435ede4d12ea279af588ff275c3939
-  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
-  StreamrootSDK: 1808402a0189c2e703d15725a1b1d792c2456476
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  StreamrootSDK: fee51d58a21006b7e92756c81acfa93ad11185cb
 
-PODFILE CHECKSUM: 46793b8be68bfa8889ab3aceb341ef328d798d39
+PODFILE CHECKSUM: 90de7973fdffd3511c956ef8a030e3e578db2dfb
 
 COCOAPODS: 1.5.3
