@@ -25,27 +25,26 @@ import com.google.android.exoplayer2.source.hls.HlsMediaSource
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
-import com.google.android.exoplayer2.ui.SimpleExoPlayerView
+import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultAllocator
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import io.streamroot.dna.core.DnaClient
-import io.streamroot.dna.core.http.bandwidth.StreamrootExoplayerBandwidthMeter
 import io.streamroot.dna.utils.stats.StatsView
 import io.streamroot.dna.utils.stats.StreamStatsManager
 import java.util.concurrent.TimeUnit
 
 class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
-    private lateinit var exoplayerView: SimpleExoPlayerView
+    private lateinit var exoplayerView: PlayerView
     private lateinit var streamrootDnaStatsView: StatsView
-    private lateinit var bandwidthMeter: StreamrootExoplayerBandwidthMeter
+    private lateinit var bandwidthMeter: ExoplayerBandwidthMeter
 
     private var mStreamUrl: String? = null
     private var player: SimpleExoPlayer? = null
     private var trackSelector: DefaultTrackSelector? = null
 
-    private var streamrootDNA: DnaClient? = null
+    private var dnaClient: DnaClient? = null
     private var streamStatsManager: StreamStatsManager? = null
 
     private val latency: Int = 30
@@ -57,7 +56,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         mStreamUrl = intent.extras?.getString("streamUrl")
         exoplayerView = findViewById(R.id.exoplayerView)
         streamrootDnaStatsView = findViewById(R.id.streamrootDnaStatsView)
-        bandwidthMeter = StreamrootExoplayerBandwidthMeter()
+        bandwidthMeter = ExoplayerBandwidthMeter()
     }
 
     override fun onStart() {
@@ -104,8 +103,8 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
             player = newPlayer
 
-            streamrootDNA = initStreamroot()
-            val manifestUri = streamrootDNA?.manifestUrl ?: Uri.parse(mStreamUrl)
+            dnaClient = initStreamroot()
+            val manifestUri = dnaClient?.manifestUrl ?: Uri.parse(mStreamUrl)
             newPlayer.prepare(LoopingMediaSource(buildMediaSource(manifestUri)), true, false)
 
             exoplayerView.player = newPlayer
@@ -185,8 +184,8 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     }
 
     private fun stopStreamroot() {
-        streamrootDNA?.close()
-        streamrootDNA = null
+        dnaClient?.close()
+        dnaClient = null
 
         streamStatsManager?.stop()
         streamStatsManager = null
