@@ -103,7 +103,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
             player = newPlayer
 
-            dnaClient = initStreamroot()
+            dnaClient = initStreamroot(newPlayer)
             val manifestUri = dnaClient?.manifestUrl ?: Uri.parse(mStreamUrl)
             newPlayer.prepare(LoopingMediaSource(buildMediaSource(manifestUri)), true, false)
 
@@ -139,13 +139,14 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         }
     }
 
-    private fun initStreamroot(): DnaClient? {
+    private fun initStreamroot(newPlayer: SimpleExoPlayer): DnaClient? {
         var mSdk: DnaClient? = null
         try {
             mSdk = DnaClient.newBuilder()
                     .context(applicationContext)
-                    .playerInteractor(ExoPlayerInteractor(player!!))
+                    .playerInteractor(ExoPlayerInteractor(newPlayer))
                     .latency(latency)
+                    .qosModule(ExoPlayerQosModule(newPlayer))
                     .start(Uri.parse(mStreamUrl))
 
             streamStatsManager = StreamStatsManager.newStatsManager(mSdk, streamrootDnaStatsView)
