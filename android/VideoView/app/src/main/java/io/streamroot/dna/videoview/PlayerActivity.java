@@ -2,16 +2,15 @@ package io.streamroot.dna.videoview;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
-
-import java.util.Objects;
-
+import androidx.appcompat.app.AppCompatActivity;
 import io.streamroot.dna.core.DnaClient;
 import io.streamroot.dna.utils.stats.StatsView;
 import io.streamroot.dna.utils.stats.StreamStatsManager;
+
+import java.util.Objects;
 
 public final class PlayerActivity extends AppCompatActivity {
     private VideoView videoView;
@@ -73,7 +72,6 @@ public final class PlayerActivity extends AppCompatActivity {
                     .start(Uri.parse(mStreamUrl));
 
             streamStatsManager = StreamStatsManager.newStatsManager(streamrootDNA, streamrootDnaStatsView);
-            streamStatsManager.start();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG)
                     .show();
