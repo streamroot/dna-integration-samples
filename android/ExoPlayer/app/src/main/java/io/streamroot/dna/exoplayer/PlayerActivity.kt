@@ -2,8 +2,8 @@ package io.streamroot.dna.exoplayer
 
 import android.net.Uri
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.DefaultLoadControl
 import com.google.android.exoplayer2.DefaultRenderersFactory
@@ -150,7 +150,6 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
                     .start(Uri.parse(mStreamUrl))
 
             streamStatsManager = StreamStatsManager.newStatsManager(mSdk, streamrootDnaStatsView)
-            streamStatsManager?.start()
         } catch (e: Exception) {
             Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG)
                     .show()
