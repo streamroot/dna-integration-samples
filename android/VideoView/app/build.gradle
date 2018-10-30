@@ -31,9 +31,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "io.streamroot.dna:dna-core:3.4.1"
+    implementation "io.streamroot.dna:dna-core:3.4.2"
     // Used for the stats View
-    implementation "io.streamroot.dna:dna-utils:3.4.1"
+    implementation "io.streamroot.dna:dna-utils:3.4.2"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.0'
