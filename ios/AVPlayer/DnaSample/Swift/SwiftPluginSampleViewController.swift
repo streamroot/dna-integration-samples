@@ -21,9 +21,9 @@ class SwiftPluginSampleViewController: AVPlayerViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    let options = StreamrootOptions()
-    options.latency = 30
-    strPlugin = StreamrootAVPlayerPlugin(manifestUrl: manifestUrl, options: options)
+    let config = DNAConfig()
+    config.latency = 30
+    strPlugin = StreamrootAVPlayerPlugin(manifestUrl: manifestUrl, config: config)
     do {
       if let localPath = try strPlugin?.start() {
         player = AVPlayer(url: localPath)
