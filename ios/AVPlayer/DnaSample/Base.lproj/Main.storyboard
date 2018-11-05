@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zzS-jc-Ud8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zzS-jc-Ud8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oc-6l-oFY">
-                                <rect key="frame" x="50" y="258.5" width="275" height="150"/>
+                                <rect key="frame" x="50" y="228.5" width="275" height="210"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvi-8O-vIJ">
                                         <rect key="frame" x="50" y="90" width="175" height="40"/>
@@ -68,16 +68,32 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="269-bC-DWy"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lz1-ba-l0N">
+                                        <rect key="frame" x="50" y="150" width="175" height="40"/>
+                                        <color key="backgroundColor" red="0.2274509804" green="0.62745098040000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="IyO-jS-IWK"/>
+                                        </constraints>
+                                        <state key="normal" title="Plugin">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="VlJ-4g-fpl" kind="show" id="zQw-iY-Wav"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="lz1-ba-l0N" firstAttribute="leading" secondItem="Lvi-8O-vIJ" secondAttribute="leading" id="65v-Oh-ziJ"/>
                                     <constraint firstItem="Lvi-8O-vIJ" firstAttribute="leading" secondItem="lHC-p5-r5E" secondAttribute="leading" id="JOe-W5-0PD"/>
                                     <constraint firstItem="lHC-p5-r5E" firstAttribute="top" secondItem="4oc-6l-oFY" secondAttribute="top" constant="30" id="KRh-Sb-4xb"/>
                                     <constraint firstItem="lHC-p5-r5E" firstAttribute="leading" secondItem="4oc-6l-oFY" secondAttribute="leading" constant="50" id="TZu-1E-HW9"/>
+                                    <constraint firstItem="lz1-ba-l0N" firstAttribute="top" secondItem="Lvi-8O-vIJ" secondAttribute="bottom" constant="20" id="TwF-jm-DhR"/>
                                     <constraint firstItem="Lvi-8O-vIJ" firstAttribute="top" secondItem="lHC-p5-r5E" secondAttribute="bottom" constant="20" id="ce7-hT-CRC"/>
                                     <constraint firstItem="Lvi-8O-vIJ" firstAttribute="trailing" secondItem="lHC-p5-r5E" secondAttribute="trailing" id="dyZ-WF-Yei"/>
+                                    <constraint firstItem="lz1-ba-l0N" firstAttribute="trailing" secondItem="Lvi-8O-vIJ" secondAttribute="trailing" id="jDb-xx-sde"/>
+                                    <constraint firstAttribute="bottom" secondItem="lz1-ba-l0N" secondAttribute="bottom" constant="20" id="tYU-Hp-Wco"/>
                                     <constraint firstAttribute="trailing" secondItem="lHC-p5-r5E" secondAttribute="trailing" constant="50" id="xlx-TM-5I5"/>
-                                    <constraint firstAttribute="bottom" secondItem="Lvi-8O-vIJ" secondAttribute="bottom" constant="20" id="zio-oF-pAF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -111,6 +127,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewu-yk-zyu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="81" y="487"/>
+        </scene>
+        <!--Swift Plugin Sample View Controller-->
+        <scene sceneID="maP-02-fXY">
+            <objects>
+                <viewController id="VlJ-4g-fpl" customClass="SwiftPluginSampleViewController" customModule="DnaSample_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ucd-Jn-trP"/>
+                        <viewControllerLayoutGuide type="bottom" id="cSZ-kE-MYn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UyT-KU-C7t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eEa-Yz-sLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="52"/>
         </scene>
     </scenes>
 </document>
