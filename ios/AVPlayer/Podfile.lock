@@ -1,16 +1,16 @@
 PODS:
-  - AVPlayerDNAPlugin (0.0.1):
-    - StreamrootSDK (~> 3.5.0)
+  - AVPlayerDNAPlugin (1.0.0):
+    - StreamrootSDK (~> 3.5.1)
   - Sentry (4.1.0):
     - Sentry/Core (= 4.1.0)
   - Sentry/Core (4.1.0)
   - Starscream (3.0.6)
-  - StreamrootSDK (3.5.0):
+  - StreamrootSDK (3.5.1):
     - Sentry (= 4.1.0)
     - Starscream (= 3.0.6)
 
 DEPENDENCIES:
-  - AVPlayerDNAPlugin
+  - AVPlayerDNAPlugin (= 1.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -20,11 +20,11 @@ SPEC REPOS:
     - StreamrootSDK
 
 SPEC CHECKSUMS:
-  AVPlayerDNAPlugin: 9b8aa3343bbb9f9e2f46576ed4cf1c700ffd1e40
+  AVPlayerDNAPlugin: 493af75bef54c0d675333405216aceb6c873d360
   Sentry: 44b85e768f435ede4d12ea279af588ff275c3939
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  StreamrootSDK: fee51d58a21006b7e92756c81acfa93ad11185cb
+  StreamrootSDK: 230df34ef648b8d459250106a273774dc83148d1
 
-PODFILE CHECKSUM: 4722a6c814d29ab755b8dc71dc95bb8c3d5ad8b6
+PODFILE CHECKSUM: 37140d8de34b65f48cbf7b5987a624c841534e87
 
 COCOAPODS: 1.5.3

@@ -3,7 +3,7 @@
 inhibit_all_warnings!
 
 def streamrootPod
-  pod 'AVPlayerDNAPlugin'
+  pod 'AVPlayerDNAPlugin', '1.0.0'
 end
 
 target 'DnaSample-iOS' do
