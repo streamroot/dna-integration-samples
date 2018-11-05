@@ -23,7 +23,7 @@ class SwiftPluginSampleViewController: AVPlayerViewController {
     super.viewDidAppear(animated)
     let config = DNAConfig()
     config.latency = 30
-    strPlugin = StreamrootAVPlayerPlugin(manifestUrl: manifestUrl, config: config)
+    strPlugin = AVPlayerDNAPlugin(manifestUrl: manifestUrl, config: config)
     do {
       if let localPath = try strPlugin?.start() {
         player = AVPlayer(url: localPath)
