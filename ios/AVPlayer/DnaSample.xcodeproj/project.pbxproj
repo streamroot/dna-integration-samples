@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1DED8E0BB80713E0690649D3 /* Pods_DnaSample_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CB99732B10B3E38D79DCE02 /* Pods_DnaSample_iOS.framework */; };
 		50F1DEAF1E687C0E00B59D4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */; };
 		50F1DEB11E687C0E00B59D4B /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEB01E687C0E00B59D4B /* SwiftSampleViewController.swift */; };
 		50F1DEB41E687C0E00B59D4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB21E687C0E00B59D4B /* Main.storyboard */; };
 		50F1DEB61E687C0E00B59D4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB51E687C0E00B59D4B /* Assets.xcassets */; };
 		50F1DEB91E687C0E00B59D4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB71E687C0E00B59D4B /* LaunchScreen.storyboard */; };
 		8933E46B4410B8DF478E6131 /* Pods_DnaSample_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FED8FA2024D9A1BF633715B /* Pods_DnaSample_tvOS.framework */; };
+		B89AC5C23F5795631A4854DE /* Pods_DnaSample_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD6AF0C911388DB0DB2474CB /* Pods_DnaSample_iOS.framework */; };
 		D6087577219079F50034CB62 /* SwiftPluginSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6087576219079F50034CB62 /* SwiftPluginSampleViewController.swift */; };
 		D6087578219079F50034CB62 /* SwiftPluginSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6087576219079F50034CB62 /* SwiftPluginSampleViewController.swift */; };
 		D61171C2209B06F100CBE36B /* ObjCSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61171C0209B06F000CBE36B /* ObjCSampleViewController.m */; };
@@ -27,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0CB99732B10B3E38D79DCE02 /* Pods_DnaSample_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DnaSample_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FED8FA2024D9A1BF633715B /* Pods_DnaSample_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DnaSample_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F1DEAB1E687C0E00B59D4B /* DnaSample-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DnaSample-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +36,7 @@
 		50F1DEB81E687C0E00B59D4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50F1DEBA1E687C0E00B59D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78087B8B9F90C6F8387C0E80 /* Pods-DnaSample-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnaSample-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DnaSample-tvOS/Pods-DnaSample-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		BD6AF0C911388DB0DB2474CB /* Pods_DnaSample_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DnaSample_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5F4CBD842DC0DCB3A07F9EB /* Pods-DnaSample-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnaSample-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DnaSample-iOS/Pods-DnaSample-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D6087576219079F50034CB62 /* SwiftPluginSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPluginSampleViewController.swift; sourceTree = "<group>"; };
 		D61171BF209B06F000CBE36B /* DnaSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DnaSample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DED8E0BB80713E0690649D3 /* Pods_DnaSample_iOS.framework in Frameworks */,
+				B89AC5C23F5795631A4854DE /* Pods_DnaSample_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,8 +122,8 @@
 		CFE5C8797811BD3A02722A25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0CB99732B10B3E38D79DCE02 /* Pods_DnaSample_iOS.framework */,
 				1FED8FA2024D9A1BF633715B /* Pods_DnaSample_tvOS.framework */,
+				BD6AF0C911388DB0DB2474CB /* Pods_DnaSample_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -277,6 +277,7 @@
 				"${BUILT_PRODUCTS_DIR}/Starscream-tvOS/Starscream.framework",
 				"${PODS_ROOT}/StreamrootSDK/Carthage/Build/tvOS/StreamrootSDK.framework",
 				"${PODS_ROOT}/StreamrootSDK/Carthage/Build/tvOS/StreamrootSDK.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf-tvOS/SwiftProtobuf.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -288,6 +289,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StreamrootSDK.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/StreamrootSDK.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -353,6 +355,7 @@
 				"${BUILT_PRODUCTS_DIR}/Starscream-iOS/Starscream.framework",
 				"${PODS_ROOT}/StreamrootSDK/Carthage/Build/iOS/StreamrootSDK.framework",
 				"${PODS_ROOT}/StreamrootSDK/Carthage/Build/iOS/StreamrootSDK.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf-iOS/SwiftProtobuf.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -364,6 +367,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StreamrootSDK.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/StreamrootSDK.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

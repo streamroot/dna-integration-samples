@@ -22,6 +22,8 @@ class SwiftPluginSampleViewController: AVPlayerViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     let config = DNAConfig()
+    // the streamroot key can be set in the config or in the mainPlist file
+    config.streamrootKey = <#your-streamrootkey#>
     config.latency = 30
     strPlugin = AVPlayerDNAPlugin(manifestUrl: manifestUrl, config: config)
     do {

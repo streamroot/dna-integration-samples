@@ -21,15 +21,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+  
     NSURL *manifestUrl = [NSURL URLWithString: @"http://wowza-test.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8"];
     NSError *error;
-    self.dnaClient = [[[DNAClient.builder dnaClientDelegate: self] latency: 30] start:manifestUrl error: &error];
-    if (error || !self.dnaClient) {
-        NSLog(@"error: %@", error);
-    }
-    
-    NSURL *url = [[NSURL alloc] initWithString: self.dnaClient.manifestLocalURLPath];
+   // the streamroot key can be set in the config or in the mainPlist file
+  self.dnaClient = [[[[DNAClient.builder dnaClientDelegate: self] latency: 30]
+                    streamrootKey: @""]
+                    start:manifestUrl error: &error];
+  if (error || !self.dnaClient) {
+    NSLog(@"error: %@", error);
+  }
+  
+  NSURL *url = [[NSURL alloc] initWithString: self.dnaClient.manifestLocalURLPath];
     AVPlayerItem *playerItem =[[AVPlayerItem alloc] initWithURL: url];
      if (@available(iOS 10.2, *)) {
       playerItem.preferredForwardBufferDuration = self.dnaClient.bufferTarget;
@@ -53,13 +56,13 @@
     if (self.player == nil) {
         return [NSArray array];
     }
-    
+  
     NSMutableArray *timeRanges = [NSMutableArray array];
     for (NSValue *value in [[self.player currentItem] loadedTimeRanges]) {
         TimeRange *timeRange = [[TimeRange alloc] initWithRange:[value CMTimeRangeValue]];
         [timeRanges addObject:[[NSValue alloc] initWithTimeRange:timeRange]];
     }
-    
+  
     return timeRanges;
 }
 
