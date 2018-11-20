@@ -1,5 +1,6 @@
 package io.streamroot.dna.exoplayer
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
@@ -118,6 +119,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         stopStreamroot()
     }
 
+    @SuppressLint("SwitchIntDef")
     private fun buildMediaSource(uri: Uri): MediaSource {
         val defaultDataSourceFactory = DefaultDataSourceFactory(
                 applicationContext,
@@ -134,7 +136,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
             )
                     .createMediaSource(uri)
             else -> {
-                throw IllegalStateException("Unsupported type for url: " + uri)
+                throw IllegalStateException("Unsupported type for url: $uri")
             }
         }
     }
@@ -187,7 +189,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         dnaClient?.close()
         dnaClient = null
 
-        streamStatsManager?.stop()
+        streamStatsManager?.close()
         streamStatsManager = null
     }
 

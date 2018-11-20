@@ -85,7 +85,7 @@ public final class PlayerActivity extends AppCompatActivity {
         }
 
         if (streamStatsManager != null) {
-            streamStatsManager.stop();
+            streamStatsManager.close();
             streamStatsManager = null;
         }
     }
