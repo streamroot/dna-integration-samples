@@ -1,13 +1,17 @@
 package io.streamroot.dna.exoplayer
 
+import android.os.Looper
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.Timeline
 import io.streamroot.dna.core.PlayerInteractor
 import io.streamroot.dna.core.TimeRange
 
 class ExoPlayerInteractor(
-        private val player: SimpleExoPlayer
+    private val player: SimpleExoPlayer
 ) : PlayerInteractor {
+
+    override fun looper(): Looper? = player.applicationLooper
+
     override fun loadedTimeRanges(): MutableList<TimeRange> {
         val shift = getCurrentWindowShift()
         val rangeDurationMs = player.bufferedPosition - player.currentPosition

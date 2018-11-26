@@ -1,8 +1,10 @@
 package io.streamroot.dna.videoview;
 
+import android.os.Looper;
 import android.widget.VideoView;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import io.streamroot.dna.core.PlayerInteractor;
 import io.streamroot.dna.core.TimeRange;
@@ -15,6 +17,12 @@ final class VideoViewPlayerInteractor implements PlayerInteractor {
 
     VideoViewPlayerInteractor(VideoView mVideoView) {
         videoView = mVideoView;
+    }
+
+    @Nullable
+    @Override
+    public Looper looper() {
+        return null;
     }
 
     @Override
