@@ -28,7 +28,7 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultAllocator
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import io.streamroot.dna.core.DnaClient
 import io.streamroot.dna.utils.stats.StatsView
@@ -37,9 +37,9 @@ import java.util.concurrent.TimeUnit
 
 class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
-    private lateinit var exoplayerView: PlayerView
+    private lateinit var exoPlayerView: PlayerView
     private lateinit var streamrootDnaStatsView: StatsView
-    private lateinit var bandwidthMeter: ExoplayerBandwidthMeter
+    private lateinit var bandwidthMeter: ExoPlayerBandwidthMeter
 
     private var mStreamUrl: String? = null
     private var player: SimpleExoPlayer? = null
@@ -55,9 +55,9 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         setContentView(R.layout.activity_player)
 
         mStreamUrl = intent.extras?.getString("streamUrl")
-        exoplayerView = findViewById(R.id.exoplayerView)
+        exoPlayerView = findViewById(R.id.exoplayerView)
         streamrootDnaStatsView = findViewById(R.id.streamrootDnaStatsView)
-        bandwidthMeter = ExoplayerBandwidthMeter()
+        bandwidthMeter = ExoPlayerBandwidthMeter()
     }
 
     override fun onStart() {
@@ -97,7 +97,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
             val extensionRendererMode = DefaultRenderersFactory.EXTENSION_RENDERER_MODE_OFF
             val renderersFactory = DefaultRenderersFactory(applicationContext, extensionRendererMode)
-            val newPlayer = ExoPlayerFactory.newSimpleInstance(renderersFactory, trackSelector, loadControl())
+            val newPlayer = ExoPlayerFactory.newSimpleInstance(this, renderersFactory, trackSelector, loadControl())
             newPlayer.playWhenReady = true
             newPlayer.playWhenReady = true
             newPlayer.addListener(this)
@@ -108,7 +108,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
             val manifestUri = dnaClient?.manifestUrl ?: Uri.parse(mStreamUrl)
             newPlayer.prepare(LoopingMediaSource(buildMediaSource(manifestUri)), true, false)
 
-            exoplayerView.player = newPlayer
+            exoPlayerView.player = newPlayer
         }
     }
 
@@ -121,10 +121,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     @SuppressLint("SwitchIntDef")
     private fun buildMediaSource(uri: Uri): MediaSource {
-        val defaultDataSourceFactory = DefaultDataSourceFactory(
-                applicationContext,
-                Util.getUserAgent(applicationContext, "StreamrootQA")
-        )
+        val defaultDataSourceFactory = DefaultHttpDataSourceFactory(Util.getUserAgent(applicationContext, "StreamrootQA"))
 
         return when (Util.inferContentType(uri)) {
             C.TYPE_HLS -> HlsMediaSource.Factory(defaultDataSourceFactory)
