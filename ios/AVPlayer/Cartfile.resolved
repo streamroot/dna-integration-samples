@@ -1,0 +1,5 @@
+binary "https://sdk.streamroot.io/ios/AVPlayerDNAPlugin.json" "1.1.0"
+binary "https://sdk.streamroot.io/ios/StreamrootSDK.json" "3.6"
+github "apple/swift-protobuf" "1.2.0"
+github "daltoniam/Starscream" "3.0.6"
+github "getsentry/sentry-cocoa" "4.1.0"
