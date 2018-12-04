@@ -1,0 +1,34 @@
+PODS:
+  - AVPlayerDNAPlugin (1.1.1):
+    - StreamrootSDK (~> 3.6.1)
+  - Sentry (4.1.0):
+    - Sentry/Core (= 4.1.0)
+  - Sentry/Core (4.1.0)
+  - Starscream (3.0.6)
+  - StreamrootSDK (3.6.1):
+    - Sentry (= 4.1.0)
+    - Starscream (= 3.0.6)
+    - SwiftProtobuf (~> 1.2)
+  - SwiftProtobuf (1.2.0)
+
+DEPENDENCIES:
+  - AVPlayerDNAPlugin
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AVPlayerDNAPlugin
+    - Sentry
+    - Starscream
+    - StreamrootSDK
+    - SwiftProtobuf
+
+SPEC CHECKSUMS:
+  AVPlayerDNAPlugin: 8f63d71d3986f1f1c8c252db88776d27527b843c
+  Sentry: 44b85e768f435ede4d12ea279af588ff275c3939
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  StreamrootSDK: 8f21974d7f6861c04bbbcc3854e1c01a1a8dadfd
+  SwiftProtobuf: 91a9856079044ef4ec762b2344c763cd9e5a73c1
+
+PODFILE CHECKSUM: 4722a6c814d29ab755b8dc71dc95bb8c3d5ad8b6
+
+COCOAPODS: 1.5.3
