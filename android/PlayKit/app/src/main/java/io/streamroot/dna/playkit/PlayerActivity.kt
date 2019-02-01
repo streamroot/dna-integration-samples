@@ -3,6 +3,7 @@ package io.streamroot.dna.playkit
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.ImageButton
@@ -10,13 +11,42 @@ import android.widget.SeekBar
 import android.widget.TextView
 import com.kaltura.playkit.*
 import io.streamroot.dna.core.DnaClient
+import io.streamroot.dna.utils.stats.StatsView
+import io.streamroot.dna.utils.stats.StreamStatsManager
 
 class PlayerActivity : AppCompatActivity() {
+    // Player and DNA client
     private var mStreamUrl: String? = null
     private var mDnaClient: DnaClient? = null
     private var mPlayer: Player? = null
     private var mMediaConfig: PKMediaConfig? = null
     private var mSeeking: Boolean = false
+
+    // Streamroot stats view
+    private var mStreamStatsManager: StreamStatsManager? = null
+    private var mStreamrootStatsView: StatsView? = null
+
+    private fun startStatsView() {
+        mDnaClient?.also {
+            mStreamrootStatsView!!.visibility = View.VISIBLE
+            mStreamStatsManager = StreamStatsManager(
+                statsViewRefreshSequence(),
+                it,
+                mStreamrootStatsView!!
+            )
+        }
+    }
+
+    private fun statsViewRefreshSequence(): Sequence<Long> {
+        var counter = 0
+        return generateSequence {
+            if (++counter < 120) {
+                1_000L
+            } else {
+                20_000L
+            }
+        }
+    }
 
     private fun createMediaConfig() {
         // Build PlayKit's media config object
@@ -50,6 +80,7 @@ class PlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
         mStreamUrl = intent.extras?.getString("streamUrl")
+        mStreamrootStatsView = findViewById(R.id.streamrootStatsView)
 
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
@@ -104,6 +135,9 @@ class PlayerActivity : AppCompatActivity() {
         createMediaConfig()
         mPlayer!!.prepare(mMediaConfig!!)
         mPlayer!!.play()
+
+        // Start Streamroot stats view
+        startStatsView()
     }
 
     override fun onResume() {
