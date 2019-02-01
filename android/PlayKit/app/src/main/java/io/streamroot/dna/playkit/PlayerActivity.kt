@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.FrameLayout
+import android.widget.ImageButton
+import android.widget.SeekBar
+import android.widget.TextView
 import com.kaltura.playkit.*
 import io.streamroot.dna.core.DnaClient
 
@@ -13,6 +16,7 @@ class PlayerActivity : AppCompatActivity() {
     private var mDnaClient: DnaClient? = null
     private var mPlayer: Player? = null
     private var mMediaConfig: PKMediaConfig? = null
+    private var mSeeking: Boolean = false
 
     private fun createMediaConfig() {
         // Build PlayKit's media config object
@@ -36,6 +40,12 @@ class PlayerActivity : AppCompatActivity() {
         mMediaConfig!!.mediaEntry = mediaEntry
     }
 
+    private fun formatTime(msTime : Long) : String {
+        val minutes = msTime / 60000
+        val seconds = msTime % 60000 / 1000
+        return String.format("%02d:%02d", minutes, seconds)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
@@ -47,6 +57,48 @@ class PlayerActivity : AppCompatActivity() {
         mPlayer = PlayKitManager.loadPlayer(this, null)
         val playerRoot : FrameLayout = findViewById(R.id.playkitContainer)
         playerRoot.addView(mPlayer!!.view)
+
+        // Add UI event handlers
+        findViewById<ImageButton>(R.id.playButton).setOnClickListener {
+            if (mPlayer != null) {
+                mPlayer!!.play()
+            }
+        }
+        findViewById<ImageButton>(R.id.pauseButton).setOnClickListener {
+            if (mPlayer != null) {
+                mPlayer!!.pause()
+            }
+        }
+        findViewById<SeekBar>(R.id.seekBar).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
+                // Do nothing
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                mSeeking = true
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                mSeeking = false
+                mPlayer!!.seekTo(seekBar.progress.toLong())
+            }
+        })
+
+        // Add seek bar handlers
+        mPlayer!!.addEventListener((PKEvent.Listener {
+            if (!mSeeking) {
+                val currentPosition = mPlayer!!.currentPosition
+                val bufferedPosition = mPlayer!!.bufferedPosition
+                val contentDuration = mPlayer!!.duration
+                val seekBar = findViewById<SeekBar>(R.id.seekBar)
+
+                findViewById<TextView>(R.id.currentTime).text = formatTime(currentPosition)
+                findViewById<TextView>(R.id.endTime).text = formatTime(contentDuration)
+                seekBar.max = contentDuration.toInt()
+                seekBar.progress = currentPosition.toInt()
+                seekBar.secondaryProgress = bufferedPosition.toInt()
+            }
+        }), PlayerEvent.Type.PLAYHEAD_UPDATED)
 
         // Set-up media and DnaClient
         createMediaConfig()
