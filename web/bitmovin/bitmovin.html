@@ -42,10 +42,10 @@
         playback: {
           autoplay: true,
           muted: true
-		},
-		
-		dnaConfig: {},
-		
+        },
+
+        dnaConfig: {},
+
         style: {
           width: "512",
           height: "288",
@@ -54,7 +54,7 @@
       };
       window.addEventListener("load", function() {
         player = new bitmovin.player.Player(
-          document.getElementById("bitmovin-player"),
+          document.getElementById("demoplayer"),
           bitmovinConfig
         );
         player
