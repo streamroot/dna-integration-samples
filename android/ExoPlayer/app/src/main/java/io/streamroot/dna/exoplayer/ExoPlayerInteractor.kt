@@ -4,10 +4,13 @@ import android.os.Looper
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.Timeline
 import io.streamroot.dna.core.PlayerInteractor
+import io.streamroot.dna.app.demo.player.exoplayer.ExoLoadControl
 import io.streamroot.dna.core.TimeRange
+import com.google.android.exoplayer2.LoadControl
 
 class ExoPlayerInteractor(
-    private val player: SimpleExoPlayer
+    private val player: SimpleExoPlayer,
+    val loadControl: LoadControl
 ) : PlayerInteractor {
 
     override fun looper(): Looper? = player.applicationLooper
@@ -44,5 +47,17 @@ class ExoPlayerInteractor(
         }
 
         return shift
+    }
+
+    override fun bufferTarget(): Double {
+        return if (loadControl is ExoLoadControl) {
+            this.loadControl.getMaxBufferTarget()
+        } else 0.0
+    }
+
+    override fun setBufferTarget(target: Double) {
+        if (loadControl is ExoLoadControl) {
+            loadControl.setMaxBufferTarget(target)
+        }
     }
 }
