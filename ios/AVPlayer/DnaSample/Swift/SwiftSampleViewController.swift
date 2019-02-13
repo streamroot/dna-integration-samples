@@ -76,4 +76,17 @@ extension SwiftSampleViewController: DNAClientDelegate {
   func updatePeakBitRate(_ bitRate: Double) {
     player?.currentItem?.preferredPeakBitRate = bitRate
   }
+  
+  public func bufferTarget() -> Double {
+    if #available(iOS 10.0, tvOS 10.0, *) {
+      return self.player?.currentItem?.preferredForwardBufferDuration ?? 0
+    }
+    return 0.0
+  }
+  
+  public func setBufferTarget(_ target: Double) {
+    if #available(iOS 10.0, tvOS 10.0, *) {
+      self.player?.currentItem?.preferredForwardBufferDuration = target
+    }
+  }
 }
