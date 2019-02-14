@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.exoplayer2.C
-import com.google.android.exoplayer2.DefaultLoadControl
 import com.google.android.exoplayer2.DefaultRenderersFactory
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayerFactory
@@ -30,6 +29,7 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultAllocator
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import io.streamroot.dna.app.demo.player.exoplayer.ExoLoadControl
 import io.streamroot.dna.core.DnaClient
 import io.streamroot.dna.utils.stats.StatsView
 import io.streamroot.dna.utils.stats.StreamStatsManager
@@ -44,6 +44,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     private var mStreamUrl: String? = null
     private var player: SimpleExoPlayer? = null
     private var trackSelector: DefaultTrackSelector? = null
+    private var loadControl: LoadControl? = null
 
     private var dnaClient: DnaClient? = null
     private var streamStatsManager: StreamStatsManager? = null
@@ -143,7 +144,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         try {
             mSdk = DnaClient.newBuilder()
                     .context(applicationContext)
-                    .playerInteractor(ExoPlayerInteractor(newPlayer))
+                    .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl()))
                     .latency(latency)
                     .qosModule(ExoPlayerQosModule(newPlayer))
                     .start(Uri.parse(mStreamUrl))
@@ -169,17 +170,25 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 //            DefaultLoadControl.DEFAULT_PRIORITIZE_TIME_OVER_SIZE_THRESHOLDS)
 
 //      ExoPlayer V2.8+
-        return DefaultLoadControl.Builder()
-            .setAllocator(DefaultAllocator(true, C.DEFAULT_BUFFER_SEGMENT_SIZE))
-            .setBufferDurationsMs(DefaultLoadControl.DEFAULT_MIN_BUFFER_MS,
-                DnaClient.generateBufferTarget(
-                    DefaultLoadControl.DEFAULT_MIN_BUFFER_MS,
-                    DefaultLoadControl.DEFAULT_MAX_BUFFER_MS,
-                    latency,
-                    TimeUnit.SECONDS),
-                DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS,
-                DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS)
-            .createDefaultLoadControl()
+        when {
+            this.loadControl != null -> return this.loadControl!!
+            latency <= 0 -> return ExoLoadControl.Builder().createDefaultLoadControl()
+            else -> {
+                val exoLoadControl = ExoLoadControl.Builder()
+                        .setAllocator(DefaultAllocator(true, C.DEFAULT_BUFFER_SEGMENT_SIZE))
+                        .setBufferDurationsMs(ExoLoadControl.DEFAULT_MIN_BUFFER_MS,
+                                DnaClient.generateBufferTarget(
+                                        ExoLoadControl.DEFAULT_MIN_BUFFER_MS,
+                                        ExoLoadControl.DEFAULT_MAX_BUFFER_MS,
+                                        latency,
+                                        TimeUnit.SECONDS),
+                                ExoLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
+                                ExoLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS)
+                        .createDefaultLoadControl()
+                this.loadControl = exoLoadControl
+                return exoLoadControl
+            }
+        }
     }
 
     private fun stopStreamroot() {
