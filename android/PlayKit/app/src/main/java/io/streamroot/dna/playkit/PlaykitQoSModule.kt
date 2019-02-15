@@ -17,8 +17,8 @@ class PlayKitQoSModule(
 
     init {
         // Register useful player events
-        mPlayer.addEventListener((PKEvent.Listener {
-            val playbackInfo = (it as PlayerEvent.PlaybackInfoUpdated).playbackInfo
+        mPlayer.addEventListener((PKEvent.Listener<PlayerEvent.PlaybackInfoUpdated> {
+            val playbackInfo = it.playbackInfo
 
             if (mLastVideoBitrate != playbackInfo.videoBitrate
                     || mLastAudioBitrate != playbackInfo.audioBitrate) {

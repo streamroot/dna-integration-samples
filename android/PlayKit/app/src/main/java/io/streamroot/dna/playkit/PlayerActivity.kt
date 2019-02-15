@@ -13,6 +13,9 @@ import com.kaltura.playkit.*
 import io.streamroot.dna.core.DnaClient
 import io.streamroot.dna.utils.stats.StatsView
 import io.streamroot.dna.utils.stats.StreamStatsManager
+import com.kaltura.playkit.PlayerEvent
+import com.kaltura.playkit.PKEvent
+
 
 class PlayerActivity : AppCompatActivity() {
     // Player and DNA client
@@ -60,6 +63,7 @@ class PlayerActivity : AppCompatActivity() {
             .context(applicationContext)
             .playerInteractor(playerInteractor)
             .qosModule(qosModule)
+            .latency(30)
             .start(Uri.parse(mStreamUrl))
         mediaSource.url = mDnaClient!!.manifestUrl.toString()
 
@@ -116,7 +120,7 @@ class PlayerActivity : AppCompatActivity() {
         })
 
         // Add seek bar handlers
-        mPlayer!!.addEventListener((PKEvent.Listener {
+        mPlayer!!.addEventListener(PKEvent.Listener<PKEvent> {
             if (!mSeeking) {
                 val currentPosition = mPlayer!!.currentPosition
                 val bufferedPosition = mPlayer!!.bufferedPosition
@@ -129,7 +133,7 @@ class PlayerActivity : AppCompatActivity() {
                 seekBar.progress = currentPosition.toInt()
                 seekBar.secondaryProgress = bufferedPosition.toInt()
             }
-        }), PlayerEvent.Type.PLAYHEAD_UPDATED)
+        }, PlayerEvent.Type.PLAYHEAD_UPDATED)
 
         // Set-up media and DnaClient
         createMediaConfig()
