@@ -1,5 +1,6 @@
 package io.streamroot.dna.playkit
 
+import android.os.Looper
 import com.kaltura.playkit.Player
 import io.streamroot.dna.core.PlayerInteractor
 import io.streamroot.dna.core.TimeRange
@@ -9,6 +10,8 @@ class PlayKitInteractor(
         player : Player
 ) : PlayerInteractor {
     private val mPlayer = player
+
+    override fun looper(): Looper? = Looper.getMainLooper()
 
     override fun playbackTime() : Long {
         val position = mPlayer.currentPosition
