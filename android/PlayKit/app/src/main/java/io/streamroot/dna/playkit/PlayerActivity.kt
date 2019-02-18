@@ -63,6 +63,7 @@ class PlayerActivity : AppCompatActivity() {
             .context(applicationContext)
             .playerInteractor(playerInteractor)
             .qosModule(qosModule)
+            .bandwidthListener(PlaykitBandwidthListener(mPlayer!!))
             .latency(30)
             .start(Uri.parse(mStreamUrl))
         mediaSource.url = mDnaClient!!.manifestUrl.toString()
