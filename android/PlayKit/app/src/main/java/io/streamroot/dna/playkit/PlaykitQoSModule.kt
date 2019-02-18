@@ -29,6 +29,10 @@ class PlayKitQoSModule(
             mLastAudioBitrate = playbackInfo.audioBitrate
         }), PlayerEvent.Type.PLAYBACK_INFO_UPDATED)
 
+        mPlayer.addEventListener((PKEvent.Listener<PlayerEvent> {
+            playbackStateChange(PlaybackState.ENDED)
+        }), PlayerEvent.Type.ENDED)
+
         mPlayer.addStateChangeListener {
             val eventDetails = it as PlayerEvent.StateChanged
 
@@ -41,8 +45,8 @@ class PlayKitQoSModule(
                 }
                 PlayerState.READY -> {
                     when (mPlayer.isPlaying) {
-                        true -> PlaybackState.PLAYING
-                        false -> PlaybackState.PAUSING
+                        true -> playbackStateChange(PlaybackState.PLAYING)
+                        false -> playbackStateChange(PlaybackState.PAUSING)
                     }
                 }
             }
