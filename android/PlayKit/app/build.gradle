@@ -35,11 +35,11 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation 'androidx.multidex:multidex:2.0.0'
 
-    implementation 'com.kaltura.playkit:playkit:3.8.0'
+    implementation 'com.kaltura.playkit:dna-playkit:3.8.0'
 
-    implementation 'io.streamroot.dna:dna-core:3.8.1'
+    implementation 'io.streamroot.dna:dna-core:3.8.2'
     // Used for the stats View
-    implementation 'io.streamroot.dna:dna-utils:3.8.1'
+    implementation 'io.streamroot.dna:dna-utils:3.8.2'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
