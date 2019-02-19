@@ -35,4 +35,12 @@ final class VideoViewPlayerInteractor implements PlayerInteractor {
     public List<TimeRange> loadedTimeRanges() {
         return Collections.emptyList();
     }
+
+    @Override
+    public double bufferTarget() {
+        return 0;
+    }
+
+    @Override
+    public void setBufferTarget(double v) { }
 }
