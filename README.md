@@ -36,7 +36,7 @@ If you don't have an account, [request a trial](https://streamroot.io/?request_t
 #### Players
 
 - [ExoPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer)
-- [Kaltura Playkit](https://github.com/streamroot/dna-integration-samples/tree/master/android/Playkit)
+- [Kaltura Playkit](https://github.com/streamroot/dna-integration-samples/tree/master/android/PlayKit)
 - [VideoView](https://github.com/streamroot/dna-integration-samples/tree/master/android/VideoView)
 
 ### iOS
