@@ -92,13 +92,14 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     private fun initPlayer() {
         if (player == null) {
+            loadControl = loadControl()
             bandwidthMeter = ExoPlayerBandwidthMeter()
             val adaptiveTrackSelectionFactory = AdaptiveTrackSelection.Factory(bandwidthMeter)
             trackSelector = DefaultTrackSelector(adaptiveTrackSelectionFactory)
 
             val extensionRendererMode = DefaultRenderersFactory.EXTENSION_RENDERER_MODE_OFF
             val renderersFactory = DefaultRenderersFactory(applicationContext, extensionRendererMode)
-            val newPlayer = ExoPlayerFactory.newSimpleInstance(this, renderersFactory, trackSelector, loadControl())
+            val newPlayer = ExoPlayerFactory.newSimpleInstance(this, renderersFactory, trackSelector, loadControl)
             newPlayer.playWhenReady = true
             newPlayer.playWhenReady = true
             newPlayer.addListener(this)
@@ -144,7 +145,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         try {
             mSdk = DnaClient.newBuilder()
                     .context(applicationContext)
-                    .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl()))
+                    .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl!!))
                     .latency(latency)
                     .qosModule(ExoPlayerQosModule(newPlayer))
                     .bandwidthListener(bandwidthMeter!!)
