@@ -39,12 +39,12 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     private lateinit var exoPlayerView: PlayerView
     private lateinit var streamrootDnaStatsView: StatsView
-    private lateinit var bandwidthMeter: ExoPlayerBandwidthMeter
 
     private var mStreamUrl: String? = null
     private var player: SimpleExoPlayer? = null
     private var trackSelector: DefaultTrackSelector? = null
     private var loadControl: LoadControl? = null
+    private var bandwidthMeter: ExoPlayerBandwidthMeter? = null
 
     private var dnaClient: DnaClient? = null
     private var streamStatsManager: StreamStatsManager? = null
@@ -58,7 +58,6 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         mStreamUrl = intent.extras?.getString("streamUrl")
         exoPlayerView = findViewById(R.id.exoplayerView)
         streamrootDnaStatsView = findViewById(R.id.streamrootDnaStatsView)
-        bandwidthMeter = ExoPlayerBandwidthMeter()
     }
 
     override fun onStart() {
@@ -93,6 +92,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     private fun initPlayer() {
         if (player == null) {
+            bandwidthMeter = ExoPlayerBandwidthMeter()
             val adaptiveTrackSelectionFactory = AdaptiveTrackSelection.Factory(bandwidthMeter)
             trackSelector = DefaultTrackSelector(adaptiveTrackSelectionFactory)
 
@@ -147,12 +147,12 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
                     .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl()))
                     .latency(latency)
                     .qosModule(ExoPlayerQosModule(newPlayer))
+                    .bandwidthListener(bandwidthMeter!!)
                     .start(Uri.parse(mStreamUrl))
 
             streamStatsManager = StreamStatsManager.newStatsManager(mSdk, streamrootDnaStatsView)
         } catch (e: Exception) {
-            Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG)
-                    .show()
+            Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG).show()
         }
 
         return mSdk
@@ -231,8 +231,8 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
                     }
                 } else {
                     getString(
-                            io.streamroot.dna.exoplayer.R.string.error_instantiating_decoder,
-                            cause.decoderName
+                        io.streamroot.dna.exoplayer.R.string.error_instantiating_decoder,
+                        cause.decoderName
                     )
                 }
             }
