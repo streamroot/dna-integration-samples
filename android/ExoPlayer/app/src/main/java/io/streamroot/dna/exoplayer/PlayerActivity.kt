@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.exoplayer2.C
+import com.google.android.exoplayer2.DefaultLoadControl
 import com.google.android.exoplayer2.DefaultRenderersFactory
 import com.google.android.exoplayer2.ExoPlaybackException
+import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.LoadControl
 import com.google.android.exoplayer2.PlaybackParameters
@@ -22,29 +24,22 @@ import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.source.dash.DashMediaSource
 import com.google.android.exoplayer2.source.dash.DefaultDashChunkSource
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.PlayerView
-import com.google.android.exoplayer2.upstream.DefaultAllocator
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
-import io.streamroot.dna.app.demo.player.exoplayer.ExoLoadControl
+import io.streamroot.dna.core.BandwidthListener
 import io.streamroot.dna.core.DnaClient
 import io.streamroot.dna.utils.stats.StatsView
 import io.streamroot.dna.utils.stats.StreamStatsManager
-import java.util.concurrent.TimeUnit
 
 class PlayerActivity : AppCompatActivity(), Player.EventListener {
-
     private lateinit var exoPlayerView: PlayerView
     private lateinit var streamrootDnaStatsView: StatsView
-    private lateinit var bandwidthMeter: ExoPlayerBandwidthMeter
 
     private var mStreamUrl: String? = null
-    private var player: SimpleExoPlayer? = null
-    private var trackSelector: DefaultTrackSelector? = null
-    private var loadControl: LoadControl? = null
+    private var player: ExoPlayer? = null
 
     private var dnaClient: DnaClient? = null
     private var streamStatsManager: StreamStatsManager? = null
@@ -58,7 +53,6 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         mStreamUrl = intent.extras?.getString("streamUrl")
         exoPlayerView = findViewById(R.id.exoplayerView)
         streamrootDnaStatsView = findViewById(R.id.streamrootDnaStatsView)
-        bandwidthMeter = ExoPlayerBandwidthMeter()
     }
 
     override fun onStart() {
@@ -93,22 +87,26 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     private fun initPlayer() {
         if (player == null) {
-            val adaptiveTrackSelectionFactory = AdaptiveTrackSelection.Factory(bandwidthMeter)
-            trackSelector = DefaultTrackSelector(adaptiveTrackSelectionFactory)
+            val bandwidthMeter = ExoPlayerBandwidthMeter()
+            val loadControl = DefaultLoadControl()
+            val trackSelector = DefaultTrackSelector()
+            val renderersFactory = DefaultRenderersFactory(applicationContext)
 
-            val extensionRendererMode = DefaultRenderersFactory.EXTENSION_RENDERER_MODE_OFF
-            val renderersFactory = DefaultRenderersFactory(applicationContext, extensionRendererMode)
-            val newPlayer = ExoPlayerFactory.newSimpleInstance(this, renderersFactory, trackSelector, loadControl())
-            newPlayer.playWhenReady = true
+            val newPlayer = ExoPlayerFactory.newSimpleInstance(
+                this,
+                renderersFactory,
+                trackSelector,
+                loadControl,
+                null, // DrmSessionManager
+                bandwidthMeter)
             newPlayer.playWhenReady = true
             newPlayer.addListener(this)
 
-            player = newPlayer
-
-            dnaClient = initStreamroot(newPlayer)
+            dnaClient = initStreamroot(newPlayer, loadControl, bandwidthMeter)
             val manifestUri = dnaClient?.manifestUrl ?: Uri.parse(mStreamUrl)
             newPlayer.prepare(LoopingMediaSource(buildMediaSource(manifestUri)), true, false)
 
+            player = newPlayer
             exoPlayerView.player = newPlayer
         }
     }
@@ -126,69 +124,32 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
         return when (Util.inferContentType(uri)) {
             C.TYPE_HLS -> HlsMediaSource.Factory(defaultDataSourceFactory)
-                    .createMediaSource(uri)
-            C.TYPE_DASH -> DashMediaSource.Factory(
-                    DefaultDashChunkSource.Factory(
-                            defaultDataSourceFactory
-                    ), defaultDataSourceFactory
-            )
-                    .createMediaSource(uri)
+                .createMediaSource(uri)
+            C.TYPE_DASH -> DashMediaSource.Factory(DefaultDashChunkSource.Factory(defaultDataSourceFactory), defaultDataSourceFactory)
+                .createMediaSource(uri)
             else -> {
                 throw IllegalStateException("Unsupported type for url: $uri")
             }
         }
     }
 
-    private fun initStreamroot(newPlayer: SimpleExoPlayer): DnaClient? {
+    private fun initStreamroot(newPlayer: SimpleExoPlayer, loadControl: LoadControl, bandwidthListener: BandwidthListener): DnaClient? {
         var mSdk: DnaClient? = null
         try {
             mSdk = DnaClient.newBuilder()
-                    .context(applicationContext)
-                    .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl()))
-                    .latency(latency)
-                    .qosModule(ExoPlayerQosModule(newPlayer))
-                    .start(Uri.parse(mStreamUrl))
+                .context(applicationContext)
+                .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl))
+                .latency(latency)
+                .qosModule(ExoPlayerQosModule(newPlayer))
+                .bandwidthListener(bandwidthListener)
+                .start(Uri.parse(mStreamUrl))
 
             streamStatsManager = StreamStatsManager.newStatsManager(mSdk, streamrootDnaStatsView)
         } catch (e: Exception) {
-            Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG)
-                    .show()
+            Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG).show()
         }
 
         return mSdk
-    }
-
-    private fun loadControl(): LoadControl {
-//        Prior ExoPlayer V2.8
-//        DefaultLoadControl(
-//            DefaultAllocator(true, C.DEFAULT_BUFFER_SEGMENT_SIZE),
-//            DefaultLoadControl.DEFAULT_MIN_BUFFER_MS,
-//            DnaClient.generateBufferTarget(DefaultLoadControl.DEFAULT_MIN_BUFFER_MS, DefaultLoadControl.DEFAULT_MAX_BUFFER_MS, latency, TimeUnit.SECONDS),
-//            DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS,
-//            DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
-//            DefaultLoadControl.DEFAULT_TARGET_BUFFER_BYTES,
-//            DefaultLoadControl.DEFAULT_PRIORITIZE_TIME_OVER_SIZE_THRESHOLDS)
-
-//      ExoPlayer V2.8+
-        when {
-            this.loadControl != null -> return this.loadControl!!
-            latency <= 0 -> return ExoLoadControl.Builder().createDefaultLoadControl()
-            else -> {
-                val exoLoadControl = ExoLoadControl.Builder()
-                        .setAllocator(DefaultAllocator(true, C.DEFAULT_BUFFER_SEGMENT_SIZE))
-                        .setBufferDurationsMs(ExoLoadControl.DEFAULT_MIN_BUFFER_MS,
-                                DnaClient.generateBufferTarget(
-                                        ExoLoadControl.DEFAULT_MIN_BUFFER_MS,
-                                        ExoLoadControl.DEFAULT_MAX_BUFFER_MS,
-                                        latency,
-                                        TimeUnit.SECONDS),
-                                ExoLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
-                                ExoLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS)
-                        .createDefaultLoadControl()
-                this.loadControl = exoLoadControl
-                return exoLoadControl
-            }
-        }
     }
 
     private fun stopStreamroot() {
@@ -217,23 +178,11 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
             val cause = error.rendererException
             if (cause is MediaCodecRenderer.DecoderInitializationException) {
                 // Special case for decoder initialization failures.
-                errorString = if (cause.decoderName == null) {
-                    when {
-                        cause.cause is MediaCodecUtil.DecoderQueryException -> getString(io.streamroot.dna.exoplayer.R.string.error_querying_decoders)
-                        cause.secureDecoderRequired -> getString(
-                                io.streamroot.dna.exoplayer.R.string.error_no_secure_decoder,
-                                cause.mimeType
-                        )
-                        else -> getString(
-                                io.streamroot.dna.exoplayer.R.string.error_no_decoder,
-                                cause.mimeType
-                        )
-                    }
-                } else {
-                    getString(
-                            io.streamroot.dna.exoplayer.R.string.error_instantiating_decoder,
-                            cause.decoderName
-                    )
+                errorString = when {
+                    cause.decoderName != null -> getString(R.string.error_instantiating_decoder, cause.decoderName)
+                    cause.cause is MediaCodecUtil.DecoderQueryException -> getString(R.string.error_querying_decoders)
+                    cause.secureDecoderRequired -> getString(R.string.error_no_secure_decoder, cause.mimeType)
+                    else -> getString(R.string.error_no_decoder, cause.mimeType)
                 }
             }
         }
