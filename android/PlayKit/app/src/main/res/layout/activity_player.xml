@@ -56,26 +56,26 @@
 
                 <ImageButton
                         android:id="@+id/playButton"
-                        android:layout_width="@dimen/exo_media_button_width"
+                        android:layout_width="@android:dimen/app_icon_size"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:adjustViewBounds="false"
                         android:background="@android:color/transparent"
                         android:contentDescription="Play"
                         android:cropToPadding="false"
-                        android:src="@drawable/exo_notification_play"
+                        android:src="@android:drawable/ic_media_play"
                         tools:layout_editor_absoluteX="364dp"/>
 
                 <ImageButton
                         android:id="@+id/pauseButton"
-                        android:layout_width="@dimen/exo_media_button_width"
+                        android:layout_width="@android:dimen/app_icon_size"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:adjustViewBounds="false"
                         android:background="@android:color/transparent"
                         android:contentDescription="Pause"
                         android:cropToPadding="false"
-                        android:src="@drawable/exo_notification_pause"
+                        android:src="@android:drawable/ic_media_pause"
                         tools:layout_editor_absoluteX="376dp"/>
             </LinearLayout>
 

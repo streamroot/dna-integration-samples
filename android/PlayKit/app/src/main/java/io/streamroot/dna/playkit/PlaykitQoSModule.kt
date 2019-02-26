@@ -17,8 +17,8 @@ class PlayKitQoSModule(
 
     init {
         // Register useful player events
-        mPlayer.addEventListener((PKEvent.Listener {
-            val playbackInfo = (it as PlayerEvent.PlaybackInfoUpdated).playbackInfo
+        mPlayer.addEventListener((PKEvent.Listener<PlayerEvent.PlaybackInfoUpdated> {
+            val playbackInfo = it.playbackInfo
 
             if (mLastVideoBitrate != playbackInfo.videoBitrate
                     || mLastAudioBitrate != playbackInfo.audioBitrate) {
@@ -28,6 +28,10 @@ class PlayKitQoSModule(
             mLastVideoBitrate = playbackInfo.videoBitrate
             mLastAudioBitrate = playbackInfo.audioBitrate
         }), PlayerEvent.Type.PLAYBACK_INFO_UPDATED)
+
+        mPlayer.addEventListener((PKEvent.Listener<PlayerEvent> {
+            playbackStateChange(PlaybackState.ENDED)
+        }), PlayerEvent.Type.ENDED)
 
         mPlayer.addStateChangeListener {
             val eventDetails = it as PlayerEvent.StateChanged
@@ -41,8 +45,8 @@ class PlayKitQoSModule(
                 }
                 PlayerState.READY -> {
                     when (mPlayer.isPlaying) {
-                        true -> PlaybackState.PLAYING
-                        false -> PlaybackState.PAUSING
+                        true -> playbackStateChange(PlaybackState.PLAYING)
+                        false -> playbackStateChange(PlaybackState.PAUSING)
                     }
                 }
             }
