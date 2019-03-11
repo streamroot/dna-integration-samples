@@ -34,9 +34,10 @@ dependencies {
 
     implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
 
-    implementation 'io.streamroot.dna:dna-core:3.8.3'
+    implementation 'io.streamroot.dna:dna-core:3.9.0'
     // Used for the stats View
-    implementation 'io.streamroot.dna:dna-utils:3.8.3'
+    implementation 'io.streamroot.dna:dna-utils:3.9.0'
+
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
