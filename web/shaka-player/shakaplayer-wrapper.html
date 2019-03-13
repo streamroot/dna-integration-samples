@@ -30,7 +30,9 @@
             var videoElement = document.getElementById('demoplayer');
             var shakaplayer = new shaka.Player(videoElement);
             var playerConfig = {
-                bufferingGoal: 30,
+                streaming: {
+                    bufferingGoal: 30,
+                },
             };
             var dnaConfig = {};
 
