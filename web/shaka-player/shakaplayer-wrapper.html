@@ -29,7 +29,9 @@
         <script>
             var videoElement = document.getElementById('demoplayer');
             var shakaplayer = new shaka.Player(videoElement);
-            var playerConfig = {};
+            var playerConfig = {
+                bufferingGoal: 30,
+            };
             var dnaConfig = {};
 
             var wrapper = new ShakaPlayerDnaWrapper(shakaplayer, 'demoswebsiteandpartners', dnaConfig);
