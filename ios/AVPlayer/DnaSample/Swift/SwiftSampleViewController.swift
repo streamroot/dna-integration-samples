@@ -7,11 +7,10 @@
 //
 
 import AVFoundation
-import StreamrootSDK
 import AVKit
+import StreamrootSDK
 
 class SwiftSampleViewController: AVPlayerViewController {
-  
   var dnaClient: DNAClient?
   private let manifestUrl = URL(string: "http://wowza-test.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8")!
   
@@ -33,11 +32,11 @@ class SwiftSampleViewController: AVPlayerViewController {
     }
     
     guard let localPath = self.dnaClient?.manifestLocalURLPath,
-      let url = URL(string: localPath) else  {
-      print("Could not generate localPath, please check your network")
-      return
+      let url = URL(string: localPath) else {
+        print("Could not generate localPath, please check your network")
+        return
     }
- 
+    
     let playerItem = AVPlayerItem(asset: AVURLAsset(url: url))
     if let bufferTarget = dnaClient?.bufferTarget {
       if #available(iOS 10.0, *) {
@@ -53,8 +52,9 @@ class SwiftSampleViewController: AVPlayerViewController {
   }
 }
 
+//MARK: - DNAClientDelegate
+
 extension SwiftSampleViewController: DNAClientDelegate {
-  
   func playbackTime() -> Double {
     if let player = self.player {
       return CMTimeGetSeconds(player.currentTime())
@@ -67,8 +67,11 @@ extension SwiftSampleViewController: DNAClientDelegate {
       return []
     }
     
-    let timeRanges = player.currentItem!.loadedTimeRanges
-    return timeRanges.map { (value) -> NSValue in
+    guard let playerItem = player.currentItem else {
+      return []
+    }
+    
+    return playerItem.loadedTimeRanges.map { (value) -> NSValue in
       NSValue(timeRange: TimeRange(range: value.timeRangeValue))
     }
   }

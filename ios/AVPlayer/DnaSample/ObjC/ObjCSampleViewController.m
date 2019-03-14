@@ -48,6 +48,9 @@
     [self.dnaClient stop];
 }
 
+
+//MARK: - DNAClientDelegate
+
 - (double)playbackTime {
     return CMTimeGetSeconds([self.player currentTime]);
 }
