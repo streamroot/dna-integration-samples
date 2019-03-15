@@ -75,7 +75,6 @@ extension PlayerViewController: DNAClientDelegate {
   func updatePeakBitRate(_ bitRate: Double) {
     player?.currentItem?.preferredPeakBitRate = bitRate
   }
-}
 
   func bufferTarget() -> Double {
     if #available(iOS 10.0, tvOS 10.0, *) {
