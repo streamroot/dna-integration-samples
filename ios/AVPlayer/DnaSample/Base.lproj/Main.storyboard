@@ -25,7 +25,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="-262"/>
+            <point key="canvasLocation" x="-47" y="-808"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="pKG-ZS-cM4">
@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oc-6l-oFY">
-                                <rect key="frame" x="50" y="228.5" width="275" height="210"/>
+                                <rect key="frame" x="50" y="198.5" width="275" height="270"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvi-8O-vIJ">
                                         <rect key="frame" x="50" y="90" width="175" height="40"/>
@@ -81,18 +81,34 @@
                                             <segue destination="VlJ-4g-fpl" kind="show" id="zQw-iY-Wav"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZk-U4-JE9" userLabel="Google DAI">
+                                        <rect key="frame" x="50" y="210" width="175" height="40"/>
+                                        <color key="backgroundColor" red="0.2274509804" green="0.62745098040000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="EjX-YG-FAA"/>
+                                        </constraints>
+                                        <state key="normal" title="Google DAI">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="GoE-KL-WB6" kind="show" id="web-RJ-V5N"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="lz1-ba-l0N" firstAttribute="leading" secondItem="Lvi-8O-vIJ" secondAttribute="leading" id="65v-Oh-ziJ"/>
+                                    <constraint firstItem="iZk-U4-JE9" firstAttribute="top" secondItem="lz1-ba-l0N" secondAttribute="bottom" constant="20" id="8Yq-DI-OIH"/>
+                                    <constraint firstItem="iZk-U4-JE9" firstAttribute="leading" secondItem="lz1-ba-l0N" secondAttribute="leading" id="Eoh-kB-46y"/>
                                     <constraint firstItem="Lvi-8O-vIJ" firstAttribute="leading" secondItem="lHC-p5-r5E" secondAttribute="leading" id="JOe-W5-0PD"/>
                                     <constraint firstItem="lHC-p5-r5E" firstAttribute="top" secondItem="4oc-6l-oFY" secondAttribute="top" constant="30" id="KRh-Sb-4xb"/>
+                                    <constraint firstItem="iZk-U4-JE9" firstAttribute="trailing" secondItem="lz1-ba-l0N" secondAttribute="trailing" id="NQB-3j-e6G"/>
                                     <constraint firstItem="lHC-p5-r5E" firstAttribute="leading" secondItem="4oc-6l-oFY" secondAttribute="leading" constant="50" id="TZu-1E-HW9"/>
                                     <constraint firstItem="lz1-ba-l0N" firstAttribute="top" secondItem="Lvi-8O-vIJ" secondAttribute="bottom" constant="20" id="TwF-jm-DhR"/>
+                                    <constraint firstAttribute="bottom" secondItem="iZk-U4-JE9" secondAttribute="bottom" constant="20" id="Xaa-8E-df7"/>
                                     <constraint firstItem="Lvi-8O-vIJ" firstAttribute="top" secondItem="lHC-p5-r5E" secondAttribute="bottom" constant="20" id="ce7-hT-CRC"/>
                                     <constraint firstItem="Lvi-8O-vIJ" firstAttribute="trailing" secondItem="lHC-p5-r5E" secondAttribute="trailing" id="dyZ-WF-Yei"/>
                                     <constraint firstItem="lz1-ba-l0N" firstAttribute="trailing" secondItem="Lvi-8O-vIJ" secondAttribute="trailing" id="jDb-xx-sde"/>
-                                    <constraint firstAttribute="bottom" secondItem="lz1-ba-l0N" secondAttribute="bottom" constant="20" id="tYU-Hp-Wco"/>
                                     <constraint firstAttribute="trailing" secondItem="lHC-p5-r5E" secondAttribute="trailing" constant="50" id="xlx-TM-5I5"/>
                                 </constraints>
                             </view>
@@ -126,7 +142,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewu-yk-zyu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="487"/>
+            <point key="canvasLocation" x="-47" y="526"/>
+        </scene>
+        <!--GoogleDAI Sample View Controller-->
+        <scene sceneID="0ax-sk-STk">
+            <objects>
+                <viewController id="GoE-KL-WB6" customClass="GoogleDAISampleViewController" customModule="DnaSample_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aaY-TS-e1P"/>
+                        <viewControllerLayoutGuide type="bottom" id="ljY-yd-0tG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ct8-Qp-NI2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mY9-1k-4VW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1041" y="193"/>
         </scene>
         <!--Swift Plugin Sample View Controller-->
         <scene sceneID="maP-02-fXY">
@@ -144,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eEa-Yz-sLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="52"/>
+            <point key="canvasLocation" x="1041" y="-678"/>
         </scene>
     </scenes>
 </document>
