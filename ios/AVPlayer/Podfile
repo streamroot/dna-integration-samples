@@ -9,7 +9,7 @@ end
 target 'DnaSample-iOS' do
   platform :ios, '9.3'
   use_frameworks!
-
+  pod 'GoogleAds-IMA-iOS-SDK'
   streamrootPod
 
 end

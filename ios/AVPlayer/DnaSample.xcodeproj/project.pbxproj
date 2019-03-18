@@ -22,6 +22,8 @@
 		D6117204209B41A700CBE36B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */; };
 		D6117205209B41BD00CBE36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61171EE209B3FAB00CBE36B /* Main.storyboard */; };
 		D661F8AF21B55E8800212152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB51E687C0E00B59D4B /* Assets.xcassets */; };
+		D6DBDB85223FD555008FE505 /* DNAAAVPlayerVideoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBDB83223FD555008FE505 /* DNAAAVPlayerVideoDisplay.swift */; };
+		D6DBDB86223FD555008FE505 /* GoogleDAISampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBDB84223FD555008FE505 /* GoogleDAISampleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +63,8 @@
 		D6CA02042232BE5C00FC025E /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.1.sdk/usr/lib/libresolv.tbd; sourceTree = DEVELOPER_DIR; };
 		D6CA02062232BEC000FC025E /* librust_app_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librust_app_ios.a; sourceTree = "<group>"; };
 		D6CA020E2232C34200FC025E /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		D6DBDB83223FD555008FE505 /* DNAAAVPlayerVideoDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNAAAVPlayerVideoDisplay.swift; sourceTree = "<group>"; };
+		D6DBDB84223FD555008FE505 /* GoogleDAISampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDAISampleViewController.swift; sourceTree = "<group>"; };
 		DBCAADD7ED7212625103F9D6 /* Pods-DnaSample-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnaSample-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DnaSample-iOS/Pods-DnaSample-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		FEB302E3BF73EBCF7E4CB1E0 /* Pods_DnaSample_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DnaSample_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,6 +123,7 @@
 		50F1DEAD1E687C0E00B59D4B /* DnaSample */ = {
 			isa = PBXGroup;
 			children = (
+				D6DBDB82223FD555008FE505 /* GoogleDAI */,
 				D61171C3209B072300CBE36B /* ObjC */,
 				50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */,
 				D61171C4209B072F00CBE36B /* Swift */,
@@ -171,6 +176,15 @@
 				D61171F3209B3FAD00CBE36B /* Info.plist */,
 			);
 			path = "DnaSample-tvOS";
+			sourceTree = "<group>";
+		};
+		D6DBDB82223FD555008FE505 /* GoogleDAI */ = {
+			isa = PBXGroup;
+			children = (
+				D6DBDB83223FD555008FE505 /* DNAAAVPlayerVideoDisplay.swift */,
+				D6DBDB84223FD555008FE505 /* GoogleDAISampleViewController.swift */,
+			);
+			path = GoogleDAI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +362,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-DnaSample-iOS/Pods-DnaSample-iOS-frameworks.sh",
 				"${PODS_ROOT}/AVPlayerDNAPlugin/Carthage/Build/iOS/AVPlayerDNAPlugin.framework",
 				"${PODS_ROOT}/AVPlayerDNAPlugin/Carthage/Build/iOS/AVPlayerDNAPlugin.framework.dSYM",
+				"${PODS_ROOT}/GoogleAds-IMA-iOS-SDK/GoogleInteractiveMediaAds.framework",
 				"${BUILT_PRODUCTS_DIR}/Sentry-iOS/Sentry.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream-iOS/Starscream.framework",
 				"${PODS_ROOT}/StreamrootSDK/Carthage/Build/iOS/StreamrootSDK.framework",
@@ -360,6 +375,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVPlayerDNAPlugin.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/AVPlayerDNAPlugin.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleInteractiveMediaAds.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StreamrootSDK.framework",
@@ -401,9 +417,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F1DEB11E687C0E00B59D4B /* SwiftSampleViewController.swift in Sources */,
+				D6DBDB86223FD555008FE505 /* GoogleDAISampleViewController.swift in Sources */,
 				D6087577219079F50034CB62 /* SwiftPluginSampleViewController.swift in Sources */,
 				50F1DEAF1E687C0E00B59D4B /* AppDelegate.swift in Sources */,
 				D61171C2209B06F100CBE36B /* ObjCSampleViewController.m in Sources */,
+				D6DBDB85223FD555008FE505 /* DNAAAVPlayerVideoDisplay.swift in Sources */,
 				D61171CE209B200900CBE36B /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
