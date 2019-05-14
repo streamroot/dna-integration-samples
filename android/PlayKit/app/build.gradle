@@ -39,9 +39,9 @@ dependencies {
 
     implementation 'com.kaltura.playkit:dna-playkit:3.9.0'
 
-    implementation 'io.streamroot.dna:dna-core:3.9.3'
+    implementation 'io.streamroot.dna:dna-core:3.9.4'
     // Used for the stats View
-    implementation 'io.streamroot.dna:dna-utils:3.9.3'
+    implementation 'io.streamroot.dna:dna-utils:3.9.4'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
