@@ -3,7 +3,7 @@
 inhibit_all_warnings!
 
 def streamrootPod
-  pod 'AVPlayerDNAPlugin'
+  pod 'AVPlayerDNAPlugin' 
 end
 
 target 'DnaSample-iOS' do
@@ -11,7 +11,7 @@ target 'DnaSample-iOS' do
   use_frameworks!
 
   streamrootPod
-
+  pod 'GoogleAds-IMA-iOS-SDK'
 end
 
 target 'DnaSample-tvOS' do
