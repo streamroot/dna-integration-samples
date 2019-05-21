@@ -100,7 +100,6 @@ extension GoogleDAISampleViewController: IMAStreamManagerDelegate {
 extension GoogleDAISampleViewController: IMAAVPlayerVideoDisplayDelegate {
   func avPlayerVideoDisplay(_ avPlayerVideoDisplay: IMAAVPlayerVideoDisplay!,
                             willLoadStreamAsset avUrlAsset: AVURLAsset!) {
-  //  self.dnaUrlAsset = avUrlAsset
     self.videoDisplay?.dnaClient?.displayStats(onView: contentOverlayView!)
   }
 }
