@@ -2,7 +2,6 @@ package io.streamroot.dna.playkit;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -15,6 +14,7 @@ import com.kaltura.playkit.PKMediaEntry;
 import com.kaltura.playkit.PKMediaSource;
 import com.kaltura.playkit.PlayKitManager;
 import com.kaltura.playkit.Player;
+import com.kaltura.playkit.PlayerEvent;
 import io.streamroot.dna.core.BandwidthListener;
 import io.streamroot.dna.core.DnaClient;
 import io.streamroot.dna.core.PlayerInteractor;
@@ -36,8 +36,8 @@ public class PlayerActivity extends AppCompatActivity {
     private StatsView mStreamrootStatsView;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
         this.mStreamUrl = getIntent().getStringExtra("streamUrl");
@@ -79,7 +79,7 @@ public class PlayerActivity extends AppCompatActivity {
         });
 
         // Add seek bar handlers
-        mPlayer.addListener(this, com.kaltura.playkit.PlayerEvent.playheadUpdated, event -> {
+        mPlayer.addListener(this, PlayerEvent.playheadUpdated, event -> {
             if (mSeeking) {
                 long currentPosition = mPlayer.getCurrentPosition();
                 long bufferedPosition = mPlayer.getBufferedPosition();
@@ -89,6 +89,7 @@ public class PlayerActivity extends AppCompatActivity {
 
                 ((TextView) findViewById(R.id.currentTime)).setText(formatTime(currentPosition));
                 ((TextView) findViewById(R.id.endTime)).setText(formatTime(contentDuration));
+
 
                 seekBar.setMax((int) contentDuration);
                 seekBar.setProgress((int) currentPosition);

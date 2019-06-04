@@ -13,7 +13,7 @@ import java.util.List;
 public final class PlayKitInteractor implements PlayerInteractor {
     private Player mPlayer;
 
-    public PlayKitInteractor(Player player) {
+    PlayKitInteractor(Player player) {
         this.mPlayer = player;
     }
 

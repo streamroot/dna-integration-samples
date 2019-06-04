@@ -6,11 +6,11 @@ import com.kaltura.playkit.PlayerEvent;
 import io.streamroot.dna.core.PlaybackState;
 import io.streamroot.dna.core.QosModule;
 
-public final class PlayKitQoSModule extends QosModule {
-    private Long mLastAudioBitrate = null;
-    private Long mLastVideoBitrate = null;
+final class PlayKitQoSModule extends QosModule {
+    private Long mLastAudioBitrate = 0L;
+    private Long mLastVideoBitrate = 0L;
 
-    public PlayKitQoSModule(Player player) {
+    PlayKitQoSModule(Player player) {
         super();
 
         // Listen for track switches

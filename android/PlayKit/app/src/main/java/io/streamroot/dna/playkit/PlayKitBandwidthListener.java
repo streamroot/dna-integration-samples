@@ -6,7 +6,7 @@ import io.streamroot.dna.core.BandwidthListener;
 public final class PlayKitBandwidthListener implements BandwidthListener {
     private Player mPlayer;
 
-    public PlayKitBandwidthListener(Player player) {
+    PlayKitBandwidthListener(Player player) {
         this.mPlayer = player;
     }
 
