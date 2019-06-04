@@ -6,11 +6,11 @@ import android.widget.VideoView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import io.streamroot.dna.core.PlayerInteractor;
-import io.streamroot.dna.core.TimeRange;
-
 import java.util.Collections;
 import java.util.List;
+
+import io.streamroot.dna.core.PlayerInteractor;
+import io.streamroot.dna.core.TimeRange;
 
 final class VideoViewPlayerInteractor implements PlayerInteractor {
     private VideoView videoView;
@@ -42,5 +42,6 @@ final class VideoViewPlayerInteractor implements PlayerInteractor {
     }
 
     @Override
-    public void setBufferTarget(double v) { }
+    public void setBufferTarget(double v) {
+    }
 }
