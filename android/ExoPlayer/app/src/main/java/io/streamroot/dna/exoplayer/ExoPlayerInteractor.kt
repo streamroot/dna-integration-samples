@@ -10,10 +10,10 @@ import java.lang.reflect.Field
 import java.util.concurrent.TimeUnit
 
 class ExoPlayerInteractor(
-    private val player: ExoPlayer,
-    private val loadControl: LoadControl,
-    maxBufferFieldName: String = "maxBufferUs",
-    minBufferFieldName: String = "minBufferUs"
+        private val player: ExoPlayer,
+        private val loadControl: LoadControl,
+        maxBufferFieldName: String = "maxBufferUs",
+        minBufferFieldName: String = "minBufferUs"
 ) : PlayerInteractor {
     private val minBufferUs: Long
     private val maxBufferField: Field
@@ -26,7 +26,7 @@ class ExoPlayerInteractor(
         }.getOrNull() ?: throw IllegalArgumentException("Impossible to retrieve minBuffer field `$minBufferFieldName` value from LoadControl of type `${loadControl::class.java.simpleName}`")
 
         maxBufferField = runCatching { loadControl::class.java.getDeclaredField(maxBufferFieldName) }.getOrNull()
-            ?: throw IllegalArgumentException("Impossible to retrieve maxBuffer field `$maxBufferFieldName` from LoadControl of type `${loadControl::class.java.simpleName}`")
+                ?: throw IllegalArgumentException("Impossible to retrieve maxBuffer field `$maxBufferFieldName` from LoadControl of type `${loadControl::class.java.simpleName}`")
         maxBufferField.isAccessible = true
     }
 
@@ -34,7 +34,7 @@ class ExoPlayerInteractor(
 
     override fun bufferTarget(): Double {
         return runCatching { maxBufferField.getLong(loadControl).let { TimeUnit.MICROSECONDS.toSeconds(it) }.toDouble() }.getOrNull()
-            ?: 0.0
+                ?: 0.0
     }
 
     override fun setBufferTarget(target: Double) {
