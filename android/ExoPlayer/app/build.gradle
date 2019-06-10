@@ -8,7 +8,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "io.streamroot.dna.exoplayer"
+        applicationId "io.streamroot.dna.samples.exoplayer"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1

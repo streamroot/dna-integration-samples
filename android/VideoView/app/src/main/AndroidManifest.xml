@@ -23,7 +23,7 @@
 
         <meta-data
             android:name="io.streamroot.dna.StreamrootKey"
-            android:value="YOUR_STREAMROOT_KEY" />
+            android:value="demoswebsiteandpartners" />
     </application>
 
 </manifest>
