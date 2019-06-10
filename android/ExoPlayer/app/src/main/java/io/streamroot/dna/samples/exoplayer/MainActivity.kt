@@ -1,4 +1,4 @@
-package io.streamroot.dna.exoplayer
+package io.streamroot.dna.samples.exoplayer
 
 import android.content.Intent
 import android.os.Bundle

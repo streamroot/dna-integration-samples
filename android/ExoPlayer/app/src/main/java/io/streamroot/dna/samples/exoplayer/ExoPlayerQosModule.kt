@@ -1,4 +1,4 @@
-package io.streamroot.dna.exoplayer
+package io.streamroot.dna.samples.exoplayer
 
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayer
@@ -28,7 +28,10 @@ class ExoPlayerQosModule(
         playbackStateChange(PlaybackState.SEEKING)
     }
 
-    override fun onTracksChanged(trackGroups: TrackGroupArray?, trackSelections: TrackSelectionArray?) {
+    override fun onTracksChanged(
+        trackGroups: TrackGroupArray?,
+        trackSelections: TrackSelectionArray?
+    ) {
         trackSwitchOccurred()
     }
 

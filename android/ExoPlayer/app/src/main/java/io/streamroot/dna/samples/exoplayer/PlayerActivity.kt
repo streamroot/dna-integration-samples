@@ -1,4 +1,4 @@
-package io.streamroot.dna.exoplayer
+package io.streamroot.dna.samples.exoplayer
 
 import android.annotation.SuppressLint
 import android.net.Uri
@@ -31,6 +31,7 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import io.streamroot.dna.core.BandwidthListener
 import io.streamroot.dna.core.DnaClient
+import io.streamroot.dna.exoplayer.R
 import io.streamroot.dna.utils.stats.StatsView
 import io.streamroot.dna.utils.stats.StreamStatsManager
 
@@ -98,7 +99,8 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
                 trackSelector,
                 loadControl,
                 null, // DrmSessionManager
-                bandwidthMeter)
+                bandwidthMeter
+            )
             newPlayer.playWhenReady = true
             newPlayer.addListener(this)
 
@@ -120,12 +122,17 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     @SuppressLint("SwitchIntDef")
     private fun buildMediaSource(uri: Uri): MediaSource {
-        val defaultDataSourceFactory = DefaultHttpDataSourceFactory(Util.getUserAgent(applicationContext, "StreamrootQA"))
+        val defaultDataSourceFactory =
+            DefaultHttpDataSourceFactory(Util.getUserAgent(applicationContext, "StreamrootQA"))
 
         return when (Util.inferContentType(uri)) {
             C.TYPE_HLS -> HlsMediaSource.Factory(defaultDataSourceFactory)
                 .createMediaSource(uri)
-            C.TYPE_DASH -> DashMediaSource.Factory(DefaultDashChunkSource.Factory(defaultDataSourceFactory), defaultDataSourceFactory)
+            C.TYPE_DASH -> DashMediaSource.Factory(
+                DefaultDashChunkSource.Factory(
+                    defaultDataSourceFactory
+                ), defaultDataSourceFactory
+            )
                 .createMediaSource(uri)
             else -> {
                 throw IllegalStateException("Unsupported type for url: $uri")
@@ -133,7 +140,11 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         }
     }
 
-    private fun initStreamroot(newPlayer: SimpleExoPlayer, loadControl: LoadControl, bandwidthListener: BandwidthListener): DnaClient? {
+    private fun initStreamroot(
+        newPlayer: SimpleExoPlayer,
+        loadControl: LoadControl,
+        bandwidthListener: BandwidthListener
+    ): DnaClient? {
         var mSdk: DnaClient? = null
         try {
             mSdk = DnaClient.newBuilder()
@@ -179,9 +190,15 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
             if (cause is MediaCodecRenderer.DecoderInitializationException) {
                 // Special case for decoder initialization failures.
                 errorString = when {
-                    cause.decoderName != null -> getString(R.string.error_instantiating_decoder, cause.decoderName)
+                    cause.decoderName != null -> getString(
+                        R.string.error_instantiating_decoder,
+                        cause.decoderName
+                    )
                     cause.cause is MediaCodecUtil.DecoderQueryException -> getString(R.string.error_querying_decoders)
-                    cause.secureDecoderRequired -> getString(R.string.error_no_secure_decoder, cause.mimeType)
+                    cause.secureDecoderRequired -> getString(
+                        R.string.error_no_secure_decoder,
+                        cause.mimeType
+                    )
                     else -> getString(R.string.error_no_decoder, cause.mimeType)
                 }
             }
@@ -194,7 +211,12 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {}
     override fun onSeekProcessed() {}
-    override fun onTracksChanged(trackGroups: TrackGroupArray?, trackSelections: TrackSelectionArray?) {}
+    override fun onTracksChanged(
+        trackGroups: TrackGroupArray?,
+        trackSelections: TrackSelectionArray?
+    ) {
+    }
+
     override fun onLoadingChanged(isLoading: Boolean) {}
     override fun onPositionDiscontinuity(reason: Int) {}
     override fun onRepeatModeChanged(repeatMode: Int) {}

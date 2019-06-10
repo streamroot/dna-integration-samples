@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VideoView</string>
+    <string name="app_name">DNA VideoView Sample</string>
     <string name="title_activity_player">PlayerActivity</string>
     <string name="logo_cd">Logo</string>
     <string name="streamroot_key_text">Streamroot Key</string>

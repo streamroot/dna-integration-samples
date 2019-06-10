@@ -1,0 +1,13 @@
+// Sample apps
+def samples = [
+        'ExoPlayer',
+        'PlayKit',
+        'PlayKitOVPStarter',
+        'VideoView'
+]
+
+samples.each {
+    def entry = ':' + it
+    include entry
+    project(entry).projectDir = new File('../' + it + '/app')
+}

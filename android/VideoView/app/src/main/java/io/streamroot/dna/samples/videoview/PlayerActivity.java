@@ -1,16 +1,18 @@
-package io.streamroot.dna.videoview;
+package io.streamroot.dna.samples.videoview;
 
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Objects;
+
 import io.streamroot.dna.core.DnaClient;
 import io.streamroot.dna.utils.stats.StatsView;
 import io.streamroot.dna.utils.stats.StreamStatsManager;
-
-import java.util.Objects;
 
 public final class PlayerActivity extends AppCompatActivity {
     private VideoView videoView;

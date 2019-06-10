@@ -1,10 +1,11 @@
-package io.streamroot.dna.videoview;
+package io.streamroot.dna.samples.videoview;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public final class MainActivity extends AppCompatActivity {
     private AutoCompleteTextView streamEditText;

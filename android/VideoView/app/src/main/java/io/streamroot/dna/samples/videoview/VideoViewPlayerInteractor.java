@@ -1,4 +1,4 @@
-package io.streamroot.dna.videoview;
+package io.streamroot.dna.samples.videoview;
 
 import android.os.Looper;
 import android.widget.VideoView;
