@@ -31,7 +31,6 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import io.streamroot.dna.core.BandwidthListener
 import io.streamroot.dna.core.DnaClient
-import io.streamroot.dna.exoplayer.R
 import io.streamroot.dna.utils.stats.StatsView
 import io.streamroot.dna.utils.stats.StreamStatsManager
 

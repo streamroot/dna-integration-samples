@@ -42,8 +42,8 @@ class ExoPlayerInteractor(
             ?: 0.0
     }
 
-    override fun setBufferTarget(target: Double) {
-        val maxBufferUs = TimeUnit.SECONDS.toMicros(target.toLong())
+    override fun setBufferTarget(bufferTarget: Double) {
+        val maxBufferUs = TimeUnit.SECONDS.toMicros(bufferTarget.toLong())
         if (maxBufferUs > minBufferUs) runCatching {
             maxBufferField.setLong(
                 loadControl,
