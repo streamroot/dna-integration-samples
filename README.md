@@ -64,3 +64,7 @@ If you don't have an account, [request a trial](https://streamroot.io/?request_t
 - [Mpx](https://github.com/streamroot/dna-integration-samples/tree/master/web/mpx/mpx.html)
 - [Akamai Adaptive Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/akamai-adaptive-media-player/akamai.html)
 - [Kaltura](https://github.com/streamroot/dna-integration-samples/tree/master/web/kaltura/kaltura.html)
+
+## License
+
+The Streamroot Web client SDKs and the Native Plugin may include open source software or third party software. Any such software is made available to you under the terms of the applicable licenses. Please review information [Open-Source & Third-Party Software Licenses](https://streamroot.io/wp-content/uploads/2019/06/Open-Source-and-Third-Party-Software-v1-10Jun2019.pdf) for the applicable notices and license terms related to the Streamroot.
