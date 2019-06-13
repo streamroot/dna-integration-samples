@@ -90,5 +90,4 @@ Carthage
 *.dSYM
 
 ##  Pods
-ios/AVPlayer/Pods/
-ios/AVPlayer/DnaSample/Assets.xcassets/
+Pods/

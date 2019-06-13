@@ -1,6 +1,0 @@
-framework module Pods_PlayKit {
-  umbrella header "Pods-PlayKit-umbrella.h"
-
-  export *
-  module * { export * }
-}
