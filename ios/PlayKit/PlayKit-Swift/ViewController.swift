@@ -24,7 +24,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerContainer: PlayerView!
     @IBOutlet weak var playheadSlider: UISlider!
     
-    var dnaClient: DNAClient?
+    private var dnaClient: DNAClient?
+    private var playKitInteractor: PlayKitInteractor?
+    private var playKitQoSModule: PlayKitQoSModule?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,9 +62,13 @@ class ViewController: UIViewController {
         let entryId = "sintel"
         
         do {
+            playKitInteractor = PlayKitInteractor(player!)
+            playKitQoSModule = PlayKitQoSModule(player!)
+
             dnaClient = try DNAClient.builder()
-                .dnaClientDelegate(self)
-//                .latency(30)
+                .dnaClientDelegate(playKitInteractor!)
+                .qosModule(playKitQoSModule!.dnaQoSModule)
+                .contentId(entryId)
                 .start(URL(string: contentURL)!)
 
             dnaClient?.displayStats(onView: self.playerContainer)

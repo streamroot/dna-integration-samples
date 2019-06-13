@@ -13,7 +13,8 @@
 		204A44291E794C9C00F90A2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 204A44271E794C9C00F90A2B /* Main.storyboard */; };
 		204A442B1E794C9C00F90A2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 204A442A1E794C9C00F90A2B /* Assets.xcassets */; };
 		204A442E1E794C9C00F90A2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 204A442C1E794C9C00F90A2B /* LaunchScreen.storyboard */; };
-		31C9D7B622B0CBB50002E5AE /* ViewController+DNAClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C9D7B522B0CBB50002E5AE /* ViewController+DNAClientDelegate.swift */; };
+		31B8AC6622B28AAF005AB2BF /* PlayKitQoSModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B8AC6422B28AAF005AB2BF /* PlayKitQoSModule.swift */; };
+		31B8AC6722B28AAF005AB2BF /* PlayKitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B8AC6522B28AAF005AB2BF /* PlayKitInteractor.swift */; };
 		6C90E042EFFF22F6E0CD8654 /* Pods_PlayKit_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD6DD32F409C5B4B206081C /* Pods_PlayKit_Swift.framework */; };
 		967CBDB69CA1B09A2C65F269 /* Pods_PlayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9675C1AF3C16C4DB6F8B8C /* Pods_PlayKit.framework */; };
 		BF7B40751E9E4B820011CA01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B40741E9E4B820011CA01 /* AppDelegate.swift */; };
@@ -36,7 +37,8 @@
 		204A442D1E794C9C00F90A2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		204A442F1E794C9C00F90A2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2254FC525B389043A823ABBC /* Pods-SharedPods-BasicSample-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharedPods-BasicSample-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-SharedPods-BasicSample-Swift/Pods-SharedPods-BasicSample-Swift.release.xcconfig"; sourceTree = "<group>"; };
-		31C9D7B522B0CBB50002E5AE /* ViewController+DNAClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+DNAClientDelegate.swift"; sourceTree = "<group>"; };
+		31B8AC6422B28AAF005AB2BF /* PlayKitQoSModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayKitQoSModule.swift; sourceTree = "<group>"; };
+		31B8AC6522B28AAF005AB2BF /* PlayKitInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayKitInteractor.swift; sourceTree = "<group>"; };
 		942F68C50350ADF51A9D4522 /* Pods-SharedPods-BasicSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharedPods-BasicSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SharedPods-BasicSample/Pods-SharedPods-BasicSample.release.xcconfig"; sourceTree = "<group>"; };
 		98F17863CD3852FD9AF84E26 /* Pods-PlayKit-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayKit-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlayKit-Swift/Pods-PlayKit-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		ACDFA51C0D15656F38F42B1C /* Pods-SharedPods-BasicSample-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharedPods-BasicSample-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SharedPods-BasicSample-Swift/Pods-SharedPods-BasicSample-Swift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,12 +148,13 @@
 			isa = PBXGroup;
 			children = (
 				BF7B40741E9E4B820011CA01 /* AppDelegate.swift */,
+				31B8AC6522B28AAF005AB2BF /* PlayKitInteractor.swift */,
+				31B8AC6422B28AAF005AB2BF /* PlayKitQoSModule.swift */,
 				BF7B40761E9E4B820011CA01 /* ViewController.swift */,
 				BF7B40781E9E4B820011CA01 /* Main.storyboard */,
 				BF7B407B1E9E4B820011CA01 /* Assets.xcassets */,
 				BF7B407D1E9E4B820011CA01 /* LaunchScreen.storyboard */,
 				BF7B40801E9E4B820011CA01 /* Info.plist */,
-				31C9D7B522B0CBB50002E5AE /* ViewController+DNAClientDelegate.swift */,
 			);
 			path = "PlayKit-Swift";
 			sourceTree = "<group>";
@@ -392,8 +395,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B8AC6622B28AAF005AB2BF /* PlayKitQoSModule.swift in Sources */,
 				BF7B40771E9E4B820011CA01 /* ViewController.swift in Sources */,
-				31C9D7B622B0CBB50002E5AE /* ViewController+DNAClientDelegate.swift in Sources */,
+				31B8AC6722B28AAF005AB2BF /* PlayKitInteractor.swift in Sources */,
 				BF7B40751E9E4B820011CA01 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -82,7 +82,7 @@ class ViewController: UIViewController {
         super.viewDidDisappear(animated)
         // Remove observers
         removePlayerEventObservations()
-        dnaClient?.stop()
+            dnaClient?.stop()
     }
     
     override func didReceiveMemoryWarning() {
@@ -204,13 +204,13 @@ class ViewController: UIViewController {
         mediaProvider.entryId = entryId
         mediaProvider.loadMedia { mediaEntry, error in
             if let me = mediaEntry, error == nil {
-                
                 for source in me.sources! {
                     if source.mediaFormat.rawValue == MediaFormat.hls.rawValue {
                         source.contentUrl = self.loadStreamroot(source: source)
                         break
                     }
                 }
+
                 // create media config
                 let mediaConfig = MediaConfig(mediaEntry: me, startTime: 0.0)
                 
