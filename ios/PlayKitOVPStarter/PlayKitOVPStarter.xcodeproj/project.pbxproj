@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31B8AC5D22B23EC7005AB2BF /* ViewController+DNAClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B8AC5C22B23EC7005AB2BF /* ViewController+DNAClientDelegate.swift */; };
+		31B8AC5F22B25795005AB2BF /* PlayKitQoSModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B8AC5E22B25795005AB2BF /* PlayKitQoSModule.swift */; };
+		31B8AC6322B272FC005AB2BF /* PlayKitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B8AC6222B272FC005AB2BF /* PlayKitInteractor.swift */; };
 		BFD20A601EA891970018FD8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD20A5F1EA891970018FD8A /* AppDelegate.swift */; };
 		BFD20A621EA891970018FD8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD20A611EA891970018FD8A /* ViewController.swift */; };
 		BFD20A651EA891970018FD8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD20A631EA891970018FD8A /* Main.storyboard */; };
@@ -18,7 +19,8 @@
 
 /* Begin PBXFileReference section */
 		1091BEF73F188DA4D5B2A29E /* Pods-SharedPods-OVPStarter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharedPods-OVPStarter.release.xcconfig"; path = "Pods/Target Support Files/Pods-SharedPods-OVPStarter/Pods-SharedPods-OVPStarter.release.xcconfig"; sourceTree = "<group>"; };
-		31B8AC5C22B23EC7005AB2BF /* ViewController+DNAClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+DNAClientDelegate.swift"; sourceTree = "<group>"; };
+		31B8AC5E22B25795005AB2BF /* PlayKitQoSModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayKitQoSModule.swift; sourceTree = "<group>"; };
+		31B8AC6222B272FC005AB2BF /* PlayKitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayKitInteractor.swift; sourceTree = "<group>"; };
 		3E74D685EFE5C6B4CD019B28 /* Pods-PlayKitOVPStarter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayKitOVPStarter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlayKitOVPStarter/Pods-PlayKitOVPStarter.debug.xcconfig"; sourceTree = "<group>"; };
 		934EBE9F031BB34D72594022 /* Pods_PlayKitOVPStarter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayKitOVPStarter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD20A5D1EA891970018FD8A /* PlayKitOVPStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayKitOVPStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,7 +92,8 @@
 				BFD20A661EA891970018FD8A /* Assets.xcassets */,
 				BFD20A681EA891970018FD8A /* LaunchScreen.storyboard */,
 				BFD20A6B1EA891970018FD8A /* Info.plist */,
-				31B8AC5C22B23EC7005AB2BF /* ViewController+DNAClientDelegate.swift */,
+				31B8AC5E22B25795005AB2BF /* PlayKitQoSModule.swift */,
+				31B8AC6222B272FC005AB2BF /* PlayKitInteractor.swift */,
 			);
 			path = PlayKitOVPStarter;
 			sourceTree = "<group>";
@@ -236,8 +239,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B8AC5F22B25795005AB2BF /* PlayKitQoSModule.swift in Sources */,
 				BFD20A621EA891970018FD8A /* ViewController.swift in Sources */,
-				31B8AC5D22B23EC7005AB2BF /* ViewController+DNAClientDelegate.swift in Sources */,
+				31B8AC6322B272FC005AB2BF /* PlayKitInteractor.swift in Sources */,
 				BFD20A601EA891970018FD8A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

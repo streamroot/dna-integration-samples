@@ -1,30 +1,32 @@
-import UIKit
 import PlayKit
-import PlayKitUtils
 import PlayKitKava
 import PlayKitProviders
+import PlayKitUtils
 import StreamrootSDK
+import UIKit
 
 // VOD
-fileprivate let SERVER_BASE_URL = "https://cdnapisec.kaltura.com"
-fileprivate let PARTNER_ID = 1424501
-fileprivate let ENTRY_ID = "1_djnefl4e"
+private let SERVER_BASE_URL = "https://cdnapisec.kaltura.com"
+private let PARTNER_ID = 1424501
+private let ENTRY_ID = "1_djnefl4e"
 
 // Live DVR
-//fileprivate let SERVER_BASE_URL = "https://cdnapisec.kaltura.com"
-//fileprivate let PARTNER_ID = 1740481
-//fileprivate let ENTRY_ID = "1_fdv46dba"
+// fileprivate let SERVER_BASE_URL = "https://cdnapisec.kaltura.com"
+// fileprivate let PARTNER_ID = 1740481
+// fileprivate let ENTRY_ID = "1_fdv46dba"
 
 // Live
-//fileprivate let SERVER_BASE_URL = "http://qa-apache-php7.dev.kaltura.com/"
-//fileprivate let PARTNER_ID = 1091
-//fileprivate let ENTRY_ID = "0_f8re4ujs"
+// fileprivate let SERVER_BASE_URL = "http://qa-apache-php7.dev.kaltura.com/"
+// fileprivate let PARTNER_ID = 1091
+// fileprivate let ENTRY_ID = "0_f8re4ujs"
 
-// Streamroot
-fileprivate var dnaClient: DNAClient?
 
 class ViewController: UIViewController {
-
+    // Streamroot
+    private var dnaClient: DNAClient?
+    private var playKitInteractor: PlayKitInteractor?
+    private var playKitQoSModule: PlayKitQoSModule?
+    
     enum State {
         case idle, playing, paused, ended
     }
@@ -50,54 +52,55 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var playerContainer: PlayerView!
-    @IBOutlet weak var playheadSlider: UISlider!
-    @IBOutlet weak var positionLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var playPauseButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var playerContainer: PlayerView!
+    @IBOutlet var playheadSlider: UISlider!
+    @IBOutlet var positionLabel: UILabel!
+    @IBOutlet var durationLabel: UILabel!
+    @IBOutlet var playPauseButton: UIButton!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.state = .idle
-        self.playPauseButton.isEnabled = false
-        self.playheadSlider.isEnabled = false
+        state = .idle
+        playPauseButton.isEnabled = false
+        playheadSlider.isEnabled = false
         
         // 2. Load the player
-        self.player = PlayKitManager.shared.loadPlayer(pluginConfig: createPluginConfig())
+        player = PlayKitManager.shared.loadPlayer(pluginConfig: createPluginConfig())
         // 3. Register events if have ones.
         // Event registeration must be after loading the player successfully to make sure events are added,
         // and before prepare to make sure no events are missed (when calling prepare player starts buffering and sending events)
         
-        self.addPlayerEventObservations()
+        addPlayerEventObservations()
         
         // 4. Prepare the player (can be called at a later stage, preparing starts buffering the video)
-        self.setupPlayer()
+        setupPlayer()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         // Remove observers
-        self.removePlayerEventObservations()
+        removePlayerEventObservations()
         dnaClient?.stop()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override var preferredStatusBarStyle : UIStatusBarStyle {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
     
-/************************/
-// MARK: - Player Setup
-/***********************/
+    /************************/
+    
+    // MARK: - Player Setup
+    
+    /***********************/
     func setupPlayer() {
-        
-        self.player?.view = self.playerContainer
+        player?.view = playerContainer
         
         entryId = ENTRY_ID
         loadMedia()
@@ -105,7 +108,7 @@ class ViewController: UIViewController {
     
     func addPlayerEventObservations() {
         // Observe duration and currentTime to update UI
-        self.player?.addObserver(self, events: [PlayerEvent.durationChanged, PlayerEvent.playheadUpdate]) { (event) in
+        player?.addObserver(self, events: [PlayerEvent.durationChanged, PlayerEvent.playheadUpdate]) { event in
             switch event {
             case is PlayerEvent.DurationChanged:
                 if let playerEvent = event as? PlayerEvent, let d = playerEvent.duration as? TimeInterval {
@@ -122,13 +125,13 @@ class ViewController: UIViewController {
         }
         
         // Observe play/pause to update UI
-        self.player?.addObserver(self, events: [PlayerEvent.canPlay,
-                                                PlayerEvent.play,
-                                                PlayerEvent.playing,
-                                                PlayerEvent.ended,
-                                                PlayerEvent.pause,
-                                                PlayerEvent.seeking,
-                                                PlayerEvent.seeked]) { (event) in
+        player?.addObserver(self, events: [PlayerEvent.canPlay,
+                                           PlayerEvent.play,
+                                           PlayerEvent.playing,
+                                           PlayerEvent.ended,
+                                           PlayerEvent.pause,
+                                           PlayerEvent.seeking,
+                                           PlayerEvent.seeked]) { event in
             switch event {
             case is PlayerEvent.CanPlay:
                 self.activityIndicator.stopAnimating()
@@ -150,25 +153,25 @@ class ViewController: UIViewController {
             }
         }
         
-        self.player.addObserver(self, events: [PlayerEvent.error]) { (event) in
+        player.addObserver(self, events: [PlayerEvent.error]) { event in
             self.activityIndicator.stopAnimating()
-            let alertController = UIAlertController.init(title: "An error has occurred", message: event.error?.description, preferredStyle: UIAlertController.Style.alert)
+            let alertController = UIAlertController(title: "An error has occurred", message: event.error?.description, preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
             self.show(alertController, sender: self)
         }
     }
     
     func removePlayerEventObservations() {
-        self.player?.removeObserver(self, events: [PlayerEvent.durationChanged,
-                                                   PlayerEvent.playheadUpdate,
-                                                   PlayerEvent.canPlay,
-                                                   PlayerEvent.play,
-                                                   PlayerEvent.playing,
-                                                   PlayerEvent.ended,
-                                                   PlayerEvent.pause,
-                                                   PlayerEvent.seeking,
-                                                   PlayerEvent.seeked,
-                                                   PlayerEvent.error])
+        player?.removeObserver(self, events: [PlayerEvent.durationChanged,
+                                              PlayerEvent.playheadUpdate,
+                                              PlayerEvent.canPlay,
+                                              PlayerEvent.play,
+                                              PlayerEvent.playing,
+                                              PlayerEvent.ended,
+                                              PlayerEvent.pause,
+                                              PlayerEvent.seeking,
+                                              PlayerEvent.seeked,
+                                              PlayerEvent.error])
     }
     
     func format(_ time: TimeInterval) -> String {
@@ -194,16 +197,17 @@ class ViewController: UIViewController {
         return KavaPluginConfig(partnerId: PARTNER_ID, entryId: entryId, ks: ks, playbackContext: nil, referrer: nil, applicationVersion: nil, playlistId: nil, customVar1: nil, customVar2: nil, customVar3: nil)
     }
     
-    // Load 
+    // Load
     func loadMedia() {
         let sessionProvider = SimpleSessionProvider(serverURL: SERVER_BASE_URL, partnerId: Int64(PARTNER_ID), ks: ks)
         let mediaProvider: OVPMediaProvider = OVPMediaProvider(sessionProvider)
         mediaProvider.entryId = entryId
-        mediaProvider.loadMedia { (mediaEntry, error) in
+        mediaProvider.loadMedia { mediaEntry, error in
             if let me = mediaEntry, error == nil {
+                
                 for source in me.sources! {
-                    if (source.mediaFormat.rawValue == MediaFormat.hls.rawValue) {
-                        source.contentUrl = self.loadStreamroot(source)
+                    if source.mediaFormat.rawValue == MediaFormat.hls.rawValue {
+                        source.contentUrl = self.loadStreamroot(source: source)
                         break
                     }
                 }
@@ -214,7 +218,7 @@ class ViewController: UIViewController {
                 self.player.updatePluginConfig(pluginName: KavaPlugin.pluginName, config: self.createKavaConfig())
                 
                 // prepare the player
-                self.player.prepare(mediaConfig)      
+                self.player.prepare(mediaConfig)
                 
                 self.state = .paused
                 self.playPauseButton.isEnabled = true
@@ -224,40 +228,45 @@ class ViewController: UIViewController {
                 let alertController = UIAlertController(title: "An error has occurred",
                                                         message: "The media could not be loaded",
                                                         preferredStyle: UIAlertController.Style.alert)
-                alertController.addAction(UIAlertAction(title: "try again", style: UIAlertAction.Style.cancel, handler: { (action) in
+                alertController.addAction(UIAlertAction(title: "try again", style: UIAlertAction.Style.cancel, handler: { _ in
                     self.loadMedia()
                 }))
-
+                
                 self.show(alertController, sender: self)
             }
         }
     }
     
-    fileprivate func loadStreamroot(_ source: PKMediaSource) -> URL {
+    fileprivate func loadStreamroot(source: PKMediaSource) -> URL {
         do {
+            playKitInteractor = PlayKitInteractor(player)
+            playKitQoSModule = PlayKitQoSModule(player)
+
             dnaClient = try DNAClient.builder()
-                .dnaClientDelegate(self)
+                .dnaClientDelegate(playKitInteractor!)
+                .qosModule(playKitQoSModule!.dnaQoSModule)
                 .contentId(source.id)
-                .start(source.contentUrl)
+                .start(source.contentUrl!)
             
             dnaClient?.displayStats(onView: playerContainer)
-            
-        } catch let error {
+        } catch {
             print("\(error)")
-            return contentUrl
+            return source.contentUrl!
         }
         
         guard let localPath = dnaClient?.manifestLocalURLPath,
-            let localUrl = URL(string: localPath)  else {
-            return contentUrl
+            let localUrl = URL(string: localPath) else {
+            return source.contentUrl!
         }
         
         return localUrl
     }
     
-/************************/
-// MARK: - Actions
-/***********************/
+    /************************/
+    
+    // MARK: - Actions
+    
+    /***********************/
     
     @IBAction func playTouched(_ sender: Any) {
         guard let player = self.player else {
@@ -286,7 +295,7 @@ class ViewController: UIViewController {
             return
         }
         
-        if state == .ended && playheadSlider.value < playheadSlider.maximumValue {
+        if state == .ended, playheadSlider.value < playheadSlider.maximumValue {
             state = .paused
         }
         player.currentTime = player.duration * Double(playheadSlider.value)
