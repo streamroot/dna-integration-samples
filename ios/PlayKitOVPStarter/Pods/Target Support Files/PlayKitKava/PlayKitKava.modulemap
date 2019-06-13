@@ -1,0 +1,6 @@
+framework module PlayKitKava {
+  umbrella header "PlayKitKava-umbrella.h"
+
+  export *
+  module * { export * }
+}
