@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-public final class PlayKitInteractor implements PlayerInteractor {
+final class PlayKitInteractor implements PlayerInteractor {
     private Player mPlayer;
 
     PlayKitInteractor(Player player) {

@@ -13,7 +13,7 @@ import java.util.List;
 import io.streamroot.dna.core.PlayerInteractor;
 import io.streamroot.dna.core.TimeRange;
 
-public final class PlayKitInteractor implements PlayerInteractor {
+final class PlayKitInteractor implements PlayerInteractor {
     private Player mPlayer;
 
     PlayKitInteractor(Player player) {

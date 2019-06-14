@@ -30,8 +30,8 @@ dependencies {
     // Streamroot's up-to-date fork of Kaltura Playkit
     implementation 'com.kaltura.playkit:dna-playkit:3.9.3'
 
-    implementation 'io.streamroot.dna:dna-core:3.11.0'
-    implementation 'io.streamroot.dna:dna-utils:3.11.0'
+    implementation 'io.streamroot.dna:dna-core:3.11.1'
+    implementation 'io.streamroot.dna:dna-utils:3.11.1'
 
     implementation 'com.android.support:design:28.0.0', {
         exclude group: 'com.android.support', module: 'support-v4'
