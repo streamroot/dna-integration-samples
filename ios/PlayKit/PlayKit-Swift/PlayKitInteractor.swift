@@ -25,9 +25,23 @@ class PlayKitInteractor : DNAClientDelegate {
     func playbackTime() -> Double {
         return player.currentTime
     }
-    
+
     func loadedTimeRanges() -> [NSValue] {
         return (player.loadedTimeRanges ?? [])
             .map { NSValue(timeRange: TimeRange(start: $0.start, duration: $0.duration)) }
+    }
+
+    func setBufferTarget(_ target: Double) {
+        if #available(iOS 10.0, tvOS 10.0, *) {
+            player.settings.preferredForwardBufferDuration = target
+        }
+    }
+
+    func bufferTarget() -> Double {
+        if #available(iOS 10.0, tvOS 10.0, *) {
+            return player.settings.preferredForwardBufferDuration
+        }
+
+        return 0.0
     }
 }
