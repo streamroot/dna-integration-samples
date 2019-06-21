@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     private var dnaClient: DNAClient?
     private var playKitInteractor: PlayKitInteractor?
-    private var playKitQoSModule: PlayKitQoSModule?
+    private var playKitQoSModule: PlayKitQosModuleWrapper?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,14 +63,13 @@ class ViewController: UIViewController {
         
         do {
             playKitInteractor = PlayKitInteractor(player!)
-            playKitQoSModule = PlayKitQoSModule(player!)
+            playKitQoSModule = PlayKitQosModuleWrapper(player!)
 
             dnaClient = try DNAClient.builder()
                 .dnaClientDelegate(playKitInteractor!)
                 .qosModule(playKitQoSModule!.dnaQoSModule)
                 .contentId(entryId)
                 .start(URL(string: contentURL)!)
-
             dnaClient?.displayStats(onView: self.playerContainer)
         } catch let error {
             print("\(error)")
