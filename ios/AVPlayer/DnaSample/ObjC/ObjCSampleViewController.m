@@ -26,7 +26,7 @@
     NSError *error;
    // the streamroot key can be set in the config or in the mainPlist file
   self.dnaClient = [[[[DNAClient.builder dnaClientDelegate: self] latency: 30]
-                    streamrootKey: @"<#your-streamrootkey#>"]
+                    streamrootKey: @"demoswebsiteandpartners"]
                     start:manifestUrl error: &error];
   if (error || !self.dnaClient) {
     NSLog(@"error: %@", error);
