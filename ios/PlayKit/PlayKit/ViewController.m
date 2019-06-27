@@ -7,7 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "PlayKit-Swift.h"
+#import <PlayKit/PlayKit-Swift.h>
+#import <StreamrootSDK/StreamrootSDK-Swift.h>
+#import "PlayKitInteractor.h"
+#import "PlayKitQosModuleWrapper.h"
 
 /*
  This sample will show you how to create a player with basic functionality.
@@ -18,11 +21,21 @@
  */
 @interface ViewController ()
 
+/*********************************/
+#pragma mark - Attributes
+/*********************************/
 @property (strong, nonatomic) id<Player> player;
 @property (strong, nonatomic) NSTimer *playheadTimer;
+@property (strong, nonatomic) id<DNAClientDelegate> playerInteractor;
+@property (strong, nonatomic) PlayKitQosModuleWrapper *playKitQoSModule;
+@property (nonatomic, strong) DNAClient *dnaClient;
+
+/*********************************/
+#pragma mark - Outlets
+/*********************************/
 @property (weak, nonatomic) IBOutlet PlayerView *playerContainer;
 @property (weak, nonatomic) IBOutlet UISlider *playheadSlider;
-    
+
 @end
 
 @implementation ViewController
@@ -47,6 +60,11 @@
     [self preparePlayer];
 }
 
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.dnaClient stop];
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
@@ -54,23 +72,37 @@
 /*********************************/
 #pragma mark - Player Setup
 /*********************************/
-    
+
 - (void)preparePlayer {
     self.player.view = self.playerContainer;
     NSURL *contentURL = [[NSURL alloc] initWithString:@"https://cdnapisec.kaltura.com/p/2215841/playManifest/entryId/1_w9zx2eti/format/applehttp/protocol/https/a.m3u8"];
     
     // create media source and initialize a media entry with that source
     NSString *entryId = @"sintel";
-    PKMediaSource* source = [[PKMediaSource alloc] init:entryId contentUrl:contentURL mimeType:nil drmData:nil mediaFormat:MediaFormatHls];
-    NSArray<PKMediaSource*>* sources = [[NSArray alloc] initWithObjects:source, nil];
+    self.playerInteractor = [PlayKitInteractor playKitInteractor: self.player];
+    NSError *error;
+    self.dnaClient = [[[[DNAClient.builder dnaClientDelegate: self.playerInteractor]
+                        qosModule: self.playKitQoSModule.dnaQoSModule]
+                       contentId:entryId error: &error]
+                      start:contentURL error: &error];
+    if (error || !self.dnaClient) {
+        NSLog(@"error: %@", error);
+    }
+    
+    NSURL *localContentUrl = [[NSURL alloc] initWithString: self.dnaClient.manifestLocalURLPath];
+    
+    PKMediaSource* source = [[PKMediaSource alloc] init:entryId contentUrl: localContentUrl mimeType: nil drmData: nil mediaFormat: MediaFormatHls];
+    NSArray<PKMediaSource*>* sources = [[NSArray alloc] initWithObjects: source, nil];
     // setup media entry
-    PKMediaEntry *mediaEntry = [[PKMediaEntry alloc] init:entryId sources:sources duration:-1];
+    PKMediaEntry *mediaEntry = [[PKMediaEntry alloc] init:entryId sources: sources duration:-1];
     
     // create media config
-    MediaConfig *mediaConfig = [[MediaConfig alloc] initWithMediaEntry:mediaEntry startTime:0.0];
+    MediaConfig *mediaConfig = [[MediaConfig alloc] initWithMediaEntry: mediaEntry startTime:0.0];
     
     // prepare the player
-    [self.player prepare:mediaConfig];
+    [self.player prepare: mediaConfig];
+    
+    [self.dnaClient displayStatsOnView: self.playerContainer];
 }
 
 /*********************************/

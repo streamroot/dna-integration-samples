@@ -14,13 +14,15 @@
 		204A44291E794C9C00F90A2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 204A44271E794C9C00F90A2B /* Main.storyboard */; };
 		204A442B1E794C9C00F90A2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 204A442A1E794C9C00F90A2B /* Assets.xcassets */; };
 		204A442E1E794C9C00F90A2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 204A442C1E794C9C00F90A2B /* LaunchScreen.storyboard */; };
-		31B8AC6622B28AAF005AB2BF /* PlayKitQoSModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B8AC6422B28AAF005AB2BF /* PlayKitQoSModule.swift */; };
+		31B8AC6622B28AAF005AB2BF /* PlayKitQosModuleWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B8AC6422B28AAF005AB2BF /* PlayKitQosModuleWrapper.swift */; };
 		31B8AC6722B28AAF005AB2BF /* PlayKitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B8AC6522B28AAF005AB2BF /* PlayKitInteractor.swift */; };
 		BF7B40751E9E4B820011CA01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B40741E9E4B820011CA01 /* AppDelegate.swift */; };
 		BF7B40771E9E4B820011CA01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B40761E9E4B820011CA01 /* ViewController.swift */; };
 		BF7B407A1E9E4B820011CA01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7B40781E9E4B820011CA01 /* Main.storyboard */; };
 		BF7B407C1E9E4B820011CA01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7B407B1E9E4B820011CA01 /* Assets.xcassets */; };
 		BF7B407F1E9E4B820011CA01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7B407D1E9E4B820011CA01 /* LaunchScreen.storyboard */; };
+		D6C35D3E22BD0CF2002B4BCD /* PlayKitInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C35D3D22BD0CF2002B4BCD /* PlayKitInteractor.m */; };
+		D6C35D4122BD12C2002B4BCD /* PlayKitQosModuleWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C35D4022BD12C2002B4BCD /* PlayKitQosModuleWrapper.m */; };
 		D771F57EA02F38F88183B8E8 /* Pods_PlayKit_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDEC3324576B8DF9607A1BD /* Pods_PlayKit_Swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +39,7 @@
 		204A442A1E794C9C00F90A2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		204A442D1E794C9C00F90A2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		204A442F1E794C9C00F90A2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		31B8AC6422B28AAF005AB2BF /* PlayKitQoSModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayKitQoSModule.swift; sourceTree = "<group>"; };
+		31B8AC6422B28AAF005AB2BF /* PlayKitQosModuleWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayKitQosModuleWrapper.swift; sourceTree = "<group>"; };
 		31B8AC6522B28AAF005AB2BF /* PlayKitInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayKitInteractor.swift; sourceTree = "<group>"; };
 		3BDEC3324576B8DF9607A1BD /* Pods_PlayKit_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayKit_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67D0DEC7A3DD4FAF08E5BD7F /* Pods-PlayKit-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayKit-Swift.release.xcconfig"; path = "Target Support Files/Pods-PlayKit-Swift/Pods-PlayKit-Swift.release.xcconfig"; sourceTree = "<group>"; };
@@ -50,6 +52,10 @@
 		BF7B40801E9E4B820011CA01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7747C79E74A659BFE130DB9 /* Pods-PlayKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayKit.debug.xcconfig"; path = "Target Support Files/Pods-PlayKit/Pods-PlayKit.debug.xcconfig"; sourceTree = "<group>"; };
 		CB7F9D56982524F6A3C2B91F /* Pods-PlayKit-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayKit-Swift.debug.xcconfig"; path = "Target Support Files/Pods-PlayKit-Swift/Pods-PlayKit-Swift.debug.xcconfig"; sourceTree = "<group>"; };
+		D6C35D3C22BD0CF2002B4BCD /* PlayKitInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayKitInteractor.h; sourceTree = "<group>"; };
+		D6C35D3D22BD0CF2002B4BCD /* PlayKitInteractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayKitInteractor.m; sourceTree = "<group>"; };
+		D6C35D3F22BD12C2002B4BCD /* PlayKitQosModuleWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayKitQosModuleWrapper.h; sourceTree = "<group>"; };
+		D6C35D4022BD12C2002B4BCD /* PlayKitQosModuleWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayKitQosModuleWrapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,13 +103,17 @@
 			children = (
 				204A44211E794C9C00F90A2B /* AppDelegate.h */,
 				204A44221E794C9C00F90A2B /* AppDelegate.m */,
+				204A442A1E794C9C00F90A2B /* Assets.xcassets */,
+				204A442F1E794C9C00F90A2B /* Info.plist */,
+				204A442C1E794C9C00F90A2B /* LaunchScreen.storyboard */,
+				204A44271E794C9C00F90A2B /* Main.storyboard */,
+				D6C35D3C22BD0CF2002B4BCD /* PlayKitInteractor.h */,
+				D6C35D3D22BD0CF2002B4BCD /* PlayKitInteractor.m */,
+				D6C35D3F22BD12C2002B4BCD /* PlayKitQosModuleWrapper.h */,
+				D6C35D4022BD12C2002B4BCD /* PlayKitQosModuleWrapper.m */,
+				204A441E1E794C9C00F90A2B /* Supporting Files */,
 				204A44241E794C9C00F90A2B /* ViewController.h */,
 				204A44251E794C9C00F90A2B /* ViewController.m */,
-				204A44271E794C9C00F90A2B /* Main.storyboard */,
-				204A442A1E794C9C00F90A2B /* Assets.xcassets */,
-				204A442C1E794C9C00F90A2B /* LaunchScreen.storyboard */,
-				204A442F1E794C9C00F90A2B /* Info.plist */,
-				204A441E1E794C9C00F90A2B /* Supporting Files */,
 			);
 			path = PlayKit;
 			sourceTree = "<group>";
@@ -124,7 +134,6 @@
 				CB7F9D56982524F6A3C2B91F /* Pods-PlayKit-Swift.debug.xcconfig */,
 				67D0DEC7A3DD4FAF08E5BD7F /* Pods-PlayKit-Swift.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -142,7 +151,7 @@
 			children = (
 				BF7B40741E9E4B820011CA01 /* AppDelegate.swift */,
 				31B8AC6522B28AAF005AB2BF /* PlayKitInteractor.swift */,
-				31B8AC6422B28AAF005AB2BF /* PlayKitQoSModule.swift */,
+				31B8AC6422B28AAF005AB2BF /* PlayKitQosModuleWrapper.swift */,
 				BF7B40761E9E4B820011CA01 /* ViewController.swift */,
 				BF7B40781E9E4B820011CA01 /* Main.storyboard */,
 				BF7B407B1E9E4B820011CA01 /* Assets.xcassets */,
@@ -390,9 +399,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6C35D4122BD12C2002B4BCD /* PlayKitQosModuleWrapper.m in Sources */,
 				204A44261E794C9C00F90A2B /* ViewController.m in Sources */,
 				204A44231E794C9C00F90A2B /* AppDelegate.m in Sources */,
 				204A44201E794C9C00F90A2B /* main.m in Sources */,
+				D6C35D3E22BD0CF2002B4BCD /* PlayKitInteractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31B8AC6622B28AAF005AB2BF /* PlayKitQoSModule.swift in Sources */,
+				31B8AC6622B28AAF005AB2BF /* PlayKitQosModuleWrapper.swift in Sources */,
 				BF7B40771E9E4B820011CA01 /* ViewController.swift in Sources */,
 				31B8AC6722B28AAF005AB2BF /* PlayKitInteractor.swift in Sources */,
 				BF7B40751E9E4B820011CA01 /* AppDelegate.swift in Sources */,

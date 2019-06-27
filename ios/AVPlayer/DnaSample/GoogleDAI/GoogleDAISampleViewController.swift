@@ -39,7 +39,7 @@ extension GoogleDAISampleViewController {
   
   func requestStream() {
     let adDisplayContainer = IMAAdDisplayContainer(adContainer: contentOverlayView!, companionSlots: nil)
-    let config = DNAConfiguration(streamrootKey: "<#YourStreamrootKey#>",
+    let config = DNAConfiguration(streamrootKey:  "demoswebsiteandpartners",
                                   contentId: "GoogleDAI_TEST",
                                   latency: 30,
                                   property:  "<#YourDAIProperty#>")

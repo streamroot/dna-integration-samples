@@ -11,10 +11,12 @@ import StreamrootSDK
 
 // Streamroot QoS module
 // Binds player' events to raise precise data to DNAClient
-class PlayKitQoSModule {
+class PlayKitQosModuleWrapper {
     let dnaQoSModule: QosModule = StreamrootQosModule(moduleType: .custom)
+    let player: Player
 
     public init(_ player: Player) {
+        self.player = player
         player.addObserver(self, event: PlayerEvent.stateChanged, block: { event in
             switch (event.newState) {
             case .idle:
@@ -41,5 +43,17 @@ class PlayKitQoSModule {
         player.addObserver(self, event: PlayerEvent.playbackStalled, block: { _ in self.dnaQoSModule.playbackErrorOccurred() })
         
         player.addObserver(self, event: PlayerEvent.ended, block: { _ in self.dnaQoSModule.playerStateDidChange(PlaybackState.ended) })
+        
+        player.addObserver(self, event: PlayerEvent.error, block: { _ in self.dnaQoSModule.playbackErrorOccurred() })
     }
+    
+    deinit {
+        player.removeObserver(self, events: [PlayerEvent.stateChanged,
+                                             PlayerEvent.videoTrackChanged,
+                                             PlayerEvent.seeked,
+                                             PlayerEvent.playbackStalled,
+                                             PlayerEvent.ended,
+                                             PlayerEvent.error])
+    }
+    
 }
