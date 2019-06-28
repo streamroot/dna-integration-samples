@@ -43,5 +43,13 @@
     self.player.settings.network.preferredPeakBitRate = bitRate;
 }
 
+- (double)bufferTarget {
+    return self.player.settings.preferredForwardBufferDuration;
+}
+
+- (void)setBufferTarget:(double)target {
+    self.player.settings.preferredForwardBufferDuration = target;
+}
+
 @end
 

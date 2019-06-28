@@ -1,9 +1,4 @@
 PODS:
-  - DNAPlayKit (3.10.1):
-    - KalturaNetKit (~> 1.2.0)
-    - PlayKitUtils (~> 0.3.0)
-    - SwiftyJSON (= 4.3.0)
-    - XCGLogger (= 7.0.0)
   - KalturaNetKit (1.2.0):
     - KalturaNetKit/Core (= 1.2.0)
   - KalturaNetKit/Core (1.2.0):
@@ -11,7 +6,14 @@ PODS:
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
-  - PlayKitUtils (0.3.0)
+  - PlayKit (3.10.1-dev):
+    - PlayKit/Core (= 3.10.1-dev)
+  - PlayKit/Core (3.10.1-dev):
+    - KalturaNetKit (~> 1.2.0)
+    - PlayKitUtils (~> 0.4.0)
+    - SwiftyJSON (= 4.3.0)
+    - XCGLogger (= 7.0.0)
+  - PlayKitUtils (0.4.0)
   - Sentry (4.3.1):
     - Sentry/Core (= 4.3.1)
   - Sentry/Core (4.3.1)
@@ -28,12 +30,11 @@ PODS:
     - ObjcExceptionBridging
 
 DEPENDENCIES:
-  - DNAPlayKit
+  - PlayKit (from `https://github.com/streamroot/playkit-ios`, branch `preferredForwardBufferDuration`)
   - StreamrootSDK (~> 3.12.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - DNAPlayKit
     - KalturaNetKit
     - ObjcExceptionBridging
     - PlayKitUtils
@@ -44,11 +45,21 @@ SPEC REPOS:
     - SwiftyJSON
     - XCGLogger
 
+EXTERNAL SOURCES:
+  PlayKit:
+    :branch: preferredForwardBufferDuration
+    :git: https://github.com/streamroot/playkit-ios
+
+CHECKOUT OPTIONS:
+  PlayKit:
+    :commit: 559f57c1f4a5c4fa81a9ed5ead6e709b09a5cc84
+    :git: https://github.com/streamroot/playkit-ios
+
 SPEC CHECKSUMS:
-  DNAPlayKit: f0b64e4596c7fa88db9f608ccf81ad8b9c51568a
   KalturaNetKit: bd5a963f23f3917a059ac374406143fe2d29bf27
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
-  PlayKitUtils: 6d574d85825fbaad58b39f228e228ee489fa1107
+  PlayKit: 46da5b32b306122fda6232547234d7fe9a3bb77b
+  PlayKitUtils: 98bffe139cffe5cb1fe8fc757b58845c939caf67
   Sentry: 5267d493a398663538317e4dcc438c12c66202ed
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   StreamrootSDK: e1e7bc26e70c406fb3ae902cf45bf081c18f4cd2
@@ -56,6 +67,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
 
-PODFILE CHECKSUM: 4704c821d6c9c919e796548d79920ee44534a248
+PODFILE CHECKSUM: a7a3fe2e3469aa96103929617d4fa3936cb4b206
 
 COCOAPODS: 1.7.2

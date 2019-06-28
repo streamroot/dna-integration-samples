@@ -4,8 +4,7 @@ use_frameworks!
 
 platform :ios, '9.2' # (define required version)
 
-# Change 'PlayKit' to 'DNAPlayKit' to integrate Streamroot's extended PlayKit
-pod 'DNAPlayKit'
+pod 'PlayKit', :git => 'https://github.com/streamroot/playkit-ios', :branch => 'preferredForwardBufferDuration'
 pod 'StreamrootSDK', '~> 3.12.0'
   
 target 'PlayKit'

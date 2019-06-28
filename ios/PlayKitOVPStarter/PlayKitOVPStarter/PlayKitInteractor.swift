@@ -30,4 +30,12 @@ class PlayKitInteractor : DNAClientDelegate {
         return (player.loadedTimeRanges ?? [])
             .map { NSValue(timeRange: TimeRange(start: $0.start, duration: $0.duration)) }
     }
+    
+    func bufferTarget() -> Double {
+        return player.settings.preferredForwardBufferDuration
+    }
+    
+    func setBufferTarget(_ target: Double) {
+        player.settings.preferredForwardBufferDuration = target
+    }
 }

@@ -5,7 +5,7 @@ use_frameworks!
 
 platform :ios, '9.2'
 
-pod 'PlayKit'
+pod 'PlayKit', :git => 'https://github.com/streamroot/playkit-ios', :branch => 'preferredForwardBufferDuration'
 pod 'PlayKitProviders'
 pod 'PlayKitKava'
 
