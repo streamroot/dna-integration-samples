@@ -54,6 +54,8 @@ class DNAAVPlayerVideoDisplay: IMAAVPlayerVideoDisplay {
   
   override func loadStream(_ streamURL: URL!, withSubtitles subtitles: [Any]!) {
     print(" Intercepted url \(String(describing: streamURL))")
+    print("🔥 Intercepted \(Date().timeIntervalSince1970)")
+
     var fetchedUrl: URL!
     do {
       fetchedUrl = try startStreamURL(streamURL)
@@ -73,6 +75,7 @@ class DNAAVPlayerVideoDisplay: IMAAVPlayerVideoDisplay {
 
 extension DNAAVPlayerVideoDisplay {
   func startStreamURL(_ url: URL) throws -> URL? {
+    print("🔥 starting DNA builder \(Date().timeIntervalSince1970)")
     var builder = DNAClient.builder().dnaClientDelegate(self)
     builder = builder.streamrootKey(strKey)
     

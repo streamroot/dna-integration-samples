@@ -38,14 +38,15 @@ extension GoogleDAISampleViewController {
   }
   
   func requestStream() {
+    print("🔥 request stream \(Date().timeIntervalSince1970)")
     let adDisplayContainer = IMAAdDisplayContainer(adContainer: contentOverlayView!, companionSlots: nil)
-    let config = DNAConfiguration(streamrootKey:  "demoswebsiteandpartners",
+    let config = DNAConfiguration(streamrootKey:  "laminendiaye",
                                   contentId: "GoogleDAI_TEST",
                                   latency: 30,
-                                  property:  "<#YourDAIProperty#>")
+                                  property:  "SSAI")
     videoDisplay = DNAAVPlayerVideoDisplay(avPlayer: player, dnaConfig: config)
     videoDisplay?.avPlayerVideoDisplayDelegate = self
-    let request = IMALiveStreamRequest(assetKey: "<#YourAssetKey#>",
+    let request = IMALiveStreamRequest(assetKey: "sN_IYUG8STe1ZzhIIE_ksA",
                                        adDisplayContainer: adDisplayContainer,
                                        videoDisplay: videoDisplay)
     adsLoader!.requestStream(with: request)
