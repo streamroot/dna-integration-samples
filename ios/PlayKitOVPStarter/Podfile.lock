@@ -6,13 +6,13 @@ PODS:
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
-  - PlayKit (3.10.1):
-    - PlayKit/Core (= 3.10.1)
-  - PlayKit/AnalyticsCommon (3.10.1):
+  - PlayKit (3.10.1-dev):
+    - PlayKit/Core (= 3.10.1-dev)
+  - PlayKit/AnalyticsCommon (3.10.1-dev):
     - PlayKit/Core
-  - PlayKit/Core (3.10.1):
+  - PlayKit/Core (3.10.1-dev):
     - KalturaNetKit (~> 1.2.0)
-    - PlayKitUtils (~> 0.3.0)
+    - PlayKitUtils (~> 0.4.0)
     - SwiftyJSON (= 4.3.0)
     - XCGLogger (= 7.0.0)
   - PlayKitKava (1.2.0):
@@ -23,7 +23,7 @@ PODS:
     - PlayKit/AnalyticsCommon
     - PlayKitUtils
     - SwiftyXMLParser (= 5.0.0)
-  - PlayKitUtils (0.3.0)
+  - PlayKitUtils (0.4.0)
   - Sentry (4.3.1):
     - Sentry/Core (= 4.3.1)
   - Sentry/Core (4.3.1)
@@ -41,7 +41,7 @@ PODS:
     - ObjcExceptionBridging
 
 DEPENDENCIES:
-  - PlayKit
+  - PlayKit (from `https://github.com/streamroot/playkit-ios`, branch `preferredForwardBufferDuration`)
   - PlayKitKava
   - PlayKitProviders
   - StreamrootSDK (~> 3.12.0)
@@ -50,7 +50,6 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - KalturaNetKit
     - ObjcExceptionBridging
-    - PlayKit
     - PlayKitKava
     - PlayKitProviders
     - PlayKitUtils
@@ -62,13 +61,23 @@ SPEC REPOS:
     - SwiftyXMLParser
     - XCGLogger
 
+EXTERNAL SOURCES:
+  PlayKit:
+    :branch: preferredForwardBufferDuration
+    :git: https://github.com/streamroot/playkit-ios
+
+CHECKOUT OPTIONS:
+  PlayKit:
+    :commit: 559f57c1f4a5c4fa81a9ed5ead6e709b09a5cc84
+    :git: https://github.com/streamroot/playkit-ios
+
 SPEC CHECKSUMS:
   KalturaNetKit: bd5a963f23f3917a059ac374406143fe2d29bf27
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
-  PlayKit: d913462f821b24a8802a557955446461e61e305f
+  PlayKit: 1ec0792d81a37f0be6704a21c9f5a125750c9593
   PlayKitKava: cb3da3119bec8a86393b9c1021fb6ab730edd3cb
   PlayKitProviders: 530412b94b67e9f8faa73788da1bd0865bb67b89
-  PlayKitUtils: 6d574d85825fbaad58b39f228e228ee489fa1107
+  PlayKitUtils: 98bffe139cffe5cb1fe8fc757b58845c939caf67
   Sentry: 5267d493a398663538317e4dcc438c12c66202ed
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   StreamrootSDK: e1e7bc26e70c406fb3ae902cf45bf081c18f4cd2
@@ -77,6 +86,6 @@ SPEC CHECKSUMS:
   SwiftyXMLParser: 5ebb8793192f403fa8cc691045143906122a7a75
   XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
 
-PODFILE CHECKSUM: 807f767b4a63401faa85f80b8589ff5e0e0680e8
+PODFILE CHECKSUM: 0ecec85e50fde69d1f001377081f794d795d833c
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.7.2
