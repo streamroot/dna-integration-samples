@@ -15,6 +15,7 @@ public class Entry implements Serializable {
     private static final String TAG = "Entry";
 
     public boolean downloadForceLocalMode = false;
+    public boolean streamrootDnaEnabled;
     public long downloadId = -1;
 
     private static final long serialVersionUID = 1L;
@@ -37,7 +38,6 @@ public class Entry implements Serializable {
     private HashMap<String, String> headers;
     private ArrayList<String> filteredHeaders;
     private HashMap<String, String> playerParameters;
-
 
     public Entry(JSONObject content) {
         this.title = content.optString("title");

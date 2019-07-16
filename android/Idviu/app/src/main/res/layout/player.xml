@@ -10,11 +10,10 @@
         android:layout_height="match_parent"
         android:background="#000" />
 
-     <io.streamroot.dna.utils.stats.StatsView
-         android:id="@+id/streamrootStatsView"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="8dp"
-         android:visibility="gone" />
-
+      <io.streamroot.dna.utils.stats.StatsView
+          android:id="@+id/streamrootStatsView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:visibility="gone" />
 </RelativeLayout>

@@ -74,7 +74,7 @@ public class HSSPlayerActivity extends FragmentActivity implements OnCloseEventL
 		mPlayerView.setPlayerParam("start_low_profile", "1");
 		mPlayerView.setWidevineOfflineMode(false); //set to true if you want to retrieve a persistent license for Widevine
 		mPlayerView.setOnPreparedListener(new OnPreparedListener() {
-			
+
 			@Override
 			public void onPrepared(MediaPlayer mp) {
 				Log.i(TAG, "redirected url: " + mPlayerView.getPlayer().getRedirectedUrl());
@@ -121,7 +121,6 @@ public class HSSPlayerActivity extends FragmentActivity implements OnCloseEventL
 						item.addLicenseHeader(keys, entry.getHeaders().get(keys));
 
 					mPlayerView.getPlaylist().addItem(item);
-					startStatsView();
 				}
 		}
 	}
@@ -184,6 +183,7 @@ public class HSSPlayerActivity extends FragmentActivity implements OnCloseEventL
 	protected void onStart() {
 		super.onStart();
 		mPlayerView.play();
+		startStatsView();
 	}
 
 	private String getRealPathFromURI(Uri contentUri) {

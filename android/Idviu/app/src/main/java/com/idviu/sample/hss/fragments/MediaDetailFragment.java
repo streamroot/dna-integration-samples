@@ -50,7 +50,6 @@ import com.idviu.sample.hss.R;
  *
  */
 public class MediaDetailFragment extends Fragment implements HSSDownloadListener, OnClickListener{
-	
 	private static final int MSG_UPDATE = 198;
 	
 	private TextView mTitle = null;
@@ -69,6 +68,7 @@ public class MediaDetailFragment extends Fragment implements HSSDownloadListener
 	private ToggleButton mForceLocalBtn = null;
 	private ToggleButton mHDRootAllowed = null;
 	private ToggleButton mHDSWDRMAllowed = null;
+	private ToggleButton mStreamrrotDnaEnabled = null;
 	private EditText mHDBitrate = null;
 	private EditText mHDResolution = null;
 	
@@ -148,6 +148,7 @@ public class MediaDetailFragment extends Fragment implements HSSDownloadListener
 				}
 			}
 		});
+		mStreamrrotDnaEnabled = (ToggleButton) view.findViewById(R.id.Streamroot_dna_enabled);
 		mHDBitrate = (EditText) view.findViewById(R.id.detail_hd_bitrate);
 		mHDBitrate.setInputType(InputType.TYPE_CLASS_NUMBER);
 		mHDBitrate.addTextChangedListener(new TextWatcher() {
@@ -218,7 +219,6 @@ public class MediaDetailFragment extends Fragment implements HSSDownloadListener
 			mTitleBig.setText(title);
 			mCID.setText("");
 			mOtherLayout.removeAllViews();
-
 			if (HSSAgent.getInstance().isHDOverridable()){
 				mHDBitrate.setEnabled(true);
 				mHDResolution.setEnabled(true);
@@ -273,7 +273,6 @@ public class MediaDetailFragment extends Fragment implements HSSDownloadListener
 			mHDBitrate.setText("" + mDownload.getHDBitrateLimit());
 			mHDResolution.setText("" + mDownload.getHDPixelsLimit());
 		}
-		
 		update();
 	}
 		
@@ -431,6 +430,7 @@ public class MediaDetailFragment extends Fragment implements HSSDownloadListener
 		if (id == R.id.detail_stream) {
 			Intent streamIntent = new Intent(getActivity(), HSSPlayerActivity.class);
 			Bundle mBundle = new Bundle();
+			mMovie.streamrootDnaEnabled = mStreamrrotDnaEnabled.isChecked();
 			mBundle.putSerializable("entry", mMovie);
 			mBundle.putBoolean("duplicate", true);
 			streamIntent.putExtras(mBundle);
@@ -462,7 +462,6 @@ public class MediaDetailFragment extends Fragment implements HSSDownloadListener
 					if (mMovie.getPlayerParameters().containsKey(HSSPlayer.PLAYER_PARAM_HD_SW_DRM_ALLOWED)){
 						download.setHDSWDRMAllowed(!"0".equals(mMovie.getPlayerParameters().get(HSSPlayer.PLAYER_PARAM_HD_SW_DRM_ALLOWED)));
 					}
-
 				}
 			}
 			mDownloadManager.unpauseDownload(downloadId);
@@ -480,6 +479,7 @@ public class MediaDetailFragment extends Fragment implements HSSDownloadListener
 				Entry mMovie = new Entry(new JSONObject());
 				mMovie.downloadId = mDownload.getId();
 				mMovie.downloadForceLocalMode = mForceLocalBtn.isChecked();
+				mMovie.streamrootDnaEnabled = mStreamrrotDnaEnabled.isChecked();
 				Bundle mBundle = new Bundle();
 				mBundle.putSerializable("entry", mMovie);
 				playIntent.putExtras(mBundle);
