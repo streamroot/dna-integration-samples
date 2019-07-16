@@ -33,6 +33,12 @@ import com.labgency.player.LgyTrack;
 import com.labgency.player.LgyTrack.TrackType;
 import com.idviu.sample.hss.HSSSampleApplication.HSSCustomLicenseRequestHandler;
 
+import io.streamroot.dna.core.BandwidthListener;
+import io.streamroot.dna.core.DnaClient;
+import io.streamroot.dna.core.PlayerInteractor;
+import io.streamroot.dna.core.QosModule;
+import io.streamroot.dna.utils.stats.StatsView;
+import io.streamroot.dna.utils.stats.StreamStatsManager;
 
 /**
  * Sample Player Activity using HSSPlayer
@@ -45,6 +51,8 @@ public class HSSPlayerActivity extends FragmentActivity implements OnCloseEventL
     private ProgressBar mProgress = null;
     private RelativeLayout mRootView;
 	private HSSPlayerView mPlayerView = null;
+	private DnaClient dnaClient;
+	private StreamStatsManager streamStatsManager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +65,6 @@ public class HSSPlayerActivity extends FragmentActivity implements OnCloseEventL
 		setContentView(R.layout.player);
 		mPlayerView = (HSSPlayerView) findViewById(R.id.playerView);
 		mPlayerView.setRetainedNonInstanceStateObject(getLastCustomNonConfigurationInstance());
-		mPlayerView.goFullscreen();
-		mPlayerView.showFullscreenButton(true);
 		mPlayerView.setOnCompletionListener(this);
 		mPlayerView.showDebugInfos(true);
 		mPlayerView.setOnErrorListener(this);
@@ -81,19 +87,18 @@ public class HSSPlayerActivity extends FragmentActivity implements OnCloseEventL
 		Entry entry = (Entry)bundle.getSerializable("entry");
 		if (mPlayerView.getPlaylist().getSize() == 0 && entry != null ){ //only if empty
 			HSSPlaylistItem item = null;
-			int max = 1;
-			if (bundle.getBoolean("duplicate", false)){
-				max = 5;
-			}
-			for (int i = 0; i < max; i++){
 				if (entry.downloadId >= 0){
 					item = HSSPlaylistItem.createWithDownloadId(entry.downloadId);
 					if (entry.downloadForceLocalMode)
 						item.setForceLocalMode(entry.downloadForceLocalMode);
 					mPlayerView.getPlaylist().addItem(item);
 				}else {
-					item = HSSPlaylistItem.createWithUrl(entry.getUrl());
-
+					if (entry.streamrootDnaEnabled) {
+						startDnaClient(entry);
+						item = HSSPlaylistItem.createWithUrl(dnaClient.getManifestUrl().toString());
+					} else {
+						item = HSSPlaylistItem.createWithUrl(entry.getUrl());
+					}
 					if(entry.getStartTime() != 0)
 						item.setStartPosition(entry.getStartTime());
 					if(entry.getBonusTime() != 0)
@@ -118,22 +123,67 @@ public class HSSPlayerActivity extends FragmentActivity implements OnCloseEventL
 					mPlayerView.getPlaylist().addItem(item);
 					startStatsView();
 				}
-			}
-
 		}
 	}
 
 
+	/**
+	 * Start Streamroot DNAClient
+	 */
+	private void startDnaClient(Entry entry) {
+		// Init the player interactor
+		PlayerInteractor playerInteractor = new IdviuInteractor(this.mPlayerView);
+
+		// Init the player bandwidth listener
+		BandwidthListener bandwidthListener = new IdviuBandwithMeter(this.mPlayerView);
+
+		// Init qosModule (optional)
+		QosModule qosModule = new IdviuQoSModule(this.mPlayerView);
+
+		// Build and start the DNAClient
+		try {
+			this.dnaClient = DnaClient.newBuilder()
+					.context(getApplicationContext())
+					.playerInteractor(playerInteractor)
+					.bandwidthListener(bandwidthListener)
+					.qosModule(qosModule)
+					.latency(20)
+					.contentId(entry.getTitle())
+					.start(Uri.parse(entry.getUrl()));
+		} catch (Exception e){
+			Log.e("Streamroot", e.getLocalizedMessage());
+		}
+	}
+
+	/**
+	 * Start Streamroot debug stats view
+	 */
+	private void startStatsView() {
+		if (dnaClient != null) {
+			Log.i("STREAMROOT", "started stats");
+			StatsView streamrootStatsView = findViewById(R.id.streamrootStatsView);
+			streamrootStatsView.setVisibility(View.VISIBLE);
+			streamStatsManager = new StreamStatsManager(1_000L, dnaClient, streamrootStatsView);
+		}
+	}
+	
 	@Override
 	protected void onStop() {
 		super.onStop();
 		mPlayerView.pause();
+		if (dnaClient != null) {
+			dnaClient.close();
+		}
+
+		if (streamStatsManager != null) {
+			streamStatsManager.close();
+		}
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
-		mPlayerView.play();	
+		mPlayerView.play();
 	}
 
 	private String getRealPathFromURI(Uri contentUri) {
