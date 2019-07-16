@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header_bg"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/title_big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#434463"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#434463" />
+
+            <TextView
+                android:id="@+id/detail_cid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#434463" />
+
+            <TextView
+                android:id="@+id/detail_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#434463" />
+            
+            <TextView
+                android:id="@+id/detail_status_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="#434463" />
+
+            <ProgressBar
+                android:id="@+id/detail_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
+            
+           <LinearLayout 
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+               <Button
+                   android:id="@+id/detail_stream"
+                   style="@android:style/Widget.Holo.Button"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:text="@string/btn_stream"
+                   android:textSize="12sp" />
+
+               <Button
+                   android:id="@+id/detail_play_local"
+                   style="@android:style/Widget.Holo.Button"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:text="@string/btn_play_locally"
+                   android:textSize="12sp" />
+
+               <Button
+                   android:id="@+id/detail_download"
+                   style="@android:style/Widget.Holo.Button"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:text="@string/btn_download"
+                   android:textSize="12sp" />
+
+               <Button
+                   android:id="@+id/detail_delete"
+                   style="@android:style/Widget.Holo.Button"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:text="@string/btn_delete"
+                   android:textSize="12sp"
+                   android:visibility="gone" />
+               
+           </LinearLayout>
+           
+           <LinearLayout 
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+               <Button
+                   android:id="@+id/detail_pause"
+                   style="@android:style/Widget.Holo.Button"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:text="@string/btn_pause"
+                   android:textSize="12sp"
+                   android:visibility="gone" />
+
+               <Button
+                   android:id="@+id/detail_unpause"
+                   style="@android:style/Widget.Holo.Button"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:text="@string/btn_unpause"
+                   android:textSize="12sp"
+                   android:visibility="gone" />
+
+               <Button
+                   android:id="@+id/detail_restart"
+                   style="@android:style/Widget.Holo.Button"
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:text="@string/btn_restart"
+                   android:textSize="12sp"
+                   android:visibility="gone" />
+               
+           </LinearLayout>
+           
+           <LinearLayout 
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="center_vertical"
+               android:orientation="horizontal">
+               
+
+               <TextView 
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="force local mode:"
+                   android:textColor="#000"/>
+
+               <ToggleButton
+                   android:id="@+id/detail_local_mode"
+                   style="@android:style/Widget.Holo.CompoundButton.CheckBox"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:checked="false"
+                   android:text="@string/btn_local_mode"
+                   android:textSize="12sp"
+                   android:visibility="visible" />
+                 
+           </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HD root allowed:"
+                    android:textColor="#000"/>
+
+                <ToggleButton
+                    android:id="@+id/detail_hd_root_allowed"
+                    style="@android:style/Widget.Holo.CompoundButton.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HD SW DRM allowed:"
+                    android:textColor="#000"/>
+
+                <ToggleButton
+                    android:id="@+id/detail_hd_sw_drm_allowed"
+                    style="@android:style/Widget.Holo.CompoundButton.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HD min resolution:"
+                    android:textColor="#000"/>
+
+                <EditText
+                    android:id="@+id/detail_hd_resolution"
+                    android:layout_width="wrap_content"
+                    android:text="520000"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HD min bitrate:"
+                    android:textColor="#000"/>
+
+                <EditText
+                    android:id="@+id/detail_hd_bitrate"
+                    android:layout_width="wrap_content"
+                    android:text="2500000"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+           
+           <LinearLayout android:id="@+id/detail_others"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:orientation="vertical"/>
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="app_name">Idviu HSS</string>
+    <string name="browse_title">List of media</string>
+    <string name="browse_id">ID</string>
+    <string name="no_title">no title</string>
+    <string name="btn_stream">stream</string>
+    <string name="btn_download">download</string>
+    <string name="btn_delete">delete</string>
+    <string name="btn_play_locally">local playback</string>
+    <string name="btn_pause">pause</string>
+    <string name="btn_unpause">unpause</string>
+    <string name="btn_restart">restart</string>
+    <string name="btn_local_mode">force local mode</string>
+    <string name="detail_title">&lt;b&gt;title:&lt;/b&gt; %1$s</string>
+    <string name="detail_cid">&lt;b&gt;CID:&lt;/b&gt; %1$s </string>
+    <string name="status_paused">paused</string>
+    <string name="status_error">error: %1$s</string>
+    <string name="status_waiting">queued for download, please wait</string>
+    <string name="status_running">in progress...</string>
+    <string name="status_done">available locally</string>
+</resources>

@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    flatDir {
+        dirs '../Frameworks/idviu_aars'
+    }
+}
+
+android {
+    useLibrary 'org.apache.http.legacy'
+
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        applicationId "com.idviu.sample.hss"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "5.0.3"
+
+        ndk {
+            // Tells Gradle to build outputs for the following ABIs and package
+            // them into your APK.
+            abiFilters 'x86', 'armeabi-v7a', 'arm64-v8a'
+        }
+
+    }
+
+    signingConfigs {
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('debug.keystore')
+            storePassword 'android'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+            applicationIdSuffix ".release"
+            signingConfig signingConfigs.debug
+        }
+        debug{
+            minifyEnabled false
+            debuggable true
+            jniDebuggable true
+            applicationIdSuffix ".debug"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.google.protobuf:protobuf-lite:3.0.0'
+    debugImplementation (name:'idviu-hss-mspr_wdv-software-debug', ext:'aar')
+    releaseImplementation (name:'idviu-hss-mspr_wdv-software-release', ext:'aar')
+    implementation 'io.streamroot.dna:dna-core:3.11.1'
+    implementation 'io.streamroot.dna:dna-utils:3.11.1'
+}

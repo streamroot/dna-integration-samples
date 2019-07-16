@@ -91,3 +91,6 @@ Carthage
 
 ##  Pods
 Pods/
+
+## Android
+android/Idviu/app/src/main/assets/application.key
