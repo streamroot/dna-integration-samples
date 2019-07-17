@@ -39,12 +39,16 @@ If you don't have an account, [request a trial](https://streamroot.io/?request_t
 - [PlayKit](https://github.com/streamroot/dna-integration-samples/tree/master/android/PlayKit)
 - [PlayKit with OVP Sample](https://github.com/streamroot/dna-integration-samples/tree/master/android/PlayKitOVPStarter)
 - [VideoView](https://github.com/streamroot/dna-integration-samples/tree/master/android/VideoView)
+- [Idviu](https://github.com/streamroot/dna-integration-samples/tree/master/android/Idviu)
 
 ### iOS
 
 #### Players
 
-- [AVPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/ios)
+- [AVPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/ios/AVPlayer)
+- [Playkit](https://github.com/streamroot/dna-integration-samples/tree/master/ios/Playkit)
+- [PlaykitPhoenixAnalytics](https://github.com/streamroot/dna-integration-samples/tree/master/ios/PhoenixAnalyticsSample)
+- [PlayKit with OVP](https://github.com/streamroot/dna-integration-samples/tree/master/ios/PlayKitOVPStarter)
 
 ### Web
 
