@@ -7,6 +7,7 @@
 
 import UIKit
 import BrightcovePlayerSDK
+import StreamrootSDK
 
 fileprivate struct ConfigConstants {
     static let PlaybackServicePolicyKey = "BCpkADawqM1W-vUOMe6RSA3pA6Vw-VWUNn5rL0lzQabvrI63-VjS93gVUugDlmBpHIxP16X8TSe5LSKM415UHeMBmxl7pqcwVY_AZ4yKFwIpZPvXE34TpXEYYcmulxJQAOvHbv2dpfq-S_cm"
@@ -17,13 +18,17 @@ fileprivate struct ConfigConstants {
 class ViewController: UIViewController {
     
     @IBOutlet private var videoContainer: UIView!
+    @IBOutlet weak var statViewContainer: UIView!
+    
+    fileprivate var dnaClient: DNAClient?
+    fileprivate weak var currentPlayer: AVPlayer?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
     private lazy var playbackService: BCOVPlaybackService = {
-       return BCOVPlaybackService(accountId: ConfigConstants.AccountID, policyKey: ConfigConstants.PlaybackServicePolicyKey)
+        return BCOVPlaybackService(accountId: ConfigConstants.AccountID, policyKey: ConfigConstants.PlaybackServicePolicyKey)
     }()
     
     private lazy var playbackController: BCOVPlaybackController? = {
@@ -52,7 +57,7 @@ class ViewController: UIViewController {
     }()
     
     private lazy var fullscreenViewController: UIViewController = {
-       return UIViewController()
+        return UIViewController()
     }()
     
     private lazy var standardVideoViewConstraints: [NSLayoutConstraint] = {
@@ -76,7 +81,7 @@ class ViewController: UIViewController {
             videoView.bottomAnchor.constraint(equalTo: self.fullscreenViewController.view.bottomAnchor, constant:-insets.bottom)
         ]
     }()
-
+    
     // MARK: - View Lifecyle
     
     override func viewDidLoad() {
@@ -95,7 +100,7 @@ class ViewController: UIViewController {
             playbackController.view.rightAnchor.constraint(equalTo: self.videoView.rightAnchor),
             playbackController.view.leftAnchor.constraint(equalTo: self.videoView.leftAnchor),
             playbackController.view.bottomAnchor.constraint(equalTo: self.videoView.bottomAnchor)
-        ])
+            ])
         
         // Setup controlsViewController by
         // adding it as a child view controller,
@@ -110,7 +115,7 @@ class ViewController: UIViewController {
             controlsViewController.view.rightAnchor.constraint(equalTo: self.videoView.rightAnchor),
             controlsViewController.view.leftAnchor.constraint(equalTo: self.videoView.leftAnchor),
             controlsViewController.view.bottomAnchor.constraint(equalTo: self.videoView.bottomAnchor)
-        ])
+            ])
         
         // Then add videoView as a subview of videoContainer
         videoContainer.addSubview(videoView)
@@ -118,27 +123,59 @@ class ViewController: UIViewController {
         // Activate the standard view constraints
         videoView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(standardVideoViewConstraints)
-
+        
         requestContentFromPlaybackService()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    deinit {
+        dnaClient?.stop()
     }
     
     // MARK: - Misc
     
     private func requestContentFromPlaybackService() {
+        
         playbackService.findVideo(withVideoID: ConfigConstants.VideoID, parameters: nil) { [weak self] (video: BCOVVideo?, json: [AnyHashable:Any]?, error: Error?) in
-            
-            if let video = video {
-                self?.playbackController?.setVideos([video] as NSFastEnumeration)
-            }
+            guard let self = self else { return }
             
             if let error = error {
                 print("ViewController Debug - Error retrieving video playlist: \(error.localizedDescription)")
+                return
             }
             
+            guard let video = video else {
+                return
+            }
+            
+            // Look for an HLS stream to setup streamroot DNA client
+            let hlsSource = video.sources
+                .compactMap { $0 as? BCOVSource }
+                .filter { $0.deliveryMethod ==  "application/x-mpegURL"}
+                .first
+            
+            guard hlsSource != nil else {
+                self.playbackController?.setVideos([video] as NSFastEnumeration)
+                return
+            }
+            
+            self.setupDnaWithSource(hlsSource!)
+            
+            guard let localManifest = self.dnaClient?.manifestLocalURLPath else {
+                self.playbackController?.setVideos([video] as NSFastEnumeration)
+                return
+            }
+            
+            let dnaVideo = BCOVVideo(hlsSourceURL: URL(string: localManifest)!)
+            self.playbackController?.setVideos([dnaVideo] as NSFastEnumeration)
+            self.dnaClient?.displayStats(onView: self.statViewContainer)
         }
     }
-
-
+    
+    
 }
 
 // MARK: - BCOVPlaybackControllerDelegate
@@ -147,6 +184,8 @@ extension ViewController: BCOVPlaybackControllerDelegate {
     
     func playbackController(_ controller: BCOVPlaybackController!, didAdvanceTo session: BCOVPlaybackSession!) {
         print("ViewController Debug - Advanced to new session.")
+        currentPlayer = session.player
+        controller?.disableBufferOptimisation()
     }
     
 }
@@ -176,7 +215,67 @@ extension ViewController: ControlsViewControllerFullScreenDelegate {
         
         present(fullscreenViewController, animated: false, completion: nil)
     }
-    
 }
 
+// MARK: - Streamroot
 
+extension BCOVPlaybackController {
+    
+    /// Disable brightcove buffer optimisation to avoid
+    /// collisition with streamroot Dynamic Buffer Level algorithm
+    func disableBufferOptimisation() {
+        var options = self.options
+        options?[kBCOVBufferOptimizerMethodKey] = BCOVBufferOptimizerMethod.none
+        self.options = options
+    }
+}
+
+extension ViewController: DNAClientDelegate {
+    /// Instanciate DNA Client from video source
+    func setupDnaWithSource(_ source: BCOVSource) {
+        do {
+            dnaClient = try DNAClient.builder()
+                .dnaClientDelegate(self)
+                .latency(20)
+                .start(source.url)
+        } catch {
+            print("\(error)")
+        }
+    }
+    
+    func playbackTime() -> Double {
+        if let player = self.currentPlayer {
+            return CMTimeGetSeconds(player.currentTime())
+        }
+        return 0
+    }
+    
+    func loadedTimeRanges() -> [NSValue] {
+        guard let player = self.currentPlayer else {
+            return []
+        }
+        
+        guard let playerItem = player.currentItem else {
+            return []
+        }
+        
+        return playerItem.loadedTimeRanges.map { (value) -> NSValue in
+            NSValue(timeRange: TimeRange(range: value.timeRangeValue))
+        }
+    }
+    
+    func updatePeakBitRate(_ bitRate: Double) {
+        currentPlayer?.currentItem?.preferredPeakBitRate = bitRate
+    }
+    
+    func setBufferTarget(_ target: Double) {
+        self.currentPlayer?.currentItem?.preferredForwardBufferDuration = target
+    }
+    
+    func bufferTarget() -> Double {
+        guard let item = self.currentPlayer?.currentItem else {
+            return 0
+        }
+        return item.preferredForwardBufferDuration
+    }
+}
