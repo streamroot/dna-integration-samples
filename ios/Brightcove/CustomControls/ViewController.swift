@@ -218,7 +218,6 @@ extension ViewController: ControlsViewControllerFullScreenDelegate {
 }
 
 // MARK: - Streamroot
-
 extension BCOVPlaybackController {
     
     /// Disable brightcove buffer optimisation to avoid

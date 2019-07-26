@@ -9,6 +9,7 @@
 import UIKit
 import BrightcovePlayerSDK
 import BrightcoveSSAI
+import StreamrootSDK
 
 // ** Customize these values with your own account information **
 struct Constants {
@@ -16,11 +17,16 @@ struct Constants {
     static let PlaybackServicePolicyKey = "BCpkADawqM0T8lW3nMChuAbrcunBBHmh4YkNl5e6ZrKQwPiK_Y83RAOF4DP5tyBF_ONBVgrEjqW6fbV0nKRuHvjRU3E8jdT9WMTOXfJODoPML6NUDCYTwTHxtNlr5YdyGYaCPLhMUZ3Xu61L"
     static let VideoId = "5702141808001"
     static let AdConfigId = "0e0bbcd1-bba0-45bf-a986-1288e5f9fc85"
+    static let SSAIDeliveryMethod = "application/x-mpegURL.boltSSAI"
 }
 
 class ViewController: UIViewController {
     @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var companionSlotContainerView: UIView!
+    @IBOutlet weak var statViewContainer: UIView!
+    
+    fileprivate var dnaClient: DNAClient?
+    fileprivate weak var currentPlayer: AVPlayer?
     
     private lazy var fairplayAuthProxy: BCOVFPSBrightcoveAuthProxy? = {
         guard let _authProxy = BCOVFPSBrightcoveAuthProxy(publisherId: nil, applicationId: nil) else {
@@ -88,17 +94,48 @@ class ViewController: UIViewController {
         requestContentFromPlaybackService()
     }
     
+    deinit {
+        dnaClient?.stop()
+    }
+    
     private func requestContentFromPlaybackService() {
         let queryParameters = [kBCOVPlaybackServiceParamaterKeyAdConfigId: Constants.AdConfigId]
         
         playbackService.findVideo(withVideoID: Constants.VideoId, parameters: queryParameters) { [weak self] (video: BCOVVideo?, jsonResponse: [AnyHashable: Any]?, error: Error?) -> Void in
             
-            guard let _video = video else {
-                print("ViewController Debug - Error retrieving video: \(error?.localizedDescription ?? "unknown error")")
+            guard let self = self else { return }
+            
+            if let error = error {
+                print("ViewController Debug - Error retrieving video playlist: \(error.localizedDescription)")
                 return
             }
             
-            self?.playbackController?.setVideos([_video] as NSFastEnumeration)
+            guard let video = video else {
+                return
+            }
+            
+            // Look for an HLS stream to setup streamroot DNA client
+            let hlsSource = video.sources
+                .compactMap { $0 as? BCOVSource }
+                .filter { $0.deliveryMethod ==  "application/x-mpegURL.boltSSAI"}
+                .first
+            
+            guard hlsSource != nil else {
+                self.playbackController?.setVideos([video] as NSFastEnumeration)
+                return
+            }
+            
+            self.setupDnaWithSource(hlsSource!)
+            
+            guard let localManifest = self.dnaClient?.manifestLocalURLPath else {
+                self.playbackController?.setVideos([video] as NSFastEnumeration)
+                return
+            }
+            
+            let dnaVideo = BCOVVideo(url: URL(string: localManifest)!,
+                                     deliveryMethod: Constants.SSAIDeliveryMethod)
+            self.playbackController?.setVideos([dnaVideo] as NSFastEnumeration)
+            self.dnaClient?.displayStats(onView: self.videoContainerView)
         }
     }
 }
@@ -108,6 +145,8 @@ extension ViewController: BCOVPlaybackControllerDelegate {
     
     func playbackController(_ controller: BCOVPlaybackController!, didAdvanceTo session: BCOVPlaybackSession!) {
         print("ViewController Debug - Advanced to new session.")
+        currentPlayer = session.player
+        controller?.disableBufferOptimisation()
     }
 }
 
@@ -130,4 +169,67 @@ extension ViewController: BCOVPlaybackControllerAdsDelegate {
         print("ViewController Debug - Exiting ad")
     }
 }
+
+// MARK: - Streamroot
+extension BCOVPlaybackController {
+    
+    /// Disable brightcove buffer optimisation to avoid
+    /// collisition with streamroot Dynamic Buffer Level algorithm
+    func disableBufferOptimisation() {
+        var options = self.options
+        options?[kBCOVBufferOptimizerMethodKey] = BCOVBufferOptimizerMethod.none
+        self.options = options
+    }
+}
+
+extension ViewController: DNAClientDelegate {
+    /// Instanciate DNA Client from video source
+    func setupDnaWithSource(_ source: BCOVSource) {
+        do {
+            dnaClient = try DNAClient.builder()
+                .dnaClientDelegate(self)
+                .latency(20)
+                .start(source.url)
+        } catch {
+            print("\(error)")
+        }
+    }
+    
+    func playbackTime() -> Double {
+        if let player = self.currentPlayer {
+            return CMTimeGetSeconds(player.currentTime())
+        }
+        return 0
+    }
+    
+    func loadedTimeRanges() -> [NSValue] {
+        guard let player = self.currentPlayer else {
+            return []
+        }
+        
+        guard let playerItem = player.currentItem else {
+            return []
+        }
+        
+        return playerItem.loadedTimeRanges.map { (value) -> NSValue in
+            NSValue(timeRange: TimeRange(range: value.timeRangeValue))
+        }
+    }
+    
+    func updatePeakBitRate(_ bitRate: Double) {
+        currentPlayer?.currentItem?.preferredPeakBitRate = bitRate
+    }
+    
+    func setBufferTarget(_ target: Double) {
+        self.currentPlayer?.currentItem?.preferredForwardBufferDuration = target
+    }
+    
+    func bufferTarget() -> Double {
+        guard let item = self.currentPlayer?.currentItem else {
+            return 0
+        }
+        return item.preferredForwardBufferDuration
+    }
+}
+
 
