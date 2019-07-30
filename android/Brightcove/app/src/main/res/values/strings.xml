@@ -10,5 +10,8 @@
 
     <!-- A sample Brightcove Video ID -->
     <string name="videoId">3637773814001</string>
+    <string name="policyDescription">Policy ID</string>
+    <string name="videoIdDescription">Video ID</string>
+    <string name="accountIdDescription">Account ID</string>
 
 </resources>
