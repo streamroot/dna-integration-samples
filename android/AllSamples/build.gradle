@@ -18,6 +18,10 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://sdk.streamroot.io/android' }
+        maven {
+            url 'http://repo.brightcove.com/releases'
+        }
+        maven { url 'https://sdk.streamroot.io/android' }
     }
 }
 

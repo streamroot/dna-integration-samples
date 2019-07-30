@@ -3,7 +3,8 @@ def samples = [
         'ExoPlayer',
         'PlayKit',
         'PlayKitOVPStarter',
-        'VideoView'
+        'VideoView',
+        'Brightcove'
 ]
 
 samples.each {
