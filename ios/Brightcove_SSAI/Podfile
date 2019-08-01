@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/brightcove/BrightcoveSpecs.git'
+
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'BasicSSAIPlayer' do
+	pod 'Brightcove-Player-SSAI/dynamic'
+  pod 'StreamrootSDK'
+end
