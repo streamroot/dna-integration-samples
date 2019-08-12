@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New stream" />
+
+        <EditText
+            android:id="@+id/accountId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/accountIdDescription"
+            android:ems="10"
+            android:hint="@string/accountIdDescription"
+            android:inputType="textPersonName"
+            android:text="@string/account"
+            tools:text="@string/account" />
+
+        <EditText
+            android:id="@+id/videoId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/videoIdDescription"
+            android:ems="10"
+            android:hint="@string/videoIdDescription"
+            android:inputType="textPersonName"
+            android:text="@string/videoId"
+            tools:text="@string/videoId" />
+
+        <EditText
+            android:id="@+id/policyId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/policyDescription"
+            android:ems="10"
+            android:hint="@string/policyDescription"
+            android:inputType="textPersonName"
+            android:text="@string/policy"
+            tools:text="@string/policy" />
+
+        <Button
+            android:id="@+id/playButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00B61313"
+            android:text="@string/desc_play" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
