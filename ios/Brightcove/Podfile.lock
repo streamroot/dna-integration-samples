@@ -1,14 +1,14 @@
 PODS:
-  - Brightcove-Player-Core/dynamic (6.4.4)
-  - Sentry (4.3.1):
-    - Sentry/Core (= 4.3.1)
-  - Sentry/Core (4.3.1)
+  - Brightcove-Player-Core/dynamic (6.4.5)
+  - Sentry (4.4.0):
+    - Sentry/Core (= 4.4.0)
+  - Sentry/Core (4.4.0)
   - Starscream (3.1.0)
-  - StreamrootSDK (3.13.0):
-    - Sentry (= 4.3.1)
+  - StreamrootSDK (3.14.0):
+    - Sentry (= 4.4.0)
     - Starscream (= 3.1.0)
-    - SwiftProtobuf (= 1.4.0)
-  - SwiftProtobuf (1.4.0)
+    - SwiftProtobuf (= 1.6.0)
+  - SwiftProtobuf (1.6.0)
 
 DEPENDENCIES:
   - Brightcove-Player-Core/dynamic
@@ -24,12 +24,12 @@ SPEC REPOS:
     - SwiftProtobuf
 
 SPEC CHECKSUMS:
-  Brightcove-Player-Core: 68e5ebe8c801064f46d92525f64753e509245596
-  Sentry: 5267d493a398663538317e4dcc438c12c66202ed
+  Brightcove-Player-Core: bcd099cdc27a807ae23fcf22ecfb1eb52c72980c
+  Sentry: 26650184fe71eb7476dfd2737acb5ea6cc64b4b1
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
-  StreamrootSDK: dbb5a76dc4423c6db35d97b497aa2a683ddbf46f
-  SwiftProtobuf: b06646ed6cdcfc3fecd074c6000fe0c413140e4f
+  StreamrootSDK: 3c2b98c206133ca9c45b377ddef3b1f0c36e5923
+  SwiftProtobuf: e905ca1366405696411aaf174411c4b19c0ef73d
 
 PODFILE CHECKSUM: b53b13a593ea492bf144078fdb41dec72e794e60
 
-COCOAPODS: 1.7.0
+COCOAPODS: 1.7.5
