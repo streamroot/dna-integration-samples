@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 
 import com.kaltura.android.exoplayer2.DefaultLoadControl;
 import com.kaltura.android.exoplayer2.LoadControl;
-import com.kaltura.android.exoplayer2.upstream.BandwidthMeter;
 import com.kaltura.playkit.PKDrmParams;
 import com.kaltura.playkit.PKMediaConfig;
 import com.kaltura.playkit.PKMediaEntry;
@@ -22,7 +21,6 @@ import com.kaltura.playkit.Player;
 import java.util.Collections;
 import java.util.List;
 
-import io.streamroot.dna.core.BandwidthListener;
 import io.streamroot.dna.core.DnaClient;
 import io.streamroot.dna.core.PlayerInteractor;
 import io.streamroot.dna.core.QosModule;
