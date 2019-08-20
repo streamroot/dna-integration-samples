@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         //First. Create PKMediaConfig object.
         PKMediaConfig mediaConfig = new PKMediaConfig();
         PlayKitCustomBandwidthMeter bandwidthListener = new PlayKitCustomBandwidthMeter();
-        LoadControl loadControl = new DefaultLoadControl();
+        LoadControl loadControl = new DefaultLoadControl.Builder().createDefaultLoadControl();
         PlayerInteractor playerInteractor = new PlayKitInteractor(player, loadControl);
         QosModule qosModule = new PlayKitQoSModule(player);
 
