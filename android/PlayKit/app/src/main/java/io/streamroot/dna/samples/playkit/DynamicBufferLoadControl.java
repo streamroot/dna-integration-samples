@@ -46,7 +46,7 @@ public class DynamicBufferLoadControl {
             Long reflectedMaxBuffer = getLoadControlPropertyLong(mLoadControl, "maxBufferUs");
             Long reflectedMinVideoBuffer = getLoadControlPropertyLong(mLoadControl, "minBufferVideoUs");
             if (reflectedMaxBuffer != null && reflectedMinVideoBuffer != null) {
-                if (reflectedMinVideoBuffer == reflectedMaxBuffer) {
+                if (reflectedMinVideoBuffer.equals(reflectedMaxBuffer)) {
                     mIsSameMinMax = true;
                 } else {
                     mMinBufferUs = reflectedMinVideoBuffer;
