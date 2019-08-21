@@ -1,6 +1,5 @@
 package io.streamroot.dna.samples.playkit;
 
-
 import com.kaltura.android.exoplayer2.LoadControl;
 
 import java.lang.reflect.Field;
@@ -67,7 +66,7 @@ public class DynamicBufferLoadControl {
     public void setBufferTarget(double target) {
         long targetUs = TimeUnit.SECONDS.toMicros((long) target);
         if (targetUs > mMinBufferUs) {
-            if (mIsSameMinMax == true) {
+            if (mIsAVTargetSplit == true && mIsSameMinMax == true) {
                 setLoadControlPropertyLong(mLoadControl, "minBufferVideoUs", targetUs);
             }
             setLoadControlPropertyLong(mLoadControl, "maxBufferUs", targetUs);
