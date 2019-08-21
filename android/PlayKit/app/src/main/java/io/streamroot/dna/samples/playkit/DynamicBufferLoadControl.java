@@ -60,26 +60,17 @@ public class DynamicBufferLoadControl {
     }
 
     public double bufferTarget() {
-        if (!mIsAVTargetSplit) {
-            Long reflectedMinBuffer = getLoadControlPropertyLong(mLoadControl, "minBufferUs");
-            return TimeUnit.MICROSECONDS.toSeconds(reflectedMinBuffer != null ? reflectedMinBuffer : 0);
-        } else {
-            Long reflectedMinVideoBuffer = getLoadControlPropertyLong(mLoadControl, "minBufferVideoUs");
-            return TimeUnit.MICROSECONDS.toSeconds(reflectedMinVideoBuffer != null ? reflectedMinVideoBuffer : 0);
-        }
+        Long reflectedMaxBuffer = getLoadControlPropertyLong(mLoadControl, "maxBufferUs");
+        return TimeUnit.MICROSECONDS.toSeconds(reflectedMaxBuffer != null ? reflectedMaxBuffer : 0);
     }
 
     public void setBufferTarget(double target) {
         long targetUs = TimeUnit.SECONDS.toMicros((long) target);
         if (targetUs > mMinBufferUs) {
-            if (!mIsAVTargetSplit) {
-                setLoadControlPropertyLong(mLoadControl, "minBufferUs", targetUs);
-            } else {
+            if (mIsSameMinMax == true) {
                 setLoadControlPropertyLong(mLoadControl, "minBufferVideoUs", targetUs);
-                if (mIsSameMinMax) {
-                    setLoadControlPropertyLong(mLoadControl, "maxBufferUs", targetUs);
-                }
             }
+            setLoadControlPropertyLong(mLoadControl, "maxBufferUs", targetUs);
         }
     }
 }
