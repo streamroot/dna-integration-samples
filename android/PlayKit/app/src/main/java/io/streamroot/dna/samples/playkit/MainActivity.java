@@ -84,8 +84,7 @@ public class MainActivity extends AppCompatActivity {
         PlayerInteractor playerInteractor = new PlayKitInteractor(player, loadControl);
         QosModule qosModule = new PlayKitQoSModule(player);
 
-        player.getSettings().setCustomLoadControl(loadControl);
-        player.getSettings().setCustomBandwidthMeter(bandwidthListener);
+        player.getSettings().setCustomLoadControlStrategy(new DnaLoadControlStrategy(loadControl, bandwidthListener));
 
         //Set start position of the media. This will
         //automatically start playback from specified position.
