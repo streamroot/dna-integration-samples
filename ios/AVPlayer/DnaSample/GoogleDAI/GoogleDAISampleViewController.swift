@@ -39,8 +39,9 @@ extension GoogleDAISampleViewController {
   
   func requestStream() {
     print("🔥 request stream \(Date().timeIntervalSince1970)")
+    let streamrootKey = (Bundle.main.infoDictionary?["Streamroot"] as? [String:Any])?["Key"] as? String ?? ""
     let adDisplayContainer = IMAAdDisplayContainer(adContainer: contentOverlayView!, companionSlots: nil)
-    let config = DNAConfiguration(streamrootKey:  "laminendiaye",
+    let config = DNAConfiguration(streamrootKey: streamrootKey,
                                   contentId: "GoogleDAI_TEST",
                                   latency: 30,
                                   property:  "SSAI")

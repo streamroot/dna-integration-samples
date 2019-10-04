@@ -12,6 +12,7 @@ import StreamrootSDK
 
 class SwiftSampleViewController: AVPlayerViewController {
   var dnaClient: DNAClient?
+  private let streamrootKey = (Bundle.main.infoDictionary?["Streamroot"] as? [String:Any])?["Key"] as? String ?? ""
   private let manifestUrl = URL(string: "http://wowza-test.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8")!
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -24,7 +25,7 @@ class SwiftSampleViewController: AVPlayerViewController {
       dnaClient = try DNAClient.builder()
         .dnaClientDelegate(self)
         // the streamroot key can be set in the config or in the mainPlist file
-        .streamrootKey("demoswebsiteandpartners")
+        .streamrootKey(streamrootKey)
         .latency(30)
         .start(manifestUrl)
     } catch let error {

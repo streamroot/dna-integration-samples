@@ -22,11 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
+    NSString *streamrootKey = [[NSBundle mainBundle] infoDictionary][@"Streamroot"][@"Key"];
     NSURL *manifestUrl = [NSURL URLWithString: @"http://wowza-test.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8"];
     NSError *error;
    // the streamroot key can be set in the config or in the mainPlist file
   self.dnaClient = [[[[DNAClient.builder dnaClientDelegate: self] latency: 30]
-                    streamrootKey: @"demoswebsiteandpartners"]
+                    streamrootKey: streamrootKey ? streamrootKey : @""]
                     start:manifestUrl error: &error];
   if (error || !self.dnaClient) {
     NSLog(@"error: %@", error);
