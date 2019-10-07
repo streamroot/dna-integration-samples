@@ -6,7 +6,7 @@ PODS:
     - Sentry/Core (= 4.4.0)
   - Sentry/Core (4.4.0)
   - Starscream (3.1.0)
-  - StreamrootSDK (3.15.0):
+  - StreamrootSDK (3.15.1):
     - Sentry (= 4.4.0)
     - Starscream (= 3.1.0)
     - SwiftProtobuf (= 1.6.0)
@@ -30,7 +30,7 @@ SPEC CHECKSUMS:
   GoogleAds-IMA-iOS-SDK: 0e37ab83b22075ad631a70dcba9528cb246c92bf
   Sentry: 26650184fe71eb7476dfd2737acb5ea6cc64b4b1
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
-  StreamrootSDK: 91d4db6a75cef993f64137c5c5edb830c0cc198b
+  StreamrootSDK: 9c7616fe7ba17b921ed4d73d8b8a051027c22690
   SwiftProtobuf: e905ca1366405696411aaf174411c4b19c0ef73d
 
 PODFILE CHECKSUM: 9161faea9d1bf3934e245a45155204e552321028
