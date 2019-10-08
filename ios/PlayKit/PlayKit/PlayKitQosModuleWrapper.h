@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PlayKitQosModuleWrapper : NSObject
 +(instancetype)playKitQoSModule:(id<Player>) player;
-@property (nonatomic, strong) StreamrootQosModule *dnaQoSModule;
+@property (nonatomic, strong) id<QosModule> dnaQoSModule;
 @end
 
 NS_ASSUME_NONNULL_END
