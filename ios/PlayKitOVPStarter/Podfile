@@ -9,6 +9,6 @@ pod 'PlayKit', :git => 'https://github.com/streamroot/playkit-ios', :branch => '
 pod 'PlayKitProviders'
 pod 'PlayKitKava'
 
-pod 'StreamrootSDK', '~> 3.12.0'
+pod 'StreamrootSDK'
   
 target 'PlayKitOVPStarter'
