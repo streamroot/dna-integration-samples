@@ -6,7 +6,7 @@ PODS:
     - Sentry/Core (= 4.4.0)
   - Sentry/Core (4.4.0)
   - Starscream (3.1.0)
-  - StreamrootSDK (3.14.0):
+  - StreamrootSDK (3.15.1):
     - Sentry (= 4.4.0)
     - Starscream (= 3.1.0)
     - SwiftProtobuf (= 1.6.0)
@@ -31,7 +31,7 @@ SPEC CHECKSUMS:
   Brightcove-Player-SSAI: 5f37aa6bc4318346f4b5c0cad8c898773eadc01f
   Sentry: 26650184fe71eb7476dfd2737acb5ea6cc64b4b1
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
-  StreamrootSDK: 3c2b98c206133ca9c45b377ddef3b1f0c36e5923
+  StreamrootSDK: 9c7616fe7ba17b921ed4d73d8b8a051027c22690
   SwiftProtobuf: e905ca1366405696411aaf174411c4b19c0ef73d
 
 PODFILE CHECKSUM: 479502283cd0cd74713787f5537f633693792fd3
