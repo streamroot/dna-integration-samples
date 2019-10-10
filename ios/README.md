@@ -5,6 +5,6 @@
 
 </div>
 
-> The purpose of this reference application is to provide a fully integrated example application, using Streamroot's SDK and [`AVPlayer`](https://developer.apple.com/documentation/avfoundation/avplayer?changes=_7) as described in our [documentation](https://support.streamroot.io/hc/en-us/sections/115000729153-iOS-and-tvOS).
+> The purpose of this reference application is to provide a fully integrated example application, using Streamroot's SDK and [`AVPlayer`](https://developer.apple.com/documentation/avfoundation/avplayer?changes=_7) as described in our [documentation](https://support.streamroot.io/hc/en-us/sections/360003738414-iOS-and-tvOS).
 
 For any trouble or question, please contact support@streamroot.io

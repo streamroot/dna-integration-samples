@@ -23,8 +23,8 @@ class SwiftSampleViewController: AVPlayerViewController {
     do {
       dnaClient = try DNAClient.builder()
         .dnaClientDelegate(self)
-        // the streamroot key can be set in the config or in the mainPlist file
-        .streamrootKey("demoswebsiteandpartners")
+        // the streamroot key will default to the one in the Info.plist if not overridden here
+        //.streamrootKey("demoswebsiteandpartners")
         .latency(30)
         .start(manifestUrl)
     } catch let error {

@@ -14,15 +14,15 @@ PODS:
     - SwiftyJSON (= 4.3.0)
     - XCGLogger (= 7.0.0)
   - PlayKitUtils (0.4.0)
-  - Sentry (4.3.1):
-    - Sentry/Core (= 4.3.1)
-  - Sentry/Core (4.3.1)
+  - Sentry (4.4.0):
+    - Sentry/Core (= 4.4.0)
+  - Sentry/Core (4.4.0)
   - Starscream (3.1.0)
-  - StreamrootSDK (3.12.0):
-    - Sentry (= 4.3.1)
+  - StreamrootSDK (3.15.1):
+    - Sentry (= 4.4.0)
     - Starscream (= 3.1.0)
-    - SwiftProtobuf (= 1.4.0)
-  - SwiftProtobuf (1.4.0)
+    - SwiftProtobuf (= 1.6.0)
+  - SwiftProtobuf (1.6.0)
   - SwiftyJSON (4.3.0)
   - XCGLogger (7.0.0):
     - XCGLogger/Core (= 7.0.0)
@@ -31,7 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - PlayKit (from `https://github.com/streamroot/playkit-ios`, branch `preferredForwardBufferDuration`)
-  - StreamrootSDK (~> 3.12.0)
+  - StreamrootSDK
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -58,15 +58,15 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   KalturaNetKit: bd5a963f23f3917a059ac374406143fe2d29bf27
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
-  PlayKit: 1ec0792d81a37f0be6704a21c9f5a125750c9593
+  PlayKit: 46da5b32b306122fda6232547234d7fe9a3bb77b
   PlayKitUtils: 98bffe139cffe5cb1fe8fc757b58845c939caf67
-  Sentry: 5267d493a398663538317e4dcc438c12c66202ed
+  Sentry: 26650184fe71eb7476dfd2737acb5ea6cc64b4b1
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
-  StreamrootSDK: e1e7bc26e70c406fb3ae902cf45bf081c18f4cd2
-  SwiftProtobuf: b06646ed6cdcfc3fecd074c6000fe0c413140e4f
+  StreamrootSDK: 9c7616fe7ba17b921ed4d73d8b8a051027c22690
+  SwiftProtobuf: e905ca1366405696411aaf174411c4b19c0ef73d
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
 
-PODFILE CHECKSUM: a7a3fe2e3469aa96103929617d4fa3936cb4b206
+PODFILE CHECKSUM: f4b1764d4f08420525a7d983bf1f948d33541e57
 
 COCOAPODS: 1.7.5

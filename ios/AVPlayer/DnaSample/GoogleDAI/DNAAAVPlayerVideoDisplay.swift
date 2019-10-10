@@ -14,13 +14,13 @@ import StreamrootSDK
 // MARK: - Configuration
 
 struct DNAConfiguration {
-  let streamrootKey: String
+  let streamrootKey: String?
   let contentId: String?
   let latency: Int
   let property: String?
   let backendHost: URL?
   
-  init(streamrootKey: String,
+    init(streamrootKey: String? = nil,
        contentId: String? = nil,
        latency: Int = 0,
        property: String? = nil,
@@ -39,7 +39,7 @@ class DNAAVPlayerVideoDisplay: IMAAVPlayerVideoDisplay {
   private(set) var dnaClient: DNAClient?
   private(set) var dnaConfig: DNAConfiguration
   
-  private var strKey: String {
+  private var strKey: String? {
     return self.dnaConfig.streamrootKey
   }
   
@@ -77,7 +77,9 @@ extension DNAAVPlayerVideoDisplay {
   func startStreamURL(_ url: URL) throws -> URL? {
     print("🔥 starting DNA builder \(Date().timeIntervalSince1970)")
     var builder = DNAClient.builder().dnaClientDelegate(self)
-    builder = builder.streamrootKey(strKey)
+    if let strKey = strKey, !strKey.isEmpty {
+        builder = builder.streamrootKey(strKey)
+    }
     
     if self.latency > 0 {
       builder = builder.latency(self.latency)

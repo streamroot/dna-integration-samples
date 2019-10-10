@@ -12,7 +12,7 @@ import StreamrootSDK
 // Streamroot QoS module
 // Binds player' events to raise precise data to DNAClient
 class PlayKitQoSModule {
-    let dnaQoSModule: QosModule = StreamrootQosModule(moduleType: .custom)
+    let dnaQoSModule: QosModule = DNAQos.module(type: .custom)
 
     public init(_ player: Player) {
         player.addObserver(self, event: PlayerEvent.stateChanged, block: { event in

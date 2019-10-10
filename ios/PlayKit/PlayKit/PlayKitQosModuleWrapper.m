@@ -22,7 +22,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.dnaQoSModule = [[StreamrootQosModule alloc] initWithModuleType: QOSModuleTypeCustom];
+        self.dnaQoSModule = [DNAQos moduleWithType:QOSModuleTypeCustom];
         [self registerObservers];
     }
     return self;
