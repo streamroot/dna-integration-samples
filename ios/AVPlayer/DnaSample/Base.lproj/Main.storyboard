@@ -42,7 +42,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oc-6l-oFY">
                                 <rect key="frame" x="50" y="223.5" width="275" height="220"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvi-8O-vIJ">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvi-8O-vIJ">
                                         <rect key="frame" x="50" y="80" width="175" height="40"/>
                                         <color key="backgroundColor" red="0.2274509804" green="0.62745098040000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -61,14 +61,14 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="yBC-gF-k79"/>
                                         </constraints>
-                                        <state key="normal" title="Swift">
+                                        <state key="normal" title="DRM Test">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" id="269-bC-DWy"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lz1-ba-l0N">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lz1-ba-l0N">
                                         <rect key="frame" x="50" y="140" width="175" height="40"/>
                                         <color key="backgroundColor" red="0.2274509804" green="0.62745098040000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -95,7 +95,7 @@
                                     <constraint firstAttribute="trailing" secondItem="lHC-p5-r5E" secondAttribute="trailing" constant="50" id="xlx-TM-5I5"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJA-9z-4ZY" userLabel="Google DAI">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJA-9z-4ZY" userLabel="Google DAI">
                                 <rect key="frame" x="100" y="423.5" width="175" height="40"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.62745098040000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

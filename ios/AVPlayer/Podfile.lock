@@ -17,7 +17,7 @@ DEPENDENCIES:
   - GoogleAds-IMA-iOS-SDK
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AVPlayerDNAPlugin
     - GoogleAds-IMA-iOS-SDK
     - Sentry
@@ -35,4 +35,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 9161faea9d1bf3934e245a45155204e552321028
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

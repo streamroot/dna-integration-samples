@@ -23,6 +23,8 @@
 		D6328C5B228417B8003518DE /* DNAAAVPlayerVideoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6328C59228417B8003518DE /* DNAAAVPlayerVideoDisplay.swift */; };
 		D6328C5C228417B8003518DE /* GoogleDAISampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6328C5A228417B8003518DE /* GoogleDAISampleViewController.swift */; };
 		D661F8AF21B55E8800212152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB51E687C0E00B59D4B /* Assets.xcassets */; };
+		D66233622361BB00002EAA33 /* Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D66233612361BB00002EAA33 /* Encoder.m */; };
+		D66233642361BB8E002EAA33 /* SwiftSampleVC+AVAssetResourceLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66233632361BB8E002EAA33 /* SwiftSampleVC+AVAssetResourceLoaderDelegate.swift */; };
 		D698F9A82293075700056135 /* SwiftPluginSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6087576219079F50034CB62 /* SwiftPluginSampleViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,9 @@
 		D61171F3209B3FAD00CBE36B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6328C59228417B8003518DE /* DNAAAVPlayerVideoDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNAAAVPlayerVideoDisplay.swift; sourceTree = "<group>"; };
 		D6328C5A228417B8003518DE /* GoogleDAISampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDAISampleViewController.swift; sourceTree = "<group>"; };
+		D66233602361BB00002EAA33 /* Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encoder.h; sourceTree = "<group>"; };
+		D66233612361BB00002EAA33 /* Encoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encoder.m; sourceTree = "<group>"; };
+		D66233632361BB8E002EAA33 /* SwiftSampleVC+AVAssetResourceLoaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftSampleVC+AVAssetResourceLoaderDelegate.swift"; sourceTree = "<group>"; };
 		D6CA02042232BE5C00FC025E /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.1.sdk/usr/lib/libresolv.tbd; sourceTree = DEVELOPER_DIR; };
 		D6CA02062232BEC000FC025E /* librust_app_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librust_app_ios.a; sourceTree = "<group>"; };
 		D6CA020E2232C34200FC025E /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
@@ -112,6 +117,8 @@
 		50F1DEAD1E687C0E00B59D4B /* DnaSample */ = {
 			isa = PBXGroup;
 			children = (
+				D66233602361BB00002EAA33 /* Encoder.h */,
+				D66233612361BB00002EAA33 /* Encoder.m */,
 				D6328C58228417B8003518DE /* GoogleDAI */,
 				D61171C3209B072300CBE36B /* ObjC */,
 				50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */,
@@ -162,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				50F1DEB01E687C0E00B59D4B /* SwiftSampleViewController.swift */,
+				D66233632361BB8E002EAA33 /* SwiftSampleVC+AVAssetResourceLoaderDelegate.swift */,
 				D6087576219079F50034CB62 /* SwiftPluginSampleViewController.swift */,
 			);
 			path = Swift;
@@ -406,9 +414,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F1DEB11E687C0E00B59D4B /* SwiftSampleViewController.swift in Sources */,
+				D66233642361BB8E002EAA33 /* SwiftSampleVC+AVAssetResourceLoaderDelegate.swift in Sources */,
 				D6328C5C228417B8003518DE /* GoogleDAISampleViewController.swift in Sources */,
 				50F1DEAF1E687C0E00B59D4B /* AppDelegate.swift in Sources */,
 				D61171C2209B06F100CBE36B /* ObjCSampleViewController.m in Sources */,
+				D66233622361BB00002EAA33 /* Encoder.m in Sources */,
 				D6328C5B228417B8003518DE /* DNAAAVPlayerVideoDisplay.swift in Sources */,
 				D698F9A82293075700056135 /* SwiftPluginSampleViewController.swift in Sources */,
 				D61171CE209B200900CBE36B /* MainViewController.swift in Sources */,
