@@ -36,9 +36,6 @@
   
   NSURL *url = [[NSURL alloc] initWithString: self.dnaClient.manifestLocalURLPath];
     AVPlayerItem *playerItem =[[AVPlayerItem alloc] initWithURL: url];
-     if (@available(iOS 10.2, *)) {
-      playerItem.preferredForwardBufferDuration = self.dnaClient.bufferTarget;
-     }
     self.player = [[AVPlayer alloc] initWithPlayerItem: playerItem];
     [self.player play];
     [self.view setNeedsLayout];

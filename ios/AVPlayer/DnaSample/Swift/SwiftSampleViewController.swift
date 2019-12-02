@@ -38,12 +38,6 @@ class SwiftSampleViewController: AVPlayerViewController {
     }
     
     let playerItem = AVPlayerItem(asset: AVURLAsset(url: url))
-    if let bufferTarget = dnaClient?.bufferTarget {
-      if #available(iOS 10.0, *) {
-        playerItem.preferredForwardBufferDuration = bufferTarget
-      }
-    }
-    
     player = AVPlayer(playerItem: playerItem)
     player?.play()
     view.setNeedsLayout()

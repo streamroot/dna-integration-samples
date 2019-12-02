@@ -22,6 +22,7 @@
 		D6117205209B41BD00CBE36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61171EE209B3FAB00CBE36B /* Main.storyboard */; };
 		D6328C5B228417B8003518DE /* DNAAAVPlayerVideoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6328C59228417B8003518DE /* DNAAAVPlayerVideoDisplay.swift */; };
 		D6328C5C228417B8003518DE /* GoogleDAISampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6328C5A228417B8003518DE /* GoogleDAISampleViewController.swift */; };
+		D65434B6239551EC00519E36 /* CompassSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65434B5239551EC00519E36 /* CompassSampleViewController.swift */; };
 		D661F8AF21B55E8800212152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB51E687C0E00B59D4B /* Assets.xcassets */; };
 		D698F9A82293075700056135 /* SwiftPluginSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6087576219079F50034CB62 /* SwiftPluginSampleViewController.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		D61171F3209B3FAD00CBE36B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6328C59228417B8003518DE /* DNAAAVPlayerVideoDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DNAAAVPlayerVideoDisplay.swift; sourceTree = "<group>"; };
 		D6328C5A228417B8003518DE /* GoogleDAISampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDAISampleViewController.swift; sourceTree = "<group>"; };
+		D65434B5239551EC00519E36 /* CompassSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassSampleViewController.swift; sourceTree = "<group>"; };
 		D6CA02042232BE5C00FC025E /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.1.sdk/usr/lib/libresolv.tbd; sourceTree = DEVELOPER_DIR; };
 		D6CA02062232BEC000FC025E /* librust_app_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librust_app_ios.a; sourceTree = "<group>"; };
 		D6CA020E2232C34200FC025E /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
@@ -163,6 +165,7 @@
 			children = (
 				50F1DEB01E687C0E00B59D4B /* SwiftSampleViewController.swift */,
 				D6087576219079F50034CB62 /* SwiftPluginSampleViewController.swift */,
+				D65434B5239551EC00519E36 /* CompassSampleViewController.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F1DEB11E687C0E00B59D4B /* SwiftSampleViewController.swift in Sources */,
+				D65434B6239551EC00519E36 /* CompassSampleViewController.swift in Sources */,
 				D6328C5C228417B8003518DE /* GoogleDAISampleViewController.swift in Sources */,
 				50F1DEAF1E687C0E00B59D4B /* AppDelegate.swift in Sources */,
 				D61171C2209B06F100CBE36B /* ObjCSampleViewController.m in Sources */,
