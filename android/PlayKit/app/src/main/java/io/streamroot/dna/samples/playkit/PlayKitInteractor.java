@@ -5,8 +5,6 @@ import com.kaltura.android.exoplayer2.LoadControl;
 import com.kaltura.playkit.Player;
 import io.streamroot.dna.core.PlayerInteractor;
 import io.streamroot.dna.core.TimeRange;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +27,6 @@ final class PlayKitInteractor implements PlayerInteractor {
         mLoadControlWrapper.setBufferTarget(target);
     }
 
-    @NotNull
     @Override
     public List<TimeRange> loadedTimeRanges() {
         long currentPosition = mPlayer.getCurrentPosition();
@@ -37,7 +34,6 @@ final class PlayKitInteractor implements PlayerInteractor {
         return Collections.singletonList(new TimeRange(currentPosition, bufferedPosition));
     }
 
-    @Nullable
     @Override
     public Looper looper() {
         return Looper.getMainLooper();
