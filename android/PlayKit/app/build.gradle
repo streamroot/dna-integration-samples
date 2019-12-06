@@ -28,7 +28,7 @@ android {
 
 dependencies {
     // Streamroot's up-to-date fork of Kaltura Playkit
-    implementation 'com.kaltura.playkit:dna-playkit:4.1.0'
+    implementation 'com.kaltura.playkit:playkit:4.3.0'
 
     implementation 'io.streamroot.dna:dna-core:3.13.0'
     implementation 'io.streamroot.dna:dna-utils:3.13.0'
