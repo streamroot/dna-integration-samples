@@ -11,7 +11,7 @@ target 'DnaSample-iOS' do
   use_frameworks!
 
   streamrootPod
-  pod 'GoogleAds-IMA-iOS-SDK'
+  pod 'GoogleAds-IMA-iOS-SDK',  '3.11.1'
 end
 
 target 'DnaSample-tvOS' do
@@ -21,3 +21,4 @@ target 'DnaSample-tvOS' do
   streamrootPod
 
 end
+  
