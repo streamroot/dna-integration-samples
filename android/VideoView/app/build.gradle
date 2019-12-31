@@ -27,8 +27,9 @@ android {
 }
 
 dependencies {
-    implementation "io.streamroot.dna:dna-core:3.15.0"
-    implementation "io.streamroot.dna:dna-utils:3.15.0"
+    def dna_version = "3.16.0"
+    implementation "io.streamroot.dna:dna-core:$dna_version"
+    implementation "io.streamroot.dna:dna-utils:$dna_version"
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
