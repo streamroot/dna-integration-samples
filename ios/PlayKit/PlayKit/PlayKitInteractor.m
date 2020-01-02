@@ -44,11 +44,11 @@
 }
 
 - (double)bufferTarget {
-    return self.player.settings.preferredForwardBufferDuration;
+    return self.player.settings.network.preferredForwardBufferDuration;
 }
 
 - (void)setBufferTarget:(double)target {
-    self.player.settings.preferredForwardBufferDuration = target;
+    self.player.settings.network.preferredForwardBufferDuration = target;
 }
 
 @end
