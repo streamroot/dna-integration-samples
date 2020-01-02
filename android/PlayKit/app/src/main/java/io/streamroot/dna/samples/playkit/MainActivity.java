@@ -2,11 +2,14 @@ package io.streamroot.dna.samples.playkit;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.kaltura.android.exoplayer2.DefaultLoadControl;
+import com.kaltura.android.exoplayer2.LoadControl;
 import com.kaltura.playkit.PKDrmParams;
 import com.kaltura.playkit.PKMediaConfig;
 import com.kaltura.playkit.PKMediaEntry;
@@ -18,7 +21,6 @@ import com.kaltura.playkit.Player;
 import java.util.Collections;
 import java.util.List;
 
-import io.streamroot.dna.core.BandwidthListener;
 import io.streamroot.dna.core.DnaClient;
 import io.streamroot.dna.core.PlayerInteractor;
 import io.streamroot.dna.core.QosModule;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         //Create instance of the player without plugins.
         player = PlayKitManager.loadPlayer(this, null);
@@ -76,9 +79,12 @@ public class MainActivity extends AppCompatActivity {
     private PKMediaConfig createMediaConfig() {
         //First. Create PKMediaConfig object.
         PKMediaConfig mediaConfig = new PKMediaConfig();
-        PlayerInteractor playerInteractor = new PlayKitInteractor(player);
+        PlayKitCustomBandwidthMeter bandwidthListener = new PlayKitCustomBandwidthMeter();
+        LoadControl loadControl = new DefaultLoadControl.Builder().createDefaultLoadControl();
+        PlayerInteractor playerInteractor = new PlayKitInteractor(player, loadControl);
         QosModule qosModule = new PlayKitQoSModule(player);
-        BandwidthListener bandwidthListener = new PlayKitBandwidthListener(player);
+
+        player.getSettings().setCustomLoadControlStrategy(new DnaLoadControlStrategy(loadControl, bandwidthListener));
 
         //Set start position of the media. This will
         //automatically start playback from specified position.
