@@ -4,7 +4,7 @@ use_frameworks!
 
 platform :ios, '9.2' # (define required version)
 
-pod 'PlayKit', :git => 'https://github.com/streamroot/playkit-ios', :branch => 'preferredForwardBufferDuration'
+pod 'PlayKit', '~> 3.16.0'
 pod 'StreamrootSDK'
   
 target 'PlayKit'
