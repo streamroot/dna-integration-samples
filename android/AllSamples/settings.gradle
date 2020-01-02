@@ -4,7 +4,8 @@ def samples = [
         'PlayKit',
         'PlayKitOVPStarter',
         'VideoView',
-        'Brightcove'
+        'Brightcove',
+        'AMP'
 ]
 
 samples.each {
