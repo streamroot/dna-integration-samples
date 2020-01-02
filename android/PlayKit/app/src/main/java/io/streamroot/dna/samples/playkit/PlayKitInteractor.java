@@ -1,34 +1,32 @@
 package io.streamroot.dna.samples.playkit;
 
 import android.os.Looper;
+import com.kaltura.android.exoplayer2.LoadControl;
 import com.kaltura.playkit.Player;
 import io.streamroot.dna.core.PlayerInteractor;
 import io.streamroot.dna.core.TimeRange;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
 import java.util.List;
 
 final class PlayKitInteractor implements PlayerInteractor {
     private Player mPlayer;
-
-    PlayKitInteractor(Player player) {
-        this.mPlayer = player;
+    private DynamicBufferLoadControl mLoadControlWrapper;
+    PlayKitInteractor(Player player, LoadControl loadControl) {
+        mPlayer = player;
+        mLoadControlWrapper = new DynamicBufferLoadControl(loadControl);
     }
 
     @Override
     public double bufferTarget() {
-        Double bufferTarget = mPlayer.getBufferTarget();
-
-        if (bufferTarget != null) {
-            return bufferTarget;
-        }
-
-        return 0.0;
+        return mLoadControlWrapper.bufferTarget();
     }
 
-    @NotNull
+    @Override
+    public void setBufferTarget(double target) {
+        mLoadControlWrapper.setBufferTarget(target);
+    }
+
     @Override
     public List<TimeRange> loadedTimeRanges() {
         long currentPosition = mPlayer.getCurrentPosition();
@@ -36,7 +34,6 @@ final class PlayKitInteractor implements PlayerInteractor {
         return Collections.singletonList(new TimeRange(currentPosition, bufferedPosition));
     }
 
-    @Nullable
     @Override
     public Looper looper() {
         return Looper.getMainLooper();
@@ -45,10 +42,5 @@ final class PlayKitInteractor implements PlayerInteractor {
     @Override
     public long playbackTime() {
         return mPlayer.getCurrentPosition();
-    }
-
-    @Override
-    public void setBufferTarget(double target) {
-        mPlayer.setBufferTarget(target);
     }
 }
