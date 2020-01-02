@@ -1,0 +1,768 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C76F4F623BE0D9100A8AF74 /* amp.lic in Resources */ = {isa = PBXBuildFile; fileRef = 4C76F4F523BE0D9100A8AF74 /* amp.lic */; };
+		4C76F4F723BE166000A8AF74 /* amp.lic in Resources */ = {isa = PBXBuildFile; fileRef = 4C76F4F523BE0D9100A8AF74 /* amp.lic */; };
+		4CAEB4D823A0190900F469C2 /* AMPSRModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEB4D723A0190900F469C2 /* AMPSRModule.swift */; };
+		4CAEB4D923A0190900F469C2 /* AMPSRModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEB4D723A0190900F469C2 /* AMPSRModule.swift */; };
+		4CD0E344239FFB240084D9C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0E343239FFB240084D9C2 /* AppDelegate.swift */; };
+		4CD0E348239FFB240084D9C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0E347239FFB240084D9C2 /* ViewController.swift */; };
+		4CD0E34B239FFB240084D9C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0E349239FFB240084D9C2 /* Main.storyboard */; };
+		4CD0E34D239FFB260084D9C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0E34C239FFB260084D9C2 /* Assets.xcassets */; };
+		4CD0E350239FFB260084D9C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0E34E239FFB260084D9C2 /* LaunchScreen.storyboard */; };
+		4CD0E37B23A002980084D9C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0E37A23A002980084D9C2 /* AppDelegate.swift */; };
+		4CD0E37D23A002980084D9C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0E37C23A002980084D9C2 /* ViewController.swift */; };
+		4CD0E38023A002980084D9C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0E37E23A002980084D9C2 /* Main.storyboard */; };
+		4CD0E38223A0029A0084D9C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0E38123A0029A0084D9C2 /* Assets.xcassets */; };
+		4CD0E38523A0029A0084D9C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0E38323A0029A0084D9C2 /* LaunchScreen.storyboard */; };
+		4CEDCABF23A029E500E793E9 /* AMPInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDCABE23A029E500E793E9 /* AMPInteractor.swift */; };
+		4CEDCAC023A029E800E793E9 /* AMPInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDCABE23A029E500E793E9 /* AMPInteractor.swift */; };
+		4CF4743F23A042960069CF18 /* AmpCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAEB3B123A0185D00F469C2 /* AmpCore.framework */; };
+		4CF4744023A042960069CF18 /* AmpCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAEB3B123A0185D00F469C2 /* AmpCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4CF4744523A04EFE0069CF18 /* AmpCoreTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAEB40823A0185E00F469C2 /* AmpCoreTV.framework */; };
+		4CF4744623A04EFE0069CF18 /* AmpCoreTV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAEB40823A0185E00F469C2 /* AmpCoreTV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4CF4744923A0576A0069CF18 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4744823A0576A0069CF18 /* ViewController+Extensions.swift */; };
+		4CF4744A23A057960069CF18 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4744823A0576A0069CF18 /* ViewController+Extensions.swift */; };
+		4CF4744C23A058860069CF18 /* AMPSRConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4744B23A058860069CF18 /* AMPSRConfig.swift */; };
+		4CF4744D23A059ED0069CF18 /* AMPSRConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF4744B23A058860069CF18 /* AMPSRConfig.swift */; };
+		96AF57A85CBFE8399B921218 /* Pods_AMPSampleTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB1D2DE8B0009FF7B5FE9E8 /* Pods_AMPSampleTV.framework */; };
+		CE89133999041EB7843678D8 /* Pods_AMPSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A81D602C2226658AD7E1D7D /* Pods_AMPSample.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4CF4744123A042960069CF18 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4CF4744023A042960069CF18 /* AmpCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CF4744723A04EFE0069CF18 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4CF4744623A04EFE0069CF18 /* AmpCoreTV.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		08C7ACE8B50381C9198DDC38 /* Pods-AMPSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPSample.release.xcconfig"; path = "Target Support Files/Pods-AMPSample/Pods-AMPSample.release.xcconfig"; sourceTree = "<group>"; };
+		4C76F4F523BE0D9100A8AF74 /* amp.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = amp.lic; sourceTree = "<group>"; };
+		4CAEB3A423A0185D00F469C2 /* AmpChromecast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpChromecast.framework; sourceTree = "<group>"; };
+		4CAEB3A523A0185D00F469C2 /* AmpFBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpFBAudienceNetwork.framework; sourceTree = "<group>"; };
+		4CAEB3A623A0185D00F469C2 /* AmpUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpUI.framework; sourceTree = "<group>"; };
+		4CAEB3A723A0185D00F469C2 /* AmpNielsen.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpNielsen.framework; sourceTree = "<group>"; };
+		4CAEB3A823A0185D00F469C2 /* AmpAdobeHeartbeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpAdobeHeartbeat.framework; sourceTree = "<group>"; };
+		4CAEB3A923A0185D00F469C2 /* AmpFirebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpFirebase.framework; sourceTree = "<group>"; };
+		4CAEB3AA23A0185D00F469C2 /* AmpDownloader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpDownloader.framework; sourceTree = "<group>"; };
+		4CAEB3AB23A0185D00F469C2 /* AmpYoSpace.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpYoSpace.framework; sourceTree = "<group>"; };
+		4CAEB3AC23A0185D00F469C2 /* AmpGoogleAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpGoogleAnalytics.framework; sourceTree = "<group>"; };
+		4CAEB3AD23A0185D00F469C2 /* AmpIMA.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpIMA.framework; sourceTree = "<group>"; };
+		4CAEB3AE23A0185D00F469C2 /* AmpMediaAcceleration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpMediaAcceleration.framework; sourceTree = "<group>"; };
+		4CAEB3AF23A0185D00F469C2 /* AmpFreewheel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpFreewheel.framework; sourceTree = "<group>"; };
+		4CAEB3B023A0185D00F469C2 /* AmpStatistics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpStatistics.framework; sourceTree = "<group>"; };
+		4CAEB3B123A0185D00F469C2 /* AmpCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpCore.framework; sourceTree = "<group>"; };
+		4CAEB3B223A0185D00F469C2 /* Amp360.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Amp360.framework; sourceTree = "<group>"; };
+		4CAEB3E023A0185D00F469C2 /* AmpComScore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpComScore.framework; sourceTree = "<group>"; };
+		4CAEB3E123A0185D00F469C2 /* AmpMediaAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpMediaAnalytics.framework; sourceTree = "<group>"; };
+		4CAEB3ED23A0185E00F469C2 /* AmpYoSpaceTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpYoSpaceTV.framework; sourceTree = "<group>"; };
+		4CAEB3EE23A0185E00F469C2 /* AmpIMATV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpIMATV.framework; sourceTree = "<group>"; };
+		4CAEB3EF23A0185E00F469C2 /* AmpMediaAccelerationTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpMediaAccelerationTV.framework; sourceTree = "<group>"; };
+		4CAEB3F023A0185E00F469C2 /* AmpAdobeHeartbeatTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpAdobeHeartbeatTV.framework; sourceTree = "<group>"; };
+		4CAEB3F123A0185E00F469C2 /* AmpComScoreTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpComScoreTV.framework; sourceTree = "<group>"; };
+		4CAEB40523A0185E00F469C2 /* AmpFreewheelTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpFreewheelTV.framework; sourceTree = "<group>"; };
+		4CAEB40623A0185E00F469C2 /* AmpNielsenTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpNielsenTV.framework; sourceTree = "<group>"; };
+		4CAEB40723A0185E00F469C2 /* AmpMediaAnalyticsTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpMediaAnalyticsTV.framework; sourceTree = "<group>"; };
+		4CAEB40823A0185E00F469C2 /* AmpCoreTV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmpCoreTV.framework; sourceTree = "<group>"; };
+		4CAEB4D723A0190900F469C2 /* AMPSRModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPSRModule.swift; sourceTree = "<group>"; };
+		4CD0E340239FFB240084D9C2 /* AMPSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMPSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD0E343239FFB240084D9C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4CD0E347239FFB240084D9C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4CD0E34A239FFB240084D9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4CD0E34C239FFB260084D9C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4CD0E34F239FFB260084D9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4CD0E351239FFB260084D9C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD0E37823A002980084D9C2 /* AMPSampleTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMPSampleTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD0E37A23A002980084D9C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4CD0E37C23A002980084D9C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4CD0E37F23A002980084D9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4CD0E38123A0029A0084D9C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4CD0E38423A0029A0084D9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4CD0E38623A0029A0084D9C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CEDCABE23A029E500E793E9 /* AMPInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPInteractor.swift; sourceTree = "<group>"; };
+		4CF4744823A0576A0069CF18 /* ViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
+		4CF4744B23A058860069CF18 /* AMPSRConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPSRConfig.swift; sourceTree = "<group>"; };
+		6A81D602C2226658AD7E1D7D /* Pods_AMPSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AMPSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7076E7396D89556714F5C3B1 /* Pods-AMPSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPSample.debug.xcconfig"; path = "Target Support Files/Pods-AMPSample/Pods-AMPSample.debug.xcconfig"; sourceTree = "<group>"; };
+		AAB1D2DE8B0009FF7B5FE9E8 /* Pods_AMPSampleTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AMPSampleTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E6E1504B028A49BCCB7A47 /* Pods-AMPSampleTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPSampleTV.debug.xcconfig"; path = "Target Support Files/Pods-AMPSampleTV/Pods-AMPSampleTV.debug.xcconfig"; sourceTree = "<group>"; };
+		D1F6BCAB14E7AA5D11216D6F /* Pods-AMPSampleTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPSampleTV.release.xcconfig"; path = "Target Support Files/Pods-AMPSampleTV/Pods-AMPSampleTV.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4CD0E33D239FFB240084D9C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CF4743F23A042960069CF18 /* AmpCore.framework in Frameworks */,
+				CE89133999041EB7843678D8 /* Pods_AMPSample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD0E37523A002980084D9C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CF4744523A04EFE0069CF18 /* AmpCoreTV.framework in Frameworks */,
+				96AF57A85CBFE8399B921218 /* Pods_AMPSampleTV.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		32EC30EC452F1768F3515D83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A81D602C2226658AD7E1D7D /* Pods_AMPSample.framework */,
+				AAB1D2DE8B0009FF7B5FE9E8 /* Pods_AMPSampleTV.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4CAEB39023A0185D00F469C2 /* SDK_AMP */ = {
+			isa = PBXGroup;
+			children = (
+				4CAEB39123A0185D00F469C2 /* iOS */,
+				4CAEB3E223A0185D00F469C2 /* tvOS */,
+			);
+			path = SDK_AMP;
+			sourceTree = "<group>";
+		};
+		4CAEB39123A0185D00F469C2 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				4CAEB3A423A0185D00F469C2 /* AmpChromecast.framework */,
+				4CAEB3A523A0185D00F469C2 /* AmpFBAudienceNetwork.framework */,
+				4CAEB3A623A0185D00F469C2 /* AmpUI.framework */,
+				4CAEB3A723A0185D00F469C2 /* AmpNielsen.framework */,
+				4CAEB3A823A0185D00F469C2 /* AmpAdobeHeartbeat.framework */,
+				4CAEB3A923A0185D00F469C2 /* AmpFirebase.framework */,
+				4CAEB3AA23A0185D00F469C2 /* AmpDownloader.framework */,
+				4CAEB3AB23A0185D00F469C2 /* AmpYoSpace.framework */,
+				4CAEB3AC23A0185D00F469C2 /* AmpGoogleAnalytics.framework */,
+				4CAEB3AD23A0185D00F469C2 /* AmpIMA.framework */,
+				4CAEB3AE23A0185D00F469C2 /* AmpMediaAcceleration.framework */,
+				4CAEB3AF23A0185D00F469C2 /* AmpFreewheel.framework */,
+				4CAEB3B023A0185D00F469C2 /* AmpStatistics.framework */,
+				4CAEB3B123A0185D00F469C2 /* AmpCore.framework */,
+				4CAEB3B223A0185D00F469C2 /* Amp360.framework */,
+				4CAEB3E023A0185D00F469C2 /* AmpComScore.framework */,
+				4CAEB3E123A0185D00F469C2 /* AmpMediaAnalytics.framework */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		4CAEB3E223A0185D00F469C2 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				4CAEB3ED23A0185E00F469C2 /* AmpYoSpaceTV.framework */,
+				4CAEB3EE23A0185E00F469C2 /* AmpIMATV.framework */,
+				4CAEB3EF23A0185E00F469C2 /* AmpMediaAccelerationTV.framework */,
+				4CAEB3F023A0185E00F469C2 /* AmpAdobeHeartbeatTV.framework */,
+				4CAEB3F123A0185E00F469C2 /* AmpComScoreTV.framework */,
+				4CAEB40523A0185E00F469C2 /* AmpFreewheelTV.framework */,
+				4CAEB40623A0185E00F469C2 /* AmpNielsenTV.framework */,
+				4CAEB40723A0185E00F469C2 /* AmpMediaAnalyticsTV.framework */,
+				4CAEB40823A0185E00F469C2 /* AmpCoreTV.framework */,
+			);
+			path = tvOS;
+			sourceTree = "<group>";
+		};
+		4CAEB4D623A018E800F469C2 /* AMPCommon */ = {
+			isa = PBXGroup;
+			children = (
+				4C76F4F523BE0D9100A8AF74 /* amp.lic */,
+				4CF4744B23A058860069CF18 /* AMPSRConfig.swift */,
+				4CAEB4D723A0190900F469C2 /* AMPSRModule.swift */,
+				4CEDCABE23A029E500E793E9 /* AMPInteractor.swift */,
+				4CF4744823A0576A0069CF18 /* ViewController+Extensions.swift */,
+			);
+			path = AMPCommon;
+			sourceTree = "<group>";
+		};
+		4CD0E337239FFB240084D9C2 = {
+			isa = PBXGroup;
+			children = (
+				4CAEB39023A0185D00F469C2 /* SDK_AMP */,
+				4CAEB4D623A018E800F469C2 /* AMPCommon */,
+				4CD0E342239FFB240084D9C2 /* AMPSample */,
+				4CD0E37923A002980084D9C2 /* AMPSampleTV */,
+				4CD0E341239FFB240084D9C2 /* Products */,
+				ED4BDF5F3F5D1278C273635D /* Pods */,
+				32EC30EC452F1768F3515D83 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4CD0E341239FFB240084D9C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CD0E340239FFB240084D9C2 /* AMPSample.app */,
+				4CD0E37823A002980084D9C2 /* AMPSampleTV.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CD0E342239FFB240084D9C2 /* AMPSample */ = {
+			isa = PBXGroup;
+			children = (
+				4CD0E343239FFB240084D9C2 /* AppDelegate.swift */,
+				4CD0E347239FFB240084D9C2 /* ViewController.swift */,
+				4CD0E349239FFB240084D9C2 /* Main.storyboard */,
+				4CD0E34C239FFB260084D9C2 /* Assets.xcassets */,
+				4CD0E34E239FFB260084D9C2 /* LaunchScreen.storyboard */,
+				4CD0E351239FFB260084D9C2 /* Info.plist */,
+			);
+			path = AMPSample;
+			sourceTree = "<group>";
+		};
+		4CD0E37923A002980084D9C2 /* AMPSampleTV */ = {
+			isa = PBXGroup;
+			children = (
+				4CD0E37A23A002980084D9C2 /* AppDelegate.swift */,
+				4CD0E37C23A002980084D9C2 /* ViewController.swift */,
+				4CD0E37E23A002980084D9C2 /* Main.storyboard */,
+				4CD0E38123A0029A0084D9C2 /* Assets.xcassets */,
+				4CD0E38323A0029A0084D9C2 /* LaunchScreen.storyboard */,
+				4CD0E38623A0029A0084D9C2 /* Info.plist */,
+			);
+			path = AMPSampleTV;
+			sourceTree = "<group>";
+		};
+		ED4BDF5F3F5D1278C273635D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7076E7396D89556714F5C3B1 /* Pods-AMPSample.debug.xcconfig */,
+				08C7ACE8B50381C9198DDC38 /* Pods-AMPSample.release.xcconfig */,
+				C3E6E1504B028A49BCCB7A47 /* Pods-AMPSampleTV.debug.xcconfig */,
+				D1F6BCAB14E7AA5D11216D6F /* Pods-AMPSampleTV.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4CD0E33F239FFB240084D9C2 /* AMPSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD0E36A239FFB270084D9C2 /* Build configuration list for PBXNativeTarget "AMPSample" */;
+			buildPhases = (
+				D2056F3056CDE7C920164886 /* [CP] Check Pods Manifest.lock */,
+				4CD0E33C239FFB240084D9C2 /* Sources */,
+				4CD0E33D239FFB240084D9C2 /* Frameworks */,
+				4CD0E33E239FFB240084D9C2 /* Resources */,
+				4CF4744123A042960069CF18 /* Embed Frameworks */,
+				72ED864643559388148DC863 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AMPSample;
+			productName = AMPSample;
+			productReference = 4CD0E340239FFB240084D9C2 /* AMPSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4CD0E37723A002980084D9C2 /* AMPSampleTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD0E39D23A0029A0084D9C2 /* Build configuration list for PBXNativeTarget "AMPSampleTV" */;
+			buildPhases = (
+				60407CE10F2CDE386D25F815 /* [CP] Check Pods Manifest.lock */,
+				4CD0E37423A002980084D9C2 /* Sources */,
+				4CD0E37523A002980084D9C2 /* Frameworks */,
+				4CD0E37623A002980084D9C2 /* Resources */,
+				FD1622892341A1C5488F48B7 /* [CP] Embed Pods Frameworks */,
+				4CF4744723A04EFE0069CF18 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AMPSampleTV;
+			productName = AMPSampleTV;
+			productReference = 4CD0E37823A002980084D9C2 /* AMPSampleTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4CD0E338239FFB240084D9C2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = Streamroot;
+				TargetAttributes = {
+					4CD0E33F239FFB240084D9C2 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+					4CD0E37723A002980084D9C2 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 4CD0E33B239FFB240084D9C2 /* Build configuration list for PBXProject "AMPSample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4CD0E337239FFB240084D9C2;
+			productRefGroup = 4CD0E341239FFB240084D9C2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4CD0E33F239FFB240084D9C2 /* AMPSample */,
+				4CD0E37723A002980084D9C2 /* AMPSampleTV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4CD0E33E239FFB240084D9C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD0E350239FFB260084D9C2 /* LaunchScreen.storyboard in Resources */,
+				4CD0E34D239FFB260084D9C2 /* Assets.xcassets in Resources */,
+				4CD0E34B239FFB240084D9C2 /* Main.storyboard in Resources */,
+				4C76F4F623BE0D9100A8AF74 /* amp.lic in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD0E37623A002980084D9C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD0E38523A0029A0084D9C2 /* LaunchScreen.storyboard in Resources */,
+				4CD0E38223A0029A0084D9C2 /* Assets.xcassets in Resources */,
+				4CD0E38023A002980084D9C2 /* Main.storyboard in Resources */,
+				4C76F4F723BE166000A8AF74 /* amp.lic in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		60407CE10F2CDE386D25F815 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AMPSampleTV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72ED864643559388148DC863 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AMPSample/Pods-AMPSample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AMPSample/Pods-AMPSample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AMPSample/Pods-AMPSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2056F3056CDE7C920164886 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AMPSample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD1622892341A1C5488F48B7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AMPSampleTV/Pods-AMPSampleTV-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AMPSampleTV/Pods-AMPSampleTV-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AMPSampleTV/Pods-AMPSampleTV-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4CD0E33C239FFB240084D9C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD0E348239FFB240084D9C2 /* ViewController.swift in Sources */,
+				4CF4744C23A058860069CF18 /* AMPSRConfig.swift in Sources */,
+				4CF4744923A0576A0069CF18 /* ViewController+Extensions.swift in Sources */,
+				4CAEB4D823A0190900F469C2 /* AMPSRModule.swift in Sources */,
+				4CEDCABF23A029E500E793E9 /* AMPInteractor.swift in Sources */,
+				4CD0E344239FFB240084D9C2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD0E37423A002980084D9C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD0E37D23A002980084D9C2 /* ViewController.swift in Sources */,
+				4CF4744D23A059ED0069CF18 /* AMPSRConfig.swift in Sources */,
+				4CF4744A23A057960069CF18 /* ViewController+Extensions.swift in Sources */,
+				4CD0E37B23A002980084D9C2 /* AppDelegate.swift in Sources */,
+				4CAEB4D923A0190900F469C2 /* AMPSRModule.swift in Sources */,
+				4CEDCAC023A029E800E793E9 /* AMPInteractor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4CD0E349239FFB240084D9C2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CD0E34A239FFB240084D9C2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4CD0E34E239FFB260084D9C2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CD0E34F239FFB260084D9C2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4CD0E37E23A002980084D9C2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CD0E37F23A002980084D9C2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4CD0E38323A0029A0084D9C2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CD0E38423A0029A0084D9C2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4CD0E368239FFB270084D9C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4CD0E369239FFB270084D9C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4CD0E36B239FFB270084D9C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7076E7396D89556714F5C3B1 /* Pods-AMPSample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK_AMP/iOS",
+					"$(PROJECT_DIR)/SDK_AMP/tvOS",
+				);
+				INFOPLIST_FILE = AMPSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.dna.samples.amp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4CD0E36C239FFB270084D9C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08C7ACE8B50381C9198DDC38 /* Pods-AMPSample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK_AMP/iOS",
+					"$(PROJECT_DIR)/SDK_AMP/tvOS",
+				);
+				INFOPLIST_FILE = AMPSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.dna.samples.amp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4CD0E39E23A0029A0084D9C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3E6E1504B028A49BCCB7A47 /* Pods-AMPSampleTV.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK_AMP/iOS",
+					"$(PROJECT_DIR)/SDK_AMP/tvOS",
+				);
+				INFOPLIST_FILE = AMPSampleTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.dna.samples.amp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		4CD0E39F23A0029A0084D9C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1F6BCAB14E7AA5D11216D6F /* Pods-AMPSampleTV.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK_AMP/iOS",
+					"$(PROJECT_DIR)/SDK_AMP/tvOS",
+				);
+				INFOPLIST_FILE = AMPSampleTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.dna.samples.amp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4CD0E33B239FFB240084D9C2 /* Build configuration list for PBXProject "AMPSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD0E368239FFB270084D9C2 /* Debug */,
+				4CD0E369239FFB270084D9C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD0E36A239FFB270084D9C2 /* Build configuration list for PBXNativeTarget "AMPSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD0E36B239FFB270084D9C2 /* Debug */,
+				4CD0E36C239FFB270084D9C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD0E39D23A0029A0084D9C2 /* Build configuration list for PBXNativeTarget "AMPSampleTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD0E39E23A0029A0084D9C2 /* Debug */,
+				4CD0E39F23A0029A0084D9C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4CD0E338239FFB240084D9C2 /* Project object */;
+}
