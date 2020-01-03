@@ -11,12 +11,15 @@ import io.streamroot.dna.utils.stats.StreamStatsManager
 import com.akamai.amp.media.VideoPlayerContainer
 import com.akamai.amp.media.VideoPlayerView
 import android.view.WindowManager
+import com.akamai.amp.config.AMPConfig
 import com.akamai.amp.media.elements.MediaResource
 import kotlinx.android.synthetic.main.content_player.*
 import com.akamai.amp.media.errors.ErrorType
+import com.akamai.exoplayer2.DefaultLoadControl
+import com.akamai.exoplayer2.util.AMPPreSettings
 
 data class DelayedSRConfig(
-        val ampPlayerInteractor: AMPPlayerInteractor = AMPPlayerInteractor(),
+        val ampPlayerInteractor: AMPPlayerInteractor,
         val ampQosModule: AMPQosModule = AMPQosModule(),
         val ampBandwidthMeter: AMPBandwidthMeter = AMPBandwidthMeter()
 )
@@ -55,7 +58,11 @@ class PlayerActivity : AppCompatActivity(), VideoPlayerContainer.VideoPlayerCont
     }
 
     private fun initStreamrootP1Start(url: String) : DnaClient? {
-        val dnaDelayedSRConfig = DelayedSRConfig()
+        // Just the default value from class DefaultLoadControl
+        //val loadControl = DefaultLoadControl()
+        //AMPPreSettings.getPreSettingsInstance().defaultLoadControl = DefaultLoadControl()
+        val loadControl = playerViewCtrl.setBufferDimensions(5000, 10000, 2500,5000)
+        val dnaDelayedSRConfig = DelayedSRConfig(AMPPlayerInteractor(loadControl))
         this.dnaDelayedSRConfig = dnaDelayedSRConfig
         var mSdk: DnaClient? = null
         try {
@@ -140,12 +147,4 @@ class PlayerActivity : AppCompatActivity(), VideoPlayerContainer.VideoPlayerCont
         stopStreamroot()
         super.onDestroy()
     }
-
-    /**
-     * Utils
-     */
-
-    /*private fun showToast(message: String) {
-        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-    }*/
 }
