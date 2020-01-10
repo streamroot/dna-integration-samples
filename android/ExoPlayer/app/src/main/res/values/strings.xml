@@ -6,6 +6,8 @@
     <string name="streamroot_key_hint">Enter your Streamroot Key</string>
     <string name="stream_url_text">Stream URL</string>
     <string name="stream_url_hint">Enter your stream URL</string>
+    <string name="youbora_enabled_text">Enable Youbora ?</string>
+    <string name="youbora_enabled_hint">Enter your Youbora account</string>
     <string name="launch_demo_text">Launch demo</string>
 
     <string name="error_unsupported_video">Media includes video tracks, but none are playable by
@@ -24,4 +26,5 @@
         <xliff:g id="mime_type">%1$s</xliff:g>
     </string>
     <string name="error_querying_decoders">Unable to query device decoders</string>
+
 </resources>
