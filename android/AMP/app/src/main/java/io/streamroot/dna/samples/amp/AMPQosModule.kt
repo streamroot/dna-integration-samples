@@ -18,7 +18,7 @@ class AMPQosModule : QosModule(), /*Player.EventListener*/ /*, AlternativeTimeli
     private var player: VideoPlayerView? = null
     fun setPlayer(player: VideoPlayerView) {
         this.player = player
-        player.ampBasePlayer.addListener(this)
+        //player.ampBasePlayer.addListener(this)
         //player.setTimelineListener(this)
         player.addEventsListener(this)
         //player.ampBasePlayer.addVideoListener(this)
