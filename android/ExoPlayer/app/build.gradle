@@ -40,4 +40,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
     implementation 'com.google.android.material:material:1.0.0'
+
+    implementation 'com.npaw.youbora.adapters:exoplayer2-adapter:6.5.+'
 }
+
+apply from: "https://bitbucket.org/!api/2.0/snippets/npaw/yAk85G/files/exoplayer2-adapter-android-picker"
