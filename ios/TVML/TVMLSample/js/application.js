@@ -34,7 +34,7 @@
 var mPlayer;
 
 App.onLaunch = function(options) {
-  var alert = createAlert("Hello World!");
+  var alert = createAlert("TVML DNA Sample");
     
   // When it's selected, doSomething
 var globalOnSelect = function(ev) {
@@ -46,7 +46,8 @@ navigationDocument.pushDocument(alert);
 }
 
 App.start = function() {
-  playerHandlerObj.play("http://wowza-test-cloudfront.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8");
+  var player = createDNAPlayer("http://wowza-test-cloudfront.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8", "Big bucks bunny");
+  navigationDocument.pushDocument(player);
 }
 
 App.onWillResignActive = function() {
@@ -66,62 +67,8 @@ App.onDidBecomeActive = function() {
 } 
 
 App.onWillTerminate = function() {
-    
 }
 
-App.playStream = function(url) {
-  if (url) {
-    videoURL = url;
-    mPlayer = new Player();
-    var playlist = new Playlist();
-    var mediaItem = new MediaItem("video", videoURL);
-    mPlayer.playlist = playlist;
-    mPlayer.playlist.push(mediaItem);
-    mPlayer.present();
-
-    // Optional for the QoS module
-    mPlayer.addEventListener('playbackDidStall', App.playbackDidStall);
-    mPlayer.addEventListener('playbackError', App.playbackError);
-
-    // Stop the DNACLient whenever the video is finished
-    // doc.addEventListener("unload", function(event) { playerHandlerObj.stop() });
-  }
-}
-
-App.displayStats = function(statsString) {
-var parser = new DOMParser();  
-var parsedDoc = parser.parseFromString(`<document style="tv-align:left; tv-position: top-left;">  
-                                        <descriptiveAlertTemplate>
-                                          <description>${statsString}</description>
-                                        </descriptiveAlertTemplate>
-                                       </document>`, "application/xml");  
-mPlayer.interactiveOverlayDocument = parsedDoc;  
-mPlayer.interactiveOverlayDismissable = true;
-}
-
-App.playbackDidStall = function(event) {
-  playerHandlerObj.playbackRebuffering();
-}
-
-App.playbackError = function(event) {
-  playerHandlerObj.playbackError();
-}
-
-App.stateDidChange = function(event) {  
-  switch(event.state) {
-    case "playing":
-      playerHandlerObj.playbackPlaying();
-      break;
-    case "paused":
-      playerHandlerObj.playbackPaused();
-      break;
-    case "end":
-      playerHandlerObj.playbackEnded();
-      playerHandlerObj.stop();
-      break;
-    default: break;
-  }
-}
 
 /**
  * This convenience funnction returns an alert template, which can be used to present errors to the user.
@@ -137,10 +84,18 @@ var createAlert = function(title) {
       </buttonLockup>
     </alertTemplate>
   </document>`
+  var parser = new DOMParser();
+  var alertDoc = parser.parseFromString(alertString, "application/xml");
+  return alertDoc
+}
 
-    var parser = new DOMParser();
-
-    var alertDoc = parser.parseFromString(alertString, "application/xml");
-
-    return alertDoc
+var createDNAPlayer = function(url, contentId) {
+  var dnaPlayerString = `<?xml version="1.0" encoding="UTF-8" ?>
+  <document>
+    <DNAPlayerTemplate url="${url}" contentId ="${contentId}" displayStats="showed">
+    </DNAPlayerTemplate>
+  </document>`
+  var parser = new DOMParser();
+  var alertDoc = parser.parseFromString(dnaPlayerString, "application/xml");
+  return alertDoc
 }

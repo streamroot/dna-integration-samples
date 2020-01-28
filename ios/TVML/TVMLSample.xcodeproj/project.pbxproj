@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9EEC28907FBFDC8597D1BDA0 /* Pods_TVMLSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC6150832503623F9383ED5 /* Pods_TVMLSample.framework */; };
-		D6AE8C3723DF539900DB0FDA /* UInt64+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE8C3623DF539900DB0FDA /* UInt64+Extension.swift */; };
-		D6AE8C3923DF53BB00DB0FDA /* PlayerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE8C3823DF53BB00DB0FDA /* PlayerHandler.swift */; };
-		D6AE8C3B23DF54D500DB0FDA /* PlayerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE8C3A23DF54D500DB0FDA /* PlayerBridge.swift */; };
+		D63BE5E423E0514C00EAB3C3 /* DNAPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63BE5E323E0514C00EAB3C3 /* DNAPlayerViewController.swift */; };
+		D63BE5E623E051C800EAB3C3 /* DNAInterfaceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63BE5E523E051C800EAB3C3 /* DNAInterfaceFactory.swift */; };
 		D6F7288D23BE3913002A8D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F7288C23BE3913002A8D9B /* AppDelegate.swift */; };
 		D6F7289023BE3919002A8D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6F7288F23BE3919002A8D9B /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -18,9 +17,8 @@
 /* Begin PBXFileReference section */
 		3DC6150832503623F9383ED5 /* Pods_TVMLSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVMLSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B93B534CA262098108F795F /* Pods-TVMLSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVMLSample.release.xcconfig"; path = "Target Support Files/Pods-TVMLSample/Pods-TVMLSample.release.xcconfig"; sourceTree = "<group>"; };
-		D6AE8C3623DF539900DB0FDA /* UInt64+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt64+Extension.swift"; sourceTree = "<group>"; };
-		D6AE8C3823DF53BB00DB0FDA /* PlayerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHandler.swift; sourceTree = "<group>"; };
-		D6AE8C3A23DF54D500DB0FDA /* PlayerBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBridge.swift; sourceTree = "<group>"; };
+		D63BE5E323E0514C00EAB3C3 /* DNAPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNAPlayerViewController.swift; sourceTree = "<group>"; };
+		D63BE5E523E051C800EAB3C3 /* DNAInterfaceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNAInterfaceFactory.swift; sourceTree = "<group>"; };
 		D6E8BFB623C379320087C2C8 /* StreamrootSDk.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = StreamrootSDk.xcframework; sourceTree = "<group>"; };
 		D6EA4E9823C3B0360017B369 /* StreamrootSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StreamrootSDK.framework; sourceTree = "<group>"; };
 		D6EA4E9F23C3B0A60017B369 /* StreamrootSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = StreamrootSDK.xcframework; sourceTree = "<group>"; };
@@ -66,9 +64,8 @@
 		D6AE8C3D23DF558D00DB0FDA /* Streamroot */ = {
 			isa = PBXGroup;
 			children = (
-				D6AE8C3623DF539900DB0FDA /* UInt64+Extension.swift */,
-				D6AE8C3823DF53BB00DB0FDA /* PlayerHandler.swift */,
-				D6AE8C3A23DF54D500DB0FDA /* PlayerBridge.swift */,
+				D63BE5E323E0514C00EAB3C3 /* DNAPlayerViewController.swift */,
+				D63BE5E523E051C800EAB3C3 /* DNAInterfaceFactory.swift */,
 			);
 			path = Streamroot;
 			sourceTree = "<group>";
@@ -216,9 +213,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6F7288D23BE3913002A8D9B /* AppDelegate.swift in Sources */,
-				D6AE8C3923DF53BB00DB0FDA /* PlayerHandler.swift in Sources */,
-				D6AE8C3723DF539900DB0FDA /* UInt64+Extension.swift in Sources */,
-				D6AE8C3B23DF54D500DB0FDA /* PlayerBridge.swift in Sources */,
+				D63BE5E623E051C800EAB3C3 /* DNAInterfaceFactory.swift in Sources */,
+				D63BE5E423E0514C00EAB3C3 /* DNAPlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
