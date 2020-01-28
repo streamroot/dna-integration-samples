@@ -29,6 +29,10 @@ class DNAInterfaceFactory: TVInterfaceFactory {
       dnaPlayerViewController.displayStatView = displayStats == "showed"
     }
     
+    if let attributes = element.attributes, let latencyAttribute = attributes["latency"], let latency = Int(latencyAttribute) {
+      dnaPlayerViewController.latency = latency
+    }
+    
     return dnaPlayerViewController
   }
 }

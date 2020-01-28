@@ -92,7 +92,7 @@ var createAlert = function(title) {
 var createDNAPlayer = function(url, contentId) {
   var dnaPlayerString = `<?xml version="1.0" encoding="UTF-8" ?>
   <document>
-    <DNAPlayerTemplate url="${url}" contentId ="${contentId}" displayStats="showed">
+    <DNAPlayerTemplate url="${url}" contentId ="${contentId}" displayStats="showed" latency="30">
     </DNAPlayerTemplate>
   </document>`
   var parser = new DOMParser();
