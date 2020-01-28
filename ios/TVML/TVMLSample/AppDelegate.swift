@@ -12,6 +12,33 @@ import StreamrootSDK
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDelegate, PlayerJSBridge {
 
+  let playerHandler = PlayerHandler()
+  
+  func playLocalStream(_ url: String) {
+    executeRemoteMethod("playStream", withArgs: [url], completion: { (success: Bool) in
+      print("SUCCEEDED")
+    })
+    playerHandler.displayStaView()
+  }
+  
+  func playbackTime() -> TimeInterval {
+    executeRemoteMethod("playbackTime", withArgs: [], completion: { (success: Bool) in
+      print("SUCCEEDED")
+    })
+    return 0
+  }
+  
+  func displayStats(_ stats: String) {
+    print(stats)
+    executeRemoteMethod("displayStats", withArgs: [stats], completion: { (success: Bool) in
+      print("SUCCEEDED")
+    })
+  }
+  
+  func stop() {
+    playerHandler.stop()
+  }
+  
   var window: UIWindow?
     var appController: TVApplicationController?
     
@@ -62,6 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDe
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and stop playback
       executeRemoteMethod("onWillResignActive", withArgs: [], completion: { (success: Bool) in
+        self.playerHandler.stop()
+        })
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
