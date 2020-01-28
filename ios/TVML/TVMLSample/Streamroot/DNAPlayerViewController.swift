@@ -43,7 +43,9 @@ class DNAPlayerViewController: AVPlayerViewController {
         player = AVPlayer(url: localPath)
         try strPlugin?.linkPlayer(player)
         player?.play()
-        strPlugin?.dnaClient?.displayStats(onView: contentOverlayView!)
+        if displayStatView {
+          strPlugin?.dnaClient?.displayStats(onView: contentOverlayView!)
+        }
       }
     } catch let error {
       print(error.localizedDescription)
