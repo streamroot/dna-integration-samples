@@ -3,34 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <title>Kaltura DNA Plugin</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
     <style>
       body {
         font-family: "Roboto", sans-serif;
       }
     </style>
-    <link
-      rel="stylesheet"
-      href="//samples.streamroot.io/web/assets/demo-pages.css"
-    />
+    <link rel="stylesheet" href="//samples.streamroot.io/web/assets/demo-pages.css"/>
 
     <!-- Makes the header -->
     <script src="//samples.streamroot.io/web/assets/header.js"></script>
+
+    <!-- Kaltura Player build -->
+    <script src="//cdnapisec.kaltura.com/p/2395571/embedPlaykitJs/uiconf_id/44975631"></script>
+
+    <!-- Streamroot Plugin -->
+    <script src="//cdn.streamroot.io/playkit-dna-plugin/1/stable/playkit-dna-plugin.js"></script>
+
+    <!-- Graphs -->
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
   </head>
 
   <body>
+    <header></header>
     <center>
-      <!-- Kaltura Player build -->
-      <script src="//cdnapisec.kaltura.com/p/2395571/embedPlaykitJs/uiconf_id/44975631"></script>
-
-      <!-- Streamroot Plugin -->
-      <script src="//cdn.streamroot.io/playkit-dna-plugin/1/stable/playkit-dna-plugin.js"></script>
-
-      <!-- Graphs -->
-      <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
       <div
         id="kaltura_player_768626319"
         style="width: 512px;height: 288px"
