@@ -1,6 +1,5 @@
 package io.streamroot.dna.samples.amp
 
-import android.os.Looper
 import com.akamai.amp.media.VideoPlayerContainer
 import com.akamai.exoplayer2.ExoPlaybackException
 import com.akamai.exoplayer2.PlaybackParameters
