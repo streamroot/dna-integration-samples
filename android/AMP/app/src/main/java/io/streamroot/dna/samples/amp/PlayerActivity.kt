@@ -88,7 +88,7 @@ class PlayerActivity : AppCompatActivity(), VideoPlayerContainer.VideoPlayerCont
         url
     }) { videoPlayerContainer.prepareResource(this) }
 
-    fun videoPlayer() = videoPlayerContainer.videoPlayer
+    fun videoPlayer() : VideoPlayerView? { return videoPlayerContainer.videoPlayer }
 
     override fun onResourceReady(mediaResource: MediaResource?) {
         videoPlayer()?.let {
@@ -111,17 +111,17 @@ class PlayerActivity : AppCompatActivity(), VideoPlayerContainer.VideoPlayerCont
     override fun onResourceError(errorType: ErrorType, exception: Exception) {}
 
     override fun onResume() {
-        videoPlayer().onResume()
+        videoPlayer()?.onResume()
         super.onResume()
     }
 
     override fun onPause() {
-        videoPlayer().onPause()
+        videoPlayer()?.onPause()
         super.onPause()
     }
 
     override fun onDestroy() {
-        videoPlayer().onDestroy()
+        videoPlayer()?.onDestroy()
         srModule?.terminate()
         super.onDestroy()
     }
