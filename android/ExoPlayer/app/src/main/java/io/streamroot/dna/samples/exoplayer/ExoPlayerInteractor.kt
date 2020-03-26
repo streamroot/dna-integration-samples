@@ -18,17 +18,7 @@ private fun LoadControl.getLongFromFieldElseThrow(fieldName: String) = runCatchi
     getAccessibleFieldElseThrow(fieldName).getLong(this)
 }.getOrNull() ?: throw IllegalArgumentException("Impossible to retrieve long `$fieldName` value from LoadControl of type `${this::class.java.simpleName}`")
 
-private abstract class ExoPlayerInteractorBase(
-        private val player: ExoPlayer,
-        private val loadControl: LoadControl
-) : PlayerInteractor {
-    companion object {
-        private const val MAX_BUFFER_FIELD_NAME = "maxBufferUs"
-    }
-
-    protected val maxBufferField = loadControl.getAccessibleFieldElseThrow(MAX_BUFFER_FIELD_NAME)
-
-    protected abstract val minBufferUs: Long
+private open class ExoPlayerInteractorBase(private val player: ExoPlayer) : PlayerInteractor {
 
     override fun looper(): Looper = player.applicationLooper
 
@@ -58,6 +48,19 @@ private abstract class ExoPlayerInteractorBase(
 
         return shift
     }
+}
+
+private abstract class ExoPlayerInteractorBT(
+        player: ExoPlayer,
+        private val loadControl: LoadControl
+) : ExoPlayerInteractorBase(player) {
+
+    companion object {
+        private const val MAX_BUFFER_FIELD_NAME = "maxBufferUs"
+    }
+
+    protected val maxBufferField = loadControl.getAccessibleFieldElseThrow(MAX_BUFFER_FIELD_NAME)
+    protected abstract val minBufferUs: Long
 
     override fun bufferTarget(): Double {
         return runCatching {
@@ -77,7 +80,7 @@ private abstract class ExoPlayerInteractorBase(
 }
 
 private class ExoPlayerInteractorV1(player: ExoPlayer, loadControl: LoadControl)
-    : ExoPlayerInteractorBase(player, loadControl) {
+    : ExoPlayerInteractorBT(player, loadControl) {
     companion object {
         private const val MIN_BUFFER_FIELD_NAME = "minBufferUs"
     }
@@ -86,7 +89,7 @@ private class ExoPlayerInteractorV1(player: ExoPlayer, loadControl: LoadControl)
 }
 
 private class ExoPlayerInteractorV2(player: ExoPlayer, loadControl: LoadControl, audioOnly: Boolean)
-    : ExoPlayerInteractorBase(player, loadControl) {
+    : ExoPlayerInteractorBT(player, loadControl) {
     companion object {
         private const val MIN_BUFFER_AUDIO_FIELD_NAME = "minBufferAudioUs"
         private const val MIN_BUFFER_VIDEO_FIELD_NAME = "minBufferVideoUs"
@@ -100,6 +103,7 @@ private class ExoPlayerInteractorV2(player: ExoPlayer, loadControl: LoadControl,
 object ExoPlayerInteractorFactory {
     fun createInteractor(player: ExoPlayer, loadControl: LoadControl, audioOnly: Boolean = false) : PlayerInteractor {
         return runCatching { ExoPlayerInteractorV1(player, loadControl) }.getOrNull()
-            ?: ExoPlayerInteractorV2(player, loadControl, audioOnly)
+            ?: runCatching { ExoPlayerInteractorV2(player, loadControl, audioOnly) }.getOrNull()
+            ?: ExoPlayerInteractorBase(player)
     }
 }
