@@ -80,7 +80,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
         val args = extractArgs(intent)
         mStreamUrl = args.url
-        mYBAccount = args.youboraAccount
+        mYBAccount = args.youboraAccount?.takeUnless { it.isBlank() }
 
         exoPlayerView = findViewById(R.id.exoplayerView)
         streamrootDnaStatsView = findViewById(R.id.streamrootDnaStatsView)
@@ -181,7 +181,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         try {
             mSdk = DnaClient.newBuilder()
                 .context(applicationContext)
-                .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl))
+                .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl, false))
                 .latency(latency)
                 .qosModule(ExoPlayerQosModule(newPlayer))
                 .bandwidthListener(bandwidthListener)
