@@ -181,7 +181,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         try {
             mSdk = DnaClient.newBuilder()
                 .context(applicationContext)
-                .playerInteractor(ExoPlayerInteractorFactory.createInteractor(newPlayer, loadControl, false))
+                .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl, false))
                 .latency(latency)
                 .qosModule(ExoPlayerQosModule(newPlayer))
                 .bandwidthListener(bandwidthListener)
