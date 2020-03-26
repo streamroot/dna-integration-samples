@@ -6,51 +6,89 @@ import com.google.android.exoplayer2.LoadControl
 import com.google.android.exoplayer2.Timeline
 import io.streamroot.dna.core.PlayerInteractor
 import io.streamroot.dna.core.TimeRange
-import java.lang.reflect.Field
 import java.util.concurrent.TimeUnit
 
-class ExoPlayerInteractor(
-    private val player: ExoPlayer,
-    private val loadControl: LoadControl,
-    maxBufferFieldName: String = "maxBufferUs",
-    minBufferFieldName: String = "minBufferUs"
-) : PlayerInteractor {
-    private val minBufferUs: Long
-    private val maxBufferField: Field
+private interface BufferTargetBridge {
+    fun bufferTarget() : Double = 0.0
+    fun setBufferTarget(bufferTarget: Double) {}
+}
 
-    init {
-        minBufferUs = runCatching {
-            val minBufferField = loadControl::class.java.getDeclaredField(minBufferFieldName)
-            minBufferField.isAccessible = true
-            minBufferField.getLong(loadControl)
-        }.getOrNull()
-            ?: throw IllegalArgumentException("Impossible to retrieve minBuffer field `$minBufferFieldName` value from LoadControl of type `${loadControl::class.java.simpleName}`")
+private class BufferTargetBridgeDefault : BufferTargetBridge
 
-        maxBufferField =
-            runCatching { loadControl::class.java.getDeclaredField(maxBufferFieldName) }.getOrNull()
-                ?: throw IllegalArgumentException("Impossible to retrieve maxBuffer field `$maxBufferFieldName` from LoadControl of type `${loadControl::class.java.simpleName}`")
-        maxBufferField.isAccessible = true
+private abstract class LoadControlBufferTargetBridge(protected val loadControl: LoadControl) : BufferTargetBridge {
+
+    protected fun LoadControl.getAccessibleFieldElseThrow(fieldName: String) = runCatching {
+        val minBufferField = this::class.java.getDeclaredField(fieldName)
+        minBufferField.isAccessible = true
+        minBufferField
+    }.getOrNull() ?: throw IllegalArgumentException("Impossible to retrieve field `$fieldName` value from LoadControl of type `${this::class.java.simpleName}`")
+
+    protected fun LoadControl.getLongFromFieldElseThrow(fieldName: String) = runCatching {
+        getAccessibleFieldElseThrow(fieldName).getLong(this)
+    }.getOrNull() ?: throw IllegalArgumentException("Impossible to retrieve long `$fieldName` value from LoadControl of type `${this::class.java.simpleName}`")
+
+    companion object {
+        private const val MAX_BUFFER_FIELD_NAME = "maxBufferUs"
     }
 
-    override fun looper(): Looper = player.applicationLooper
+    protected val maxBufferField = loadControl.getAccessibleFieldElseThrow(MAX_BUFFER_FIELD_NAME)
+    protected abstract val minBufferUs: Long
 
     override fun bufferTarget(): Double {
         return runCatching {
-            maxBufferField.getLong(loadControl).let { TimeUnit.MICROSECONDS.toSeconds(it) }
-                .toDouble()
-        }.getOrNull()
-            ?: 0.0
+            maxBufferField.getLong(loadControl).let { TimeUnit.MICROSECONDS.toSeconds(it) }.toDouble()
+        }.getOrNull() ?: super.bufferTarget()
     }
 
     override fun setBufferTarget(bufferTarget: Double) {
         val maxBufferUs = TimeUnit.SECONDS.toMicros(bufferTarget.toLong())
         if (maxBufferUs > minBufferUs) runCatching {
             maxBufferField.setLong(
-                loadControl,
-                maxBufferUs
+                    loadControl,
+                    maxBufferUs
             )
         }
     }
+}
+
+private class LoadControlBufferTargetBridgeV1(loadControl: LoadControl)
+    : LoadControlBufferTargetBridge(loadControl) {
+    companion object {
+        private const val MIN_BUFFER_FIELD_NAME = "minBufferUs"
+    }
+
+    override val minBufferUs = loadControl.getLongFromFieldElseThrow(MIN_BUFFER_FIELD_NAME)
+}
+
+private class LoadControlBufferTargetBridgeV2(loadControl: LoadControl, audioOnly: Boolean)
+    : LoadControlBufferTargetBridge(loadControl) {
+    companion object {
+        private const val MIN_BUFFER_AUDIO_FIELD_NAME = "minBufferAudioUs"
+        private const val MIN_BUFFER_VIDEO_FIELD_NAME = "minBufferVideoUs"
+    }
+
+    override val minBufferUs = loadControl.getLongFromFieldElseThrow(
+            if (audioOnly) MIN_BUFFER_AUDIO_FIELD_NAME else MIN_BUFFER_VIDEO_FIELD_NAME
+    )
+}
+
+private object BufferTargetBridgeFactory {
+    fun createInteractor(loadControl: LoadControl, audioOnly: Boolean) : BufferTargetBridge {
+        return runCatching { LoadControlBufferTargetBridgeV1(loadControl) }.getOrNull()
+            ?: runCatching { LoadControlBufferTargetBridgeV2(loadControl, audioOnly) }.getOrNull()
+            ?: BufferTargetBridgeDefault()
+    }
+}
+
+class ExoPlayerInteractor(
+        private val player: ExoPlayer,
+        loadControl: LoadControl,
+        audioOnly: Boolean = false
+) : PlayerInteractor {
+
+    private val bridge = BufferTargetBridgeFactory.createInteractor(loadControl, audioOnly)
+
+    override fun looper(): Looper = player.applicationLooper
 
     override fun loadedTimeRanges(): List<TimeRange> {
         val shift = getCurrentWindowShift()
@@ -78,4 +116,7 @@ class ExoPlayerInteractor(
 
         return shift
     }
+
+    override fun bufferTarget() = bridge.bufferTarget()
+    override fun setBufferTarget(bufferTarget: Double) = bridge.setBufferTarget(bufferTarget)
 }
