@@ -17,11 +17,16 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://sdk.streamroot.io/android' }
+        maven {
+            url 'https://sdk.streamroot.io/android'
+        }
         maven {
             url 'http://repo.brightcove.com/releases'
         }
-        maven { url 'https://sdk.streamroot.io/android' }
+        maven {
+            url  "https://dl.bintray.com/npaw/youbora"
+            name 'Youbora'
+        }
     }
 }
 

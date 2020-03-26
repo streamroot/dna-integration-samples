@@ -1,6 +1,8 @@
 package io.streamroot.dna.samples.exoplayer
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
@@ -29,17 +31,43 @@ import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import com.npaw.youbora.lib6.exoplayer2.Exoplayer2StreamrootAdapter
+import com.npaw.youbora.lib6.plugin.Options
+import com.npaw.youbora.lib6.plugin.Plugin
 import io.streamroot.dna.core.BandwidthListener
 import io.streamroot.dna.core.DnaClient
 import io.streamroot.dna.utils.stats.StatsView
 import io.streamroot.dna.utils.stats.StreamStatsManager
 
 class PlayerActivity : AppCompatActivity(), Player.EventListener {
+    data class PlayerActivityArgs(val url:String?, val youboraAccount: String?)
+
+    companion object {
+        private val ARG_STREAM_URL = "streamUrl"
+        private val ARG_YB_ACCOUNT = "youboraAccount"
+
+        fun makeIntent(ctx: Context, args: PlayerActivityArgs) : Intent {
+            return Intent(ctx, PlayerActivity::class.java).apply {
+                putExtra(ARG_STREAM_URL, args.url)
+                putExtra(ARG_YB_ACCOUNT, args.youboraAccount)
+            }
+        }
+        fun extractArgs(i: Intent) : PlayerActivityArgs {
+            return PlayerActivityArgs(
+                    i.getStringExtra(ARG_STREAM_URL),
+                    i.getStringExtra(ARG_YB_ACCOUNT)
+            )
+        }
+    }
+
     private lateinit var exoPlayerView: PlayerView
     private lateinit var streamrootDnaStatsView: StatsView
 
     private var mStreamUrl: String? = null
+    private var mYBAccount: String? = null
+
     private var player: ExoPlayer? = null
+    private var youboraPlugin: Plugin? = null
 
     private var dnaClient: DnaClient? = null
     private var streamStatsManager: StreamStatsManager? = null
@@ -50,7 +78,10 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
 
-        mStreamUrl = intent.extras?.getString("streamUrl")
+        val args = extractArgs(intent)
+        mStreamUrl = args.url
+        mYBAccount = args.youboraAccount?.takeUnless { it.isBlank() }
+
         exoPlayerView = findViewById(R.id.exoplayerView)
         streamrootDnaStatsView = findViewById(R.id.streamrootDnaStatsView)
     }
@@ -109,6 +140,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
             player = newPlayer
             exoPlayerView.player = newPlayer
+            startYoubora()
         }
     }
 
@@ -117,6 +149,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         player = null
 
         stopStreamroot()
+        stopYoubora()
     }
 
     @SuppressLint("SwitchIntDef")
@@ -148,7 +181,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         try {
             mSdk = DnaClient.newBuilder()
                 .context(applicationContext)
-                .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl))
+                .playerInteractor(ExoPlayerInteractor(newPlayer, loadControl, false))
                 .latency(latency)
                 .qosModule(ExoPlayerQosModule(newPlayer))
                 .bandwidthListener(bandwidthListener)
@@ -168,6 +201,27 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
         streamStatsManager?.close()
         streamStatsManager = null
+    }
+
+    /**
+     * Youbora
+     */
+
+    private fun startYoubora() {
+        mYBAccount?.let { ybAccount ->
+            val adapter = Exoplayer2StreamrootAdapter(dnaClient!!, player!!)
+            val options = Options().apply {
+                accountCode = ybAccount
+            }
+            youboraPlugin = Plugin(options, this).apply {
+                this.adapter = adapter
+            }
+        }
+    }
+
+    private fun stopYoubora() {
+        youboraPlugin?.fireStop()
+        youboraPlugin = null
     }
 
     /**

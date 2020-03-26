@@ -1,69 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Kaltura DNA Plugin</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
+      body {
+        font-family: "Roboto", sans-serif;
+      }
     </style>
-    <link rel="stylesheet" href="//samples.streamroot.io/web/assets/demo-pages.css">
+    <link rel="stylesheet" href="//samples.streamroot.io/web/assets/demo-pages.css"/>
 
     <!-- Makes the header -->
     <script src="//samples.streamroot.io/web/assets/header.js"></script>
-</head>
 
-<body>
+    <!-- Kaltura Player build -->
+    <script src="//cdnapisec.kaltura.com/p/2395571/embedPlaykitJs/uiconf_id/44975631"></script>
+
+    <!-- Streamroot Plugin -->
+    <script src="//cdn.streamroot.io/playkit-dna-plugin/1/stable/playkit-dna-plugin.js"></script>
+
+    <!-- Graphs -->
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+  </head>
+
+  <body>
     <header></header>
     <center>
-        <script src="https://cdnapisec.kaltura.com/p/2395571/sp/239557100/embedIframeJs/uiconf_id/42978472/partner_id/2395571"></script>
-        <div id="kaltura_player_1532977651" style="width: 512px; height: 288px;"></div>
-        <script>
-            kWidget.embed({
-                "targetId": "kaltura_player_1532977651",
-                "wid": "_2395571",
-                "uiconf_id": 42978472,
-                "flashvars": {},
-                "cache_st": 1532977651,
-                "entry_id": "1_04qnucph"
-            });
-        </script>
+      <div
+        id="kaltura_player_768626319"
+        style="width: 512px;height: 288px"
+      ></div>
+      <div id="streamroot-graphs"></div>
+      <script type="text/javascript">
+        try {
+          var kalturaPlayer = KalturaPlayer.setup({
+            targetId: "kaltura_player_768626319",
+            provider: {
+              partnerId: 2395571,
+              uiConfId: 44975631
+            },
+            plugins: {
+              streamroot: {
+                key: "demoswebsiteandpartners",
+                dnaConfig: {}
+              }
+            },
+            playback: {
+              options: {
+                html5: {
+                  hls: {
+                    maxBufferSize: 0,
+                    maxBufferLength: 30,
+                    liveSyncDuration: 30,
+                    liveMaxLatencyDuration: Infinity
+                  },
+                  dash: {
+                    streaming: {
+                      bufferingGoal: 30
+                    },
+                    manifest: {
+                      dash: {
+                        defaultPresentationDelay: 30
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+          kalturaPlayer.loadMedia({
+            entryId: "1_4kj96eo8"
+          });
+        } catch (e) {
+          console.error(e.message);
+        }
+      </script>
     </center>
-
-    <!-- Stats in console -->
-    <script>
-        ! function () {
-            function n() {
-                if (window.frames[0].Streamroot.instances.length) {
-                    var n = window.frames[0].Streamroot.instances[0].stats,
-                        t = n.allContents.dnaDownload ? n.allContents.dnaDownload / (n.allContents.dnaDownload + n.allContents
-                            .cdnDownload) * 100 : 0,
-                        a = {
-                            upload: o(n.allContents.dnaUpload),
-                            dna: o(n.allContents.dnaDownload),
-                            cdn: o(n.allContents.cdnDownload),
-                            efficiency: `${t}%`,
-                            peers: n.realtime.dnaSources
-                        };
-                    console.table(a)
-                } else console.warn("Streamrooot not initialized")
-            }
-
-            function o(n, o = 10) {
-                if (0 === n) return "0B";
-                var t = o + 1 || 1,
-                    a = Math.floor(Math.log(n) / Math.log(1e3));
-                return parseFloat((n / 1e3 ** a).toFixed(t)) + ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
-                    [a]
-            }
-            setInterval(() => {
-                n()
-            }, 1e4), n()
-        }();
-    </script>
-</body>
-
+  </body>
 </html>
