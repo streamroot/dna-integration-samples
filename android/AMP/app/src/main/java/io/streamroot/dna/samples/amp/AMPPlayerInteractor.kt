@@ -15,7 +15,8 @@ import java.util.concurrent.TimeUnit
 class AMPPlayerInteractor(
         private val loadControl: DefaultLoadControl,
         maxBufferFieldName: String = "maxBufferUs",
-        minBufferFieldName: String = "minBufferUs"
+        minBufferFieldName: String = "minBufferUs",
+        val looper: Looper = Looper.getMainLooper()
 ) : PlayerInteractor {
     private val TAG = "AMPPlayerInteractor"
     private val ref = System.currentTimeMillis()
@@ -40,7 +41,8 @@ class AMPPlayerInteractor(
     }
 
     override fun looper(): Looper? {
-        return playerView?.ampBasePlayer?.applicationLooper ?: super.looper()
+        //return playerView?.ampBasePlayer?.applicationLooper ?: super.looper()
+        return looper//Looper.getMainLooper()
     }
 
     override fun bufferTarget(): Double {

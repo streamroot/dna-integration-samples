@@ -38,7 +38,7 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    def dna_version = "3.16.0"
+    def dna_version = "3.17.0"
     implementation "io.streamroot.dna:dna-core:$dna_version"
     implementation "io.streamroot.dna:dna-utils:$dna_version"
 

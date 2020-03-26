@@ -2,6 +2,8 @@ package io.streamroot.dna.samples.amp
 
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -20,7 +22,7 @@ import com.akamai.exoplayer2.util.AMPPreSettings
 
 data class DelayedSRConfig(
         val ampPlayerInteractor: AMPPlayerInteractor,
-        val ampQosModule: AMPQosModule = AMPQosModule(),
+        val ampQosModule: AMPQosModule,
         val ampBandwidthMeter: AMPBandwidthMeter = AMPBandwidthMeter()
 )
 
@@ -39,7 +41,7 @@ class PlayerActivity : AppCompatActivity(), VideoPlayerContainer.VideoPlayerCont
         setContentView(R.layout.activity_player)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
-        playerViewCtrl.addVideoPlayerContainerCallback(this)
+        videoPlayerContainer.addVideoPlayerContainerCallback(this)
 
         val url = {
             intent.extras?.getString("streamUrl")?.let {
@@ -57,12 +59,19 @@ class PlayerActivity : AppCompatActivity(), VideoPlayerContainer.VideoPlayerCont
         }
     }
 
+    //val customHThread by lazy {  }
+    val customHandler by lazy { Handler(
+            HandlerThread("testdsfdsf").apply { start() }.looper
+            //mainLooper
+    ) }
+
     private fun initStreamrootP1Start(url: String) : DnaClient? {
         // Just the default value from class DefaultLoadControl
         //val loadControl = DefaultLoadControl()
         //AMPPreSettings.getPreSettingsInstance().defaultLoadControl = DefaultLoadControl()
-        val loadControl = playerViewCtrl.setBufferDimensions(5000, 10000, 2500,5000)
-        val dnaDelayedSRConfig = DelayedSRConfig(AMPPlayerInteractor(loadControl))
+        val loadControl = videoPlayerContainer.setBufferDimensions(5000, 30000, 2500,5000)
+        //videoPlayerContainer.defaultLoadControl = loadControl
+        val dnaDelayedSRConfig = DelayedSRConfig(AMPPlayerInteractor(loadControl, looper = mainLooper), AMPQosModule(videoPlayerContainer))
         this.dnaDelayedSRConfig = dnaDelayedSRConfig
         var mSdk: DnaClient? = null
         try {
@@ -86,7 +95,6 @@ class PlayerActivity : AppCompatActivity(), VideoPlayerContainer.VideoPlayerCont
         dnaDelayedSRConfig?.let { delayedConfig -> videoPlayerView?.let { vp ->
             delayedConfig.ampBandwidthMeter.setPlayer(vp)
             delayedConfig.ampPlayerInteractor.setPlayer(vp)
-            delayedConfig.ampQosModule.setPlayer(vp)
         }}
         dnaDelayedSRConfig = null
     }
@@ -100,17 +108,35 @@ class PlayerActivity : AppCompatActivity(), VideoPlayerContainer.VideoPlayerCont
         streamStatsManager = null
     }
 
+
+
     private fun prepareResourceWithUrl(url: String) {
-        playerViewCtrl.prepareResource(url)
+        //customHandler.post {
+        //object : Thread() {
+        //    override fun run() {
+                videoPlayerContainer.prepareResource(url)
+        //    }
+        //}.start()
+
+        //}
     }
 
     override fun onResourceReady(mediaResource: MediaResource?) {
-        videoPlayerView = playerViewCtrl.videoPlayer
-        if (dnaClient != null) { initStreamrootP2End() }
+        //customHandler.post {
 
-        initPlayer()
+        runOnUiThread {
+            videoPlayerView = videoPlayerContainer.videoPlayer
+            if (dnaClient != null) { initStreamrootP2End() }
 
-        videoPlayerView?.play(mediaResource)
+            initPlayer()
+
+            customHandler.post {
+                videoPlayerView?.play(mediaResource)
+            }
+        }
+
+
+        //}
     }
 
     private fun initPlayer() {

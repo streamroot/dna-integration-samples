@@ -39,7 +39,7 @@ dependencies {
     // Streamroot's up-to-date fork of Kaltura Playkit
     implementation 'com.kaltura.playkit:dna-playkit:3.9.3'
 
-    def dna_version = "3.16.0"
+    def dna_version = "3.17.0"
     implementation "io.streamroot.dna:dna-core:$dna_version"
     implementation "io.streamroot.dna:dna-utils:$dna_version"
 

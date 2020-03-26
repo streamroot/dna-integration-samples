@@ -12,7 +12,7 @@
 
     <com.akamai.amp.media.VideoPlayerContainer
         android:layout_width="match_parent"
-        android:id="@+id/playerViewCtrl"
+        android:id="@+id/videoPlayerContainer"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_centerInParent="true"/>
