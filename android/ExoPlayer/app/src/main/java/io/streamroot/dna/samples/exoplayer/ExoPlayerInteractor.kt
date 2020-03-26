@@ -48,6 +48,9 @@ private open class ExoPlayerInteractorBase(private val player: ExoPlayer) : Play
 
         return shift
     }
+
+    override fun bufferTarget() = 0.0
+    override fun setBufferTarget(bufferTarget: Double) {}
 }
 
 private abstract class ExoPlayerInteractorBT(
@@ -65,7 +68,7 @@ private abstract class ExoPlayerInteractorBT(
     override fun bufferTarget(): Double {
         return runCatching {
             maxBufferField.getLong(loadControl).let { TimeUnit.MICROSECONDS.toSeconds(it) }.toDouble()
-        }.getOrNull() ?: 0.0
+        }.getOrNull() ?: super.bufferTarget()
     }
 
     override fun setBufferTarget(bufferTarget: Double) {
