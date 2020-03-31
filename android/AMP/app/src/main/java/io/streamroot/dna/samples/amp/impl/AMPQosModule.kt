@@ -1,4 +1,4 @@
-package io.streamroot.dna.samples.amp
+package io.streamroot.dna.samples.amp.impl
 
 import com.akamai.amp.media.VideoPlayerContainer
 import com.akamai.exoplayer2.ExoPlaybackException

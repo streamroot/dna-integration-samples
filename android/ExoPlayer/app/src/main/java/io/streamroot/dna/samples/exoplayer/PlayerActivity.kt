@@ -43,8 +43,8 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     data class PlayerActivityArgs(val url:String?, val youboraAccount: String?)
 
     companion object {
-        private val ARG_STREAM_URL = "streamUrl"
-        private val ARG_YB_ACCOUNT = "youboraAccount"
+        private const val ARG_STREAM_URL = "streamUrl"
+        private const val ARG_YB_ACCOUNT = "youboraAccount"
 
         fun makeIntent(ctx: Context, args: PlayerActivityArgs) : Intent {
             return Intent(ctx, PlayerActivity::class.java).apply {

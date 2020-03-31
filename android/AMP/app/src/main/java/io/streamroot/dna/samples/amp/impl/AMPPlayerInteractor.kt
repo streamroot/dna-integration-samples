@@ -1,4 +1,4 @@
-package io.streamroot.dna.samples.amp
+package io.streamroot.dna.samples.amp.impl
 
 import android.os.Looper
 import android.util.Log
@@ -9,6 +9,7 @@ import com.akamai.exoplayer2.LoadControl
 import com.akamai.exoplayer2.Timeline
 import io.streamroot.dna.core.PlayerInteractor
 import io.streamroot.dna.core.TimeRange
+import io.streamroot.dna.samples.amp.logFull
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicReference
 
