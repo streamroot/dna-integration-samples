@@ -10,6 +10,10 @@ import io.streamroot.dna.core.InformationCallback
 import io.streamroot.dna.samples.amp.AMPSRConfig
 import io.streamroot.dna.utils.stats.StreamStatsManager
 
+/**
+ * Created by Boris Borgobello on 2020-03-26.
+ */
+
 class AMPSRModule(
         context: Context,
         playerC: VideoPlayerContainer,

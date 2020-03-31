@@ -22,13 +22,12 @@ object AMPSRConfig {
         if (license == null || license.isEmpty()) null else license
     }() ?: "or put your license here"
 
-    val DEFAULT_VIDEO_URL = "http://wowza-test.streamroot.io/liveOrigin/Sintel1/playlist.m3u8"
-    val DNA_ENABLED = true
+    const val DEFAULT_VIDEO_URL = "http://wowza-test.streamroot.io/liveOrigin/Sintel1/playlist.m3u8"
+    const val DNA_ENABLED = true
 
     // You can build DNA instance here
-    fun configureStreamroot(baseConfig: Configure): OptionalConfigBuilder {
-        return baseConfig
-                .latency(30)
-                .logLevel(LogLevel.VERBOSE)
+    fun configureStreamroot(baseConfig: Configure) = baseConfig.apply {
+        latency(30)
+        logLevel(LogLevel.VERBOSE)
     }
 }

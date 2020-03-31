@@ -2,13 +2,10 @@ package io.streamroot.dna.samples.amp
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var streamEditText: AutoCompleteTextView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -16,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         launchButton.setOnClickListener {
             PlayerActivity.makeIntent(this,
                     PlayerActivity.PlayerActivityArgs(
-                            streamEditText.text.toString()
+                        streamEditText.text.toString()
                     )
             ).apply {
                 addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)

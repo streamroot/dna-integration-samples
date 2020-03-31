@@ -1,7 +1,6 @@
 package io.streamroot.dna.samples.amp.impl
 
 import android.os.Looper
-import android.util.Log
 import com.akamai.amp.media.VideoPlayerView
 import com.akamai.exoplayer2.AmpBasePlayer
 import com.akamai.exoplayer2.DefaultLoadControl
@@ -9,7 +8,6 @@ import com.akamai.exoplayer2.LoadControl
 import com.akamai.exoplayer2.Timeline
 import io.streamroot.dna.core.PlayerInteractor
 import io.streamroot.dna.core.TimeRange
-import io.streamroot.dna.samples.amp.logFull
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicReference
 
@@ -97,9 +95,7 @@ private object BufferTargetBridgeFactory {
  * AMP specific
  */
 
-class AMPPlayerInteractor(private val loadControl: DefaultLoadControl, audioOnly: Boolean = false) : PlayerInteractor {
-    private val TAG = "AMPPlayerInteractor"
-    private val ref = System.currentTimeMillis()
+class AMPPlayerInteractor(loadControl: DefaultLoadControl, audioOnly: Boolean = false) : PlayerInteractor {
 
     private val playerViewRef = AtomicReference<VideoPlayerView?>(null)
     private val bridge = BufferTargetBridgeFactory.createInteractor(loadControl, audioOnly)
@@ -112,18 +108,13 @@ class AMPPlayerInteractor(private val loadControl: DefaultLoadControl, audioOnly
 
     private fun <T> tryPlayer(lambda: (AmpBasePlayer)->T?) : T? = playerViewRef.get()?.let { lambda(it.ampBasePlayer) }
 
-    override fun playbackTime() = tryPlayer {
-        Log.v(TAG, "Playbacktime -> " + (getCurrentWindowShift() + it.currentPosition))
-        Log.v(TAG, "Buffered -> " + it.totalBufferedDuration)
-        getCurrentWindowShift() + it.currentPosition
-    } ?: 0L
+    override fun playbackTime() = tryPlayer { getCurrentWindowShift() + it.currentPosition } ?: 0L
 
     override fun loadedTimeRanges() = tryPlayer {
         val shift = getCurrentWindowShift()
         val rangeDurationMs = it.bufferedPosition - it.currentPosition
         if (rangeDurationMs > 0) {
             val tr = TimeRange(shift + it.currentPosition, rangeDurationMs)
-            Log.v(TAG, "Time range -> " + tr)
             arrayListOf(tr)
         } else null
     } ?: emptyList<TimeRange>()
@@ -140,6 +131,4 @@ class AMPPlayerInteractor(private val loadControl: DefaultLoadControl, audioOnly
 
         shift
     } ?: 0L
-
-    fun logFull() = playerViewRef.get()?.logFull(ref)
 }
