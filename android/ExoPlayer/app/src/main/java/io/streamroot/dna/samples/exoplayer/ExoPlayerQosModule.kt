@@ -22,20 +22,17 @@ class ExoPlayerQosModule(
         exoPlayer.addListener(this)
     }
 
-    override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {}
+    override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {}
 
     override fun onSeekProcessed() {
         playbackStateChange(PlaybackState.SEEKING)
     }
 
-    override fun onTracksChanged(
-        trackGroups: TrackGroupArray?,
-        trackSelections: TrackSelectionArray?
-    ) {
+    override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {
         trackSwitchOccurred()
     }
 
-    override fun onPlayerError(error: ExoPlaybackException?) {
+    override fun onPlayerError(error: ExoPlaybackException) {
         playbackErrorOccurred()
     }
 
@@ -47,7 +44,7 @@ class ExoPlayerQosModule(
 
     override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
 
-    override fun onTimelineChanged(timeline: Timeline?, manifest: Any?, reason: Int) {}
+    override fun onTimelineChanged(timeline: Timeline, reason: Int) {}
 
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
         when (playbackState) {
