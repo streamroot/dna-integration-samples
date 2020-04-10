@@ -1,6 +1,7 @@
 // Sample apps
 def samples = [
         'ExoPlayer',
+        'ExoPlayer-pre2.10',
         'PlayKit',
         'PlayKitOVPStarter',
         'VideoView',

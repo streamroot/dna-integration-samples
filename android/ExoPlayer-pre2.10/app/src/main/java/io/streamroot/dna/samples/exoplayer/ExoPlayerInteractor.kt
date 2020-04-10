@@ -6,13 +6,14 @@ import com.google.android.exoplayer2.LoadControl
 import com.google.android.exoplayer2.Timeline
 import io.streamroot.dna.core.PlayerInteractor
 import io.streamroot.dna.core.TimeRange
-import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
 private interface BufferTargetBridge {
     fun bufferTarget() : Double = 0.0
     fun setBufferTarget(bufferTarget: Double) {}
 }
+
+private class BufferTargetBridgeDefault : BufferTargetBridge
 
 private abstract class LoadControlBufferTargetBridge(protected val loadControl: LoadControl) : BufferTargetBridge {
 
@@ -50,6 +51,15 @@ private abstract class LoadControlBufferTargetBridge(protected val loadControl: 
     }
 }
 
+private class LoadControlBufferTargetBridgeV1(loadControl: LoadControl)
+    : LoadControlBufferTargetBridge(loadControl) {
+    companion object {
+        private const val MIN_BUFFER_FIELD_NAME = "minBufferUs"
+    }
+
+    override val minBufferUs = loadControl.getLongFromFieldElseThrow(MIN_BUFFER_FIELD_NAME)
+}
+
 private class LoadControlBufferTargetBridgeV2(loadControl: LoadControl, audioOnly: Boolean)
     : LoadControlBufferTargetBridge(loadControl) {
     companion object {
@@ -64,8 +74,9 @@ private class LoadControlBufferTargetBridgeV2(loadControl: LoadControl, audioOnl
 
 private object BufferTargetBridgeFactory {
     fun createInteractor(loadControl: LoadControl, audioOnly: Boolean) : BufferTargetBridge {
-        return runCatching { LoadControlBufferTargetBridgeV2(loadControl, audioOnly) }.getOrNull()
-                ?: throw Exception("Unsupported ExoPlayer version")
+        return runCatching { LoadControlBufferTargetBridgeV1(loadControl) }.getOrNull()
+            ?: runCatching { LoadControlBufferTargetBridgeV2(loadControl, audioOnly) }.getOrNull()
+            ?: BufferTargetBridgeDefault()
     }
 }
 
@@ -96,11 +107,14 @@ class ExoPlayerInteractor(
     private fun getCurrentWindowShift(): Long {
         val current = player.currentTimeline
         val timelineWindow = Timeline.Window()
+        var shift: Long = 0
 
-        return if (player.currentWindowIndex < current.windowCount) {
-            player.currentTimeline.getWindow(player.currentWindowIndex, timelineWindow)
-            timelineWindow.positionInFirstPeriodMs
-        } else 0L
+        if (player.currentWindowIndex < current?.windowCount!!) {
+            player.currentTimeline?.getWindow(player.currentWindowIndex, timelineWindow)
+            shift = timelineWindow.positionInFirstPeriodMs
+        }
+
+        return shift
     }
 
     override fun bufferTarget() = bridge.bufferTarget()
