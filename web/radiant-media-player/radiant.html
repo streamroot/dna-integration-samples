@@ -16,10 +16,10 @@
     <script src="//samples.streamroot.io/web/assets/header.js"></script>
 
     <!-- Builds -->
-    <script src="//cdn.radiantmediatechs.com/rmp/4.8.1/js/rmp.min.js"></script>
+    <script src="//cdn.radiantmediatechs.com/rmp/5.7.6/js/rmp.min.js"></script>
 
     <!-- Graphs -->
-	<script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
 </head>
 ​
 
@@ -49,6 +49,8 @@
                 // Recommended settings for HLS streaming
                 hlsJSMaxBufferSize: 0,
                 hlsJSMaxBufferLength: 30,
+                hlsJSLiveSyncDuration: 30, // Not needed for VoD streams
+                forceHlsJSOnMacOSIpadOSSafari: true, //To activate Streamroot on Safari Mac OS. Only from player 5.4.10+.
                 delayToFade: 3000,
                 width: 512,
                 height: 288,
