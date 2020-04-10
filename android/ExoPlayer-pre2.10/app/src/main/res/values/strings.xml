@@ -1,0 +1,30 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">DNA ExoPlayer Sample</string>
+    <string name="title_activity_player">PlayerActivity</string>
+    <string name="logo_cd">Logo</string>
+    <string name="streamroot_key_text">Streamroot Key</string>
+    <string name="streamroot_key_hint">Enter your Streamroot Key</string>
+    <string name="stream_url_text">Stream URL</string>
+    <string name="stream_url_hint">Enter your stream URL</string>
+    <string name="youbora_enabled_text">Enable Youbora ?</string>
+    <string name="youbora_enabled_hint">Enter your Youbora account</string>
+    <string name="launch_demo_text">Launch demo</string>
+
+    <string name="error_unsupported_video">Media includes video tracks, but none are playable by
+        this device
+    </string>
+    <string name="error_unsupported_audio">Media includes audio tracks, but none are playable by
+        this device
+    </string>
+    <string name="error_instantiating_decoder">Unable to instantiate decoder
+        <xliff:g id="decoder_name">%1$s</xliff:g>
+    </string>
+    <string name="error_no_decoder">This device does not provide a decoder for
+        <xliff:g id="mime_type">%1$s</xliff:g>
+    </string>
+    <string name="error_no_secure_decoder">This device does not provide a secure decoder for
+        <xliff:g id="mime_type">%1$s</xliff:g>
+    </string>
+    <string name="error_querying_decoders">Unable to query device decoders</string>
+
+</resources>

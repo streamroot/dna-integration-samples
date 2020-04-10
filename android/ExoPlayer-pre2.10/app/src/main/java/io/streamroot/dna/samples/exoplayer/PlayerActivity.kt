@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.DefaultLoadControl
+import com.google.android.exoplayer2.DefaultRenderersFactory
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.LoadControl
 import com.google.android.exoplayer2.PlaybackParameters
 import com.google.android.exoplayer2.Player
@@ -24,6 +26,7 @@ import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.source.dash.DashMediaSource
 import com.google.android.exoplayer2.source.dash.DefaultDashChunkSource
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
@@ -117,12 +120,17 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         if (player == null) {
             val bandwidthMeter = ExoPlayerBandwidthMeter()
             val loadControl = DefaultLoadControl()
+            val trackSelector = DefaultTrackSelector()
+            val renderersFactory = DefaultRenderersFactory(applicationContext)
 
-            val newPlayer = SimpleExoPlayer.Builder(applicationContext)
-                    .setBandwidthMeter(bandwidthMeter)
-                    .setLoadControl(loadControl)
-                    .build()
-
+            val newPlayer = ExoPlayerFactory.newSimpleInstance(
+                this,
+                renderersFactory,
+                trackSelector,
+                loadControl,
+                null, // DrmSessionManager
+                bandwidthMeter
+            )
             newPlayer.playWhenReady = true
             newPlayer.addListener(this)
 
@@ -228,22 +236,21 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
      * Player EventListener
      */
 
-    override fun onPlayerError(error: ExoPlaybackException) {
+    override fun onPlayerError(error: ExoPlaybackException?) {
         var errorString: String? = null
-        if (error.type == ExoPlaybackException.TYPE_RENDERER) {
+        if (error?.type == ExoPlaybackException.TYPE_RENDERER) {
             val cause = error.rendererException
             if (cause is MediaCodecRenderer.DecoderInitializationException) {
                 // Special case for decoder initialization failures.
-                val codecInfo = cause.codecInfo
                 errorString = when {
-                    codecInfo != null -> getString(
-                            R.string.error_instantiating_decoder,
-                            codecInfo.name
+                    cause.decoderName != null -> getString(
+                        R.string.error_instantiating_decoder,
+                        cause.decoderName
                     )
                     cause.cause is MediaCodecUtil.DecoderQueryException -> getString(R.string.error_querying_decoders)
                     cause.secureDecoderRequired -> getString(
-                            R.string.error_no_secure_decoder,
-                            cause.mimeType
+                        R.string.error_no_secure_decoder,
+                        cause.mimeType
                     )
                     else -> getString(R.string.error_no_decoder, cause.mimeType)
                 }
@@ -255,14 +262,18 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
         }
     }
 
-    override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {}
+    override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {}
     override fun onSeekProcessed() {}
-    override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {}
+    override fun onTracksChanged(
+        trackGroups: TrackGroupArray?,
+        trackSelections: TrackSelectionArray?
+    ) {
+    }
 
     override fun onLoadingChanged(isLoading: Boolean) {}
     override fun onPositionDiscontinuity(reason: Int) {}
     override fun onRepeatModeChanged(repeatMode: Int) {}
     override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
-    override fun onTimelineChanged(timeline: Timeline, manifest: Any?, reason: Int) {}
+    override fun onTimelineChanged(timeline: Timeline?, manifest: Any?, reason: Int) {}
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {}
 }
