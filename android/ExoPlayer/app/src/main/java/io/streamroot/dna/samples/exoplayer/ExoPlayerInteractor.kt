@@ -51,15 +51,6 @@ private abstract class LoadControlBufferTargetBridge(protected val loadControl: 
     }
 }
 
-private class LoadControlBufferTargetBridgeV1(loadControl: LoadControl)
-    : LoadControlBufferTargetBridge(loadControl) {
-    companion object {
-        private const val MIN_BUFFER_FIELD_NAME = "minBufferUs"
-    }
-
-    override val minBufferUs = loadControl.getLongFromFieldElseThrow(MIN_BUFFER_FIELD_NAME)
-}
-
 private class LoadControlBufferTargetBridgeV2(loadControl: LoadControl, audioOnly: Boolean)
     : LoadControlBufferTargetBridge(loadControl) {
     companion object {
@@ -74,9 +65,7 @@ private class LoadControlBufferTargetBridgeV2(loadControl: LoadControl, audioOnl
 
 private object BufferTargetBridgeFactory {
     fun createInteractor(loadControl: LoadControl, audioOnly: Boolean) : BufferTargetBridge {
-        return runCatching { LoadControlBufferTargetBridgeV1(loadControl) }.getOrNull()
-            ?: runCatching { LoadControlBufferTargetBridgeV2(loadControl, audioOnly) }.getOrNull()
-            ?: BufferTargetBridgeDefault()
+        return LoadControlBufferTargetBridgeV2(loadControl, audioOnly)
     }
 }
 
