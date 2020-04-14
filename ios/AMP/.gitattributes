@@ -1,0 +1,2 @@
+SDK_AMP/iOS/**/* filter=lfs diff=lfs merge=lfs -text
+SDK_AMP/tvOS/**/* filter=lfs diff=lfs merge=lfs -text

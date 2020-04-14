@@ -1,0 +1,25 @@
+def streamroot_pods(integration_type:)  # :pod, :framework
+  case integration_type
+  when :pod
+    pod 'StreamrootSDK', '~>3.19.0'
+  when :framework
+    pod 'Starscream', '~>3.1.1'
+    pod 'Sentry',  '~>4.4.1'
+    pod 'SwiftProtobuf', '~>1.7.0'
+  else 
+    puts "Error -> Invalid integration_type"
+    exit(1)
+  end
+end
+
+target 'AMPSample' do
+  platform :ios, '10.2'
+  use_frameworks!
+  streamroot_pods(integration_type: :pod)
+end
+
+target 'AMPSampleTV' do
+  platform :tvos, '10.2'
+  use_frameworks!
+  streamroot_pods(integration_type: :pod)
+end
