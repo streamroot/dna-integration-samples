@@ -1,4 +1,4 @@
-# iOS AMP sample
+# Android AMP sample
 
 ## Updating AMP
 

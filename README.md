@@ -35,17 +35,18 @@ If you don't have an account, [request a trial](https://streamroot.io/?request_t
 
 #### Players
 
-- [AMP](https://github.com/streamroot/dna-integration-samples/tree/master/android/AMP)
 - [ExoPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer)
 - [PlayKit](https://github.com/streamroot/dna-integration-samples/tree/master/android/PlayKit)
 - [PlayKit with OVP Sample](https://github.com/streamroot/dna-integration-samples/tree/master/android/PlayKitOVPStarter)
 - [VideoView](https://github.com/streamroot/dna-integration-samples/tree/master/android/VideoView)
+- [AMP](https://github.com/streamroot/dna-integration-samples/tree/master/android/AMP)
 
 ### iOS
 
 #### Players
 
 - [AVPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/ios)
+- [AMP](https://github.com/streamroot/dna-integration-samples/tree/master/ios/AMP)
 
 ### Web
 
