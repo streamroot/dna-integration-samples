@@ -22,7 +22,7 @@ struct AMPSRConfig {
   
   static func setupDNA(_ builder: DNATrigger) -> DNATrigger {
     return builder
-    .streamrootKey("dev")
+    .streamrootKey("demoswebsiteandpartners")
     .latency(30)
     .logLevel(.debug)
   }
