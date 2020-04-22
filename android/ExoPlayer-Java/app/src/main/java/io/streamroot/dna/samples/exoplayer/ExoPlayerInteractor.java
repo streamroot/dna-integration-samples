@@ -40,7 +40,7 @@ public final class ExoPlayerInteractor implements PlayerInteractor {
 
         private static Field getAccessibleFieldElseThrow(Class<?> clazz, String fieldName) {
             try {
-                Field minBufferField = clazz.getDeclaredField(fieldName);
+                final Field minBufferField = clazz.getDeclaredField(fieldName);
                 minBufferField.setAccessible(true);
                 return minBufferField;
             } catch (Exception e) {
@@ -71,7 +71,7 @@ public final class ExoPlayerInteractor implements PlayerInteractor {
 
         @Override
         public void setBufferTarget(double bufferTarget) {
-            long maxBufferUs = TimeUnit.SECONDS.toMicros((long)bufferTarget);
+            final long maxBufferUs = TimeUnit.SECONDS.toMicros((long)bufferTarget);
             if (maxBufferUs > minBufferUs) try {
                 maxBufferField.setLong(
                         loadControl,
@@ -125,20 +125,18 @@ public final class ExoPlayerInteractor implements PlayerInteractor {
     @NotNull
     @Override
     public List<TimeRange> loadedTimeRanges() {
-        long shift = getCurrentWindowShift();
-        long rangeDurationMs = player.getBufferedPosition() - player.getCurrentPosition();
+        final long shift = getCurrentWindowShift();
+        final long rangeDurationMs = player.getBufferedPosition() - player.getCurrentPosition();
 
         if (rangeDurationMs > 0) {
-            final List<TimeRange> l = new ArrayList<>();
-            l.add(new TimeRange(shift + player.getCurrentPosition(), rangeDurationMs));
-            return l;
+            return Collections.singletonList(new TimeRange(shift + player.getCurrentPosition(), rangeDurationMs));
         }
         return emptyTRList;
     }
 
     private long getCurrentWindowShift() {
-        Timeline current = player.getCurrentTimeline();
-        Timeline.Window timelineWindow = new Timeline.Window();
+        final Timeline current = player.getCurrentTimeline();
+        final Timeline.Window timelineWindow = new Timeline.Window();
 
         if (player.getCurrentWindowIndex() < current.getWindowCount()) {
             current.getWindow(player.getCurrentWindowIndex(), timelineWindow);

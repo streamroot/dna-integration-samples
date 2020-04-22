@@ -65,8 +65,8 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
                 i.getStringExtra(ARG_YB_ACCOUNT));
     }
 
-    private PlayerView exoPlayerView = null;
-    private StatsView streamrootDnaStatsView = null;
+    @Nullable private PlayerView exoPlayerView = null;
+    @Nullable private StatsView streamrootDnaStatsView = null;
 
     @Nullable private String mStreamUrl = null;
     @Nullable private String mYBAccount = null;
@@ -84,7 +84,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
-        PlayerActivityArgs args = extractArgs(getIntent());
+        final PlayerActivityArgs args = extractArgs(getIntent());
         mStreamUrl = args.url;
         {
             final String tmpYB = args.youboraAccount;
@@ -164,8 +164,6 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
         stopYoubora();
     }
 
-
-
     @SuppressLint("SwitchIntDef")
     private MediaSource buildMediaSource(Uri uri) {
         final DefaultHttpDataSourceFactory defaultDataSourceFactory = new DefaultHttpDataSourceFactory(
@@ -211,8 +209,6 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
 
         return mSdk;
     }
-
-
 
     private void stopStreamroot() {
         if (dnaClient != null) {
