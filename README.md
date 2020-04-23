@@ -35,7 +35,7 @@ If you don't have an account, [request a trial](https://streamroot.io/?request_t
 
 #### Players
 
-- [ExoPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer)
+- ExoPlayer ( [Kotlin](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer) | [Java](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer-Java) | [Kotlin-pre2.10](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer-pre2.10) | [Java-pre2.10](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer-pre2.10-Java) )
 - [PlayKit](https://github.com/streamroot/dna-integration-samples/tree/master/android/PlayKit)
 - [PlayKit with OVP Sample](https://github.com/streamroot/dna-integration-samples/tree/master/android/PlayKitOVPStarter)
 - [VideoView](https://github.com/streamroot/dna-integration-samples/tree/master/android/VideoView)
