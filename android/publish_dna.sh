@@ -2,7 +2,7 @@
 
 echo 'Make sure you are logged in to firebase using Firebase CLI "firebase login"'
 
-echo 'Available targets : ExoPlayer | PlayKit | PlayKitOVPStarter | VideoView | Brightcove | AMP'
+echo 'Available targets : ExoPlayer | ExoPlayer-Java | ExoPlayer-pre2.10 | ExoPlayer-pre2.10-Java | PlayKit | PlayKitOVPStarter | VideoView | Brightcove | AMP'
 read -p 'Specify project module ? : ' module
 
 firebase --project streamroot-tools apps:list ANDROID
