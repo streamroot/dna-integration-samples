@@ -2,6 +2,8 @@
 def samples = [
         'ExoPlayer',
         'ExoPlayer-pre2.10',
+        'ExoPlayer-Java',
+        'ExoPlayer-pre2.10-Java',
         'PlayKit',
         'PlayKitOVPStarter',
         'VideoView',

@@ -1,0 +1,42 @@
+//noinspection GradleCompatible
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "io.streamroot.dna.samples.exoplayer"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.google.android.exoplayer:exoplayer:2.11.3'
+
+    def dna_version = "3.18.0"
+    implementation "io.streamroot.dna:dna-core:$dna_version"
+    implementation "io.streamroot.dna:dna-utils:$dna_version"
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
+    implementation 'com.google.android.material:material:1.1.0'
+
+    implementation 'com.npaw.youbora.adapters:exoplayer2-adapter:6.5.+'
+}
+
+apply from: "https://bitbucket.org/!api/2.0/snippets/npaw/yAk85G/files/exoplayer2-adapter-android-picker"

@@ -26,6 +26,7 @@ import com.google.android.exoplayer2.source.dash.DefaultDashChunkSource
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.PlayerView
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.npaw.youbora.lib6.exoplayer2.Exoplayer2StreamrootAdapter
@@ -147,7 +148,12 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     @SuppressLint("SwitchIntDef")
     private fun buildMediaSource(uri: Uri): MediaSource {
         val defaultDataSourceFactory =
-            DefaultHttpDataSourceFactory(Util.getUserAgent(applicationContext, "StreamrootQA"))
+            DefaultHttpDataSourceFactory(
+                    Util.getUserAgent(applicationContext, "StreamrootQA"),
+                    DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
+                    DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
+                    true
+            )
 
         return when (Util.inferContentType(uri)) {
             C.TYPE_HLS -> HlsMediaSource.Factory(defaultDataSourceFactory)

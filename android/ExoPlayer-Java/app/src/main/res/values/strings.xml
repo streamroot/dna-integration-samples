@@ -1,5 +1,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">DNA ExoPlayer Sample Pre2.10</string>
+    <string name="app_name">DNA ExoPlayer Sample Java</string>
     <string name="title_activity_player">PlayerActivity</string>
     <string name="logo_cd">Logo</string>
     <string name="streamroot_key_text">Streamroot Key</string>
