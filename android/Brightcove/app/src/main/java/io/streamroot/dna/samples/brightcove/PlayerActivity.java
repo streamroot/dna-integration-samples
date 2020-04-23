@@ -18,6 +18,8 @@ import com.brightcove.player.model.Video;
 import com.brightcove.player.view.BrightcoveExoPlayerVideoView;
 import com.brightcove.player.view.BrightcovePlayer;
 
+import java.util.Collections;
+
 import io.streamroot.dna.core.BandwidthListener;
 import io.streamroot.dna.core.DnaClient;
 import io.streamroot.dna.core.PlayerInteractor;
@@ -94,8 +96,8 @@ public class PlayerActivity extends BrightcovePlayer {
                         .latency(30)// Recommended setting (only on live)
                         .start(Uri.parse(firstHlsSource.getUrl()));
 
-                Video dnaVideo = Video.createVideo(String.valueOf(dnaClient.getManifestUrl()), DeliveryType.HLS);
-                brightcoveVideoView.add(dnaVideo);
+                SourceCollection dnaSourceCollection = new SourceCollection(new Source(String.valueOf(dnaClient.getManifestUrl()), DeliveryType.HLS), DeliveryType.HLS);
+                brightcoveVideoView.add(new Video(video.getProperties(), Collections.singleton(dnaSourceCollection), video.getCuePoints()));
 
                 //  Start and display stat view
                 startStatsView();
