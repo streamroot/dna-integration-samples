@@ -42,6 +42,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
     implementation 'com.npaw.youbora.adapters:exoplayer2-adapter:6.5.+'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.5.0'
 }
 
 apply from: "https://bitbucket.org/!api/2.0/snippets/npaw/yAk85G/files/exoplayer2-adapter-android-picker"
