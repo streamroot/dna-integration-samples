@@ -25,6 +25,7 @@ import io.streamroot.dna.core.BandwidthListener;
 import io.streamroot.dna.core.DnaClient;
 import io.streamroot.dna.core.PlayerInteractor;
 import io.streamroot.dna.core.QosModule;
+import io.streamroot.dna.core.log.LogLevel;
 import io.streamroot.dna.utils.stats.StatsView;
 import io.streamroot.dna.utils.stats.StreamStatsManager;
 
@@ -208,6 +209,7 @@ public class PlayerActivity extends PlayerActivityBase {
                 .bandwidthListener(bandwidthListener)
                 .latency(30) // Recommended setting
                 .contentId(source.getId())
+                .logLevel(LogLevel.OFF) // Default level: ERROR. Available: [VERBOSE, DEBUG, INFO, WARN, ERROR, OFF]
                 .start(Uri.parse(source.getUrl()));
 
         return dnaClient.getManifestUrl().toString();

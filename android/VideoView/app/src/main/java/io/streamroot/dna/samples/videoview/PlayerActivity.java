@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Objects;
 
 import io.streamroot.dna.core.DnaClient;
+import io.streamroot.dna.core.log.LogLevel;
 import io.streamroot.dna.utils.stats.StatsView;
 import io.streamroot.dna.utils.stats.StreamStatsManager;
 
@@ -71,6 +72,7 @@ public final class PlayerActivity extends AppCompatActivity {
             streamrootDNA = DnaClient.newBuilder()
                     .context(getApplicationContext())
                     .playerInteractor(new VideoViewPlayerInteractor(videoView))
+                    .logLevel(LogLevel.OFF) // Default level: ERROR. Available: [VERBOSE, DEBUG, INFO, WARN, ERROR, OFF]
                     .start(Uri.parse(mStreamUrl));
 
             streamStatsManager = StreamStatsManager.newStatsManager(streamrootDNA, streamrootDnaStatsView);

@@ -24,6 +24,7 @@ import java.util.List;
 import io.streamroot.dna.core.DnaClient;
 import io.streamroot.dna.core.PlayerInteractor;
 import io.streamroot.dna.core.QosModule;
+import io.streamroot.dna.core.log.LogLevel;
 import io.streamroot.dna.utils.stats.StatsView;
 import io.streamroot.dna.utils.stats.StreamStatsManager;
 
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 .qosModule(qosModule)
                 .bandwidthListener(bandwidthListener)
 //                .latency(30) // Recommended setting (only on live)
+                .logLevel(LogLevel.OFF) // Default level: ERROR. Available: [VERBOSE, DEBUG, INFO, WARN, ERROR, OFF]
                 .start(Uri.parse(SOURCE_URL));
 
         //Second. Create PKMediaEntry object.

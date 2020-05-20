@@ -37,6 +37,7 @@ import com.npaw.youbora.lib6.plugin.Options
 import com.npaw.youbora.lib6.plugin.Plugin
 import io.streamroot.dna.core.BandwidthListener
 import io.streamroot.dna.core.DnaClient
+import io.streamroot.dna.core.log.LogLevel
 import io.streamroot.dna.utils.stats.StatsView
 import io.streamroot.dna.utils.stats.StreamStatsManager
 
@@ -191,6 +192,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
                 .latency(latency)
                 .qosModule(ExoPlayerQosModule(newPlayer))
                 .bandwidthListener(bandwidthListener)
+                .logLevel(LogLevel.OFF) // Default level: ERROR. Available: [VERBOSE, DEBUG, INFO, WARN, ERROR, OFF]
                 .start(Uri.parse(mStreamUrl))
 
             streamStatsManager = StreamStatsManager.newStatsManager(mSdk, streamrootDnaStatsView)
