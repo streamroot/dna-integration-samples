@@ -38,21 +38,20 @@ extension GoogleDAISampleViewController {
   }
   
   func requestStream() {
-    print("🔥 request stream \(Date().timeIntervalSince1970)")
-    let adDisplayContainer = IMAAdDisplayContainer(adContainer: contentOverlayView!, companionSlots: nil)
-    // the streamroot key will default to the one in the Info.plist if not overridden here
-    let config = DNAConfiguration(
-        //streamrootKey: "demoswebsiteandpartners",
-        contentId: "GoogleDAI_TEST",
-        latency: 30,
-        property:  "SSAI"
-    )
-    videoDisplay = DNAAVPlayerVideoDisplay(avPlayer: player, dnaConfig: config)
-    videoDisplay?.avPlayerVideoDisplayDelegate = self
-    let request = IMALiveStreamRequest(assetKey: "sN_IYUG8STe1ZzhIIE_ksA",
-                                       adDisplayContainer: adDisplayContainer,
-                                       videoDisplay: videoDisplay)
-    adsLoader!.requestStream(with: request)
+//    let adDisplayContainer = IMAAdDisplayContainer(adContainer: contentOverlayView!, companionSlots: nil)
+//    // the streamroot key will default to the one in the Info.plist if not overridden here
+//    let config = DNAConfiguration(
+//        //streamrootKey: "demoswebsiteandpartners",
+//        contentId: "GoogleDAI_TEST",
+//        latency: 30,
+//        property:  "SSAI"
+//    )
+//    videoDisplay = DNAAVPlayerVideoDisplay(avPlayer: player, dnaConfig: config)
+//    videoDisplay?.delegate = self
+//    let request = IMALiveStreamRequest(assetKey: "sN_IYUG8STe1ZzhIIE_ksA",
+//                                       adDisplayContainer: adDisplayContainer,
+//                                       videoDisplay: videoDisplay)
+//    adsLoader!.requestStream(with: request)
   }
 }
 

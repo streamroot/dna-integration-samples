@@ -26,6 +26,7 @@ class SwiftSampleViewController: AVPlayerViewController {
         // the streamroot key will default to the one in the Info.plist if not overridden here
         //.streamrootKey("demoswebsiteandpartners")
         .latency(30)
+        .useSentryHub(false)
         .start(manifestUrl)
     } catch let error {
       print("\(error)")
