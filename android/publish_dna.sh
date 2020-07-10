@@ -1,11 +1,13 @@
 #!/bin/sh
 
+set -eo pipefail
+
 echo 'Make sure you are logged in to firebase using Firebase CLI "firebase login"'
 
 echo 'Available targets : ExoPlayer | ExoPlayer-Java | ExoPlayer-pre2.10 | ExoPlayer-pre2.10-Java | PlayKit | PlayKitOVPStarter | VideoView | Brightcove | AMP'
 read -p 'Specify project module ? : ' module
 
-firebase --project streamroot-tools apps:list ANDROID
+firebase --project streamroot-tools apps:list ANDROID | grep Samples
 read -p 'Specify Firebase App ID ? : ' fir_app
 
 read -p 'Release notes ? : ' fir_release_notes

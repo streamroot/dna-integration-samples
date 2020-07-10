@@ -92,7 +92,7 @@ public class PlayerActivity extends BrightcovePlayer {
                         .qosModule(qosModule)
 //                        .contentId(videoId)
                         .bandwidthListener(bandwidthListener)
-                        .logLevel(LogLevel.VERBOSE)
+                        .logLevel(LogLevel.DEBUG)
                         .latency(30)// Recommended setting (only on live)
                         .start(Uri.parse(firstHlsSource.getUrl()));
 
