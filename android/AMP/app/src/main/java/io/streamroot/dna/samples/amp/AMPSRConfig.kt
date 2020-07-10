@@ -1,10 +1,7 @@
 package io.streamroot.dna.samples.amp
 
 import android.content.Context
-import android.os.Handler
-import android.os.HandlerThread
 import io.streamroot.dna.core.Configure
-import io.streamroot.dna.core.OptionalConfigBuilder
 import io.streamroot.dna.core.log.LogLevel
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -28,6 +25,6 @@ object AMPSRConfig {
     // You can build DNA instance here
     fun configureStreamroot(baseConfig: Configure) = baseConfig.apply {
         latency(30)
-        logLevel(LogLevel.VERBOSE)
+        logLevel(LogLevel.DEBUG)
     }
 }

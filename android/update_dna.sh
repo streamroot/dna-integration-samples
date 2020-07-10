@@ -4,6 +4,8 @@
 # Android studio / sdk / ndks need to be installed and set on host machine
 # Tested with OSX
 
+set -eo pipefail
+
 YELLOW="\033[1;33m"
 RST="\033[0m"
 

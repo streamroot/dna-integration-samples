@@ -1,11 +1,13 @@
 package io.streamroot.dna.samples.playkit;
 
 import android.os.Handler;
+
+import androidx.annotation.Nullable;
+
 import com.kaltura.android.exoplayer2.upstream.BandwidthMeter;
 import com.kaltura.android.exoplayer2.upstream.TransferListener;
 import io.streamroot.dna.core.BandwidthListener;
 
-import javax.annotation.Nullable;
 import java.util.concurrent.atomic.AtomicLong;
 
 final class PlayKitCustomBandwidthMeter implements BandwidthMeter, BandwidthListener {
